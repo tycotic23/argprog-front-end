@@ -2,6 +2,7 @@
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+    color: white;
     /* outline: 1px solid red; */
 }
 
@@ -73,6 +74,10 @@ header{
     justify-content: space-between;
     align-items: center;
     flex-direction: row;
+}
+
+.forte{
+    font-weight: 600;
 }
 
 .bkoscuro{
@@ -195,12 +200,25 @@ main section{
     
 }
 
-main section p{
+main section>p{
     background-color: rgb(22,3,0);
     color: white;
     padding: 1rem;
     font-size: 14pt;
     border-radius: 0 0 10px 10px;
+}
+
+main h1{
+    font-size: 25pt;
+    width: 100%;
+    padding-left: 3rem;
+    padding-bottom: 0.5rem;
+    border-width: 2px !important;
+}
+
+main>h2{
+    font-size: 20pt;
+    
 }
 
 main section h2{
@@ -210,6 +228,51 @@ main section h2{
     padding: 0.2rem;
     border-bottom:1px solid rgb(213,94,2);
     border-radius: 10px 10px 0 0;
+}
+
+main section h5{
+    color: rgb(213,94,2);
+    background-color: rgba(22, 3, 0, 0.712);
+    font-size: 16pt;
+    padding: 0.2rem;
+    border-bottom:1px solid rgb(213,94,2);
+    border-radius: 10px 10px 0 0;
+}
+
+.formacion-section h5{
+    color: rgb(213,94,2);
+}
+
+.xp-section h5{
+    color: white;
+}
+
+.xp-section h5 span{
+    color: rgb(213,94,2);
+}
+
+main section p span{
+    font-weight: 600;
+    font-size: 16pt;
+}
+
+.content-section{
+    display: flex;
+    justify-content: space-evenly;
+    background-color: rgb(22,3,0);
+    border-radius: 0 0 10px 10px;
+    padding: 1rem;
+    align-items: center;
+}
+
+.content-section p{
+    padding: 0;
+    font-size: 14pt;
+    width: 30%;
+}
+
+.content-section img{
+    width: 30%;
 }
 
 @media only screen and (max-width:560px){
