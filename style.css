@@ -1,3 +1,7 @@
+/*********************************************************************************************************************/
+/****************************************************normalizacion****************************************************/
+/*********************************************************************************************************************/
+
 *{
     padding: 0;
     margin: 0;
@@ -6,6 +10,9 @@
     /* outline: 1px solid red; */
 }
 
+/*********************************************************************************************************************/
+/*******************************************************fondos********************************************************/
+/*********************************************************************************************************************/
 .bk{
     
     background-size: cover;
@@ -18,16 +25,35 @@
     min-height: 100vh;
     height: 100%;
     z-index: -10;
-    background-attachment: fixed;
+    
 }
 
 .bkmain{
+    background-attachment: fixed;
     background-image: url(assets/digital-art-knight-soldier-flag-wallpaper-preview.jpg);
 }
 
-.bkbanner{
-    background-image: url(assets/istockphoto-134171047-612x612.jpg);
+.bkcontactos{
+    background-attachment: fixed;
+    background-image: url(assets/981.jpg);
 }
+
+.bkbanner{
+    background-position: 0 50px;
+    background-image: url(assets/rivets-black-leather-lookalike-background-260nw-44222344.webp);
+}
+
+.bkoscuro{
+    background-color: rgb(22,3,0);
+}
+
+.none-bk{
+    background: none;
+}
+
+/*********************************************************************************************************************/
+/***************************************************general***********************************************************/
+/*********************************************************************************************************************/
 
 html{
     overflow-x: hidden;
@@ -39,7 +65,35 @@ body{
     align-items: center;
 }
 
+main{
+    position: relative;
+    padding-top: 7rem;
+    background-color: rgba(22, 3, 0, 0.712);
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    align-items: center;
+    padding-bottom: 2rem;
+}
+/*********************************************************************************************************************/
+/*****************************************************barra loggin****************************************************/
+/*********************************************************************************************************************/
+.loggin{
+    margin-right: 2rem;
+    color: rgb(213,94,2);
+}
 
+.loggin:active{
+    color: rgb(213,94,2);
+}
+
+.loggin:hover{
+    color: rgb(248, 156, 86);
+}
+/*********************************************************************************************************************/
+/**********************************************************cabecera***************************************************/
+/*********************************************************************************************************************/
 
 header img{
     margin: 1rem;
@@ -66,7 +120,6 @@ header{
     padding: 0;
 }
 
-
 .bannerHSeparados{
     width: 100vw;
     max-width: 100vw;
@@ -74,14 +127,6 @@ header{
     justify-content: space-between;
     align-items: center;
     flex-direction: row;
-}
-
-.forte{
-    font-weight: 600;
-}
-
-.bkoscuro{
-    background-color: rgb(22,3,0);
 }
 
 header .banner{
@@ -100,9 +145,10 @@ header .argprog{
     max-width: 30vw;
 }
 
-.reverse{
-    transform: scaleX(-1);
-}
+/*********************************************************************************************************************/
+/*****************************************************navegacion******************************************************/
+/*********************************************************************************************************************/
+
 
 nav{
     display: block;
@@ -118,8 +164,6 @@ nav{
     z-index: 1;
     max-width: 100vw;
 }
-
-
 
 .nav{
     padding-left: 3vw;
@@ -152,17 +196,9 @@ nav{
     width: 50%;
 }
 
-main{
-    position: relative;
-    padding-top: 7rem;
-    background-color: rgba(22, 3, 0, 0.712);
-    width: 100vw;
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-    align-items: center;
-    padding-bottom: 2rem;
-}
+/*********************************************************************************************************************/
+/*****************************************************footer**********************************************************/
+/*********************************************************************************************************************/
 
 footer{
     min-height: 20vh;
@@ -176,30 +212,9 @@ footer img{
     height: 40vh;
 }
 
-.loggin{
-    margin-right: 2rem;
-    color: rgb(213,94,2);
-}
-
-.loggin:active{
-    color: rgb(213,94,2);
-}
-
-.loggin:hover{
-    color: rgb(248, 156, 86);
-}
-
-.botlineaNaranja{
-    border-bottom:1px solid rgb(213,94,2);
-}
-
-main section{
-    border:2px solid rgb(213,94,2);
-    border-radius: 10px;
-    width: 80vw;
-    
-}
-
+/*********************************************************************************************************************/
+/****************************************************secciones en general*********************************************/
+/*********************************************************************************************************************/
 main section>p{
     background-color: rgb(22,3,0);
     color: white;
@@ -239,18 +254,6 @@ main section h5{
     border-radius: 10px 10px 0 0;
 }
 
-.formacion-section h5{
-    color: rgb(213,94,2);
-}
-
-.xp-section h5{
-    color: white;
-}
-
-.xp-section h5 span{
-    color: rgb(213,94,2);
-}
-
 main section p span{
     font-weight: 600;
     font-size: 16pt;
@@ -274,6 +277,279 @@ main section p span{
 .content-section img{
     width: 30%;
 }
+/*********************************************************************************************************************/
+/****************************************************proyectos seccion************************************************/
+/*********************************************************************************************************************/
+
+.section-proyecto{
+    background-size: cover;
+    background-position: 0 -300px;
+    background-image: url(assets/981.jpg);               /*medieval-vintage-background-lighting-arches-33977247.jpg);*/
+    padding: 2rem;
+    border-radius: 0 0 10px 10px;
+}
+
+.section-proyecto p{
+    color: rgb(22,3,0);
+    font-size: 14pt;
+}
+
+.section-proyecto h3{
+    color: rgb(22,3,0);
+    font-size: 18pt;
+}
+
+/*********************************************************************************************************************/
+/****************************************************contactos section************************************************/
+/*********************************************************************************************************************/
+
+.red-social-contactos{
+    display: flex;
+    font-size: 20pt;
+}
+
+.contactos{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    border-radius: 15px;
+    width: 70%;
+    background-size: cover;
+    background-origin: border-box;
+    background-position:0 0;
+    background-image: url(assets/fondo-contactos.png);
+    min-height: 40vh;
+}
+
+
+.contactos h2{
+    align-self: flex-start;
+    flex-grow: 1;
+    width: 100%;
+}
+
+.content-contactos{
+    display: flex;
+    justify-content: space-evenly;
+    
+    border-radius: 0 0 10px 10px;
+    padding: 0;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 2rem;
+    width: 100%;
+    
+}
+/*********************************************************************************************************************/
+/****************************************************formacion seccion************************************************/
+/*********************************************************************************************************************/
+.formacion-section h5{
+    color: rgb(213,94,2);
+}
+
+.xp-section,.formacion-section{
+    border:2px solid rgb(213,94,2);
+    border-radius: 10px;
+    width: 80vw;
+}
+
+.xp-section h5{
+    color: white;
+}
+
+.xp-section h5 span{
+    color: rgb(213,94,2);
+}
+
+/*********************************************************************************************************************/
+/********************************************************index seccion************************************************/
+/*********************************************************************************************************************/
+
+.main-section{
+    border:2px solid rgb(213,94,2);
+    border-radius: 15px;
+    height: 100%;
+}
+
+.main-section img{
+    /*height: 60vh;*/
+    width: 80%;
+    padding: 2rem 2rem 2rem 10rem;
+    align-self: start;
+}
+
+.main-section h2{
+    background: none;
+    margin-bottom: 1rem;
+    width: 100%;
+}
+
+.main-section p{
+    background: none;
+    font-size: 14pt;
+}
+
+.main-section span{
+    background: none;
+    font-size: 16pt;
+    font-weight: 800;
+    text-decoration: underline;
+}
+
+.lenguaje{
+    display: flex;
+    flex-direction: column;
+    width: 5vw;
+    align-items: center;
+    gap: 1rem;
+    min-width: 70px;
+}
+
+.lenguaje img{
+max-width: 100%;
+min-width: 70px;
+filter: invert(0.6) sepia(1) hue-rotate(-20deg) saturate(600%);
+}
+
+
+.index-content{
+    display: flex;
+    justify-content: space-evenly;
+    background-color: rgb(22,3,0);
+    border-radius: 0 0 10px 10px;
+    padding: 1rem;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 2rem;
+}
+
+
+
+.index-section p{
+    padding: 2rem;
+}
+
+
+
+.index-section span{
+    font-size: 14pt;
+    font-weight: 400;
+    color: rgb(213,94,2);
+}
+
+progress{
+    background-color: black;
+    height:12px;
+    border-radius: 15px;
+  }
+.index-content progress[value]::-webkit-progress-bar{
+    background-color: black;
+    height: 12px;
+    padding: 2px;
+    border-radius: 15px;
+    border:1px solid rgb(213,94,2);
+  }
+  .index-content progress[value]::-webkit-progress-value {
+    background-color: rgb(213,94,2);
+    border-radius: 15px;
+  }
+  .index-content label{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 280px;
+  }
+
+
+
+.index-main{
+width: 80vw;
+display: flex;
+flex-direction: column;
+justify-content: center;
+gap:1rem;
+}
+.index-fila-main{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 2rem;
+    height: 100%;
+}
+.index-columna{
+    display: flex;
+    flex-direction: column; 
+    justify-content: center;
+    gap:1rem;
+    height: 100%;
+}
+
+.trescuartos-main{
+    flex-grow: 2;
+    height: 100%;
+}
+
+.trescuartos-side{
+    flex-grow: 1;
+    width: 40%;
+}
+
+.circle-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    font-size: 12pt;
+    text-align: center;
+}
+
+.circle-title{
+    position: relative;
+    width: 160px;
+    height: 160px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.circle-title p{
+    text-align: center;
+}
+
+
+
+
+
+/*********************************************************************************************************************/
+/******************************************************otros**********************************************************/
+/*********************************************************************************************************************/
+
+
+.forte{
+    font-weight: 600;
+}
+
+.reverse{
+    transform: scaleX(-1);
+}
+
+.botlineaNaranja{
+    border-bottom:1px solid rgb(213,94,2);
+}
+.fila{
+    padding: 2rem;
+    display: flex;
+    justify-content: space-between;
+
+}
+
+
+/*********************************************************************************************************************/
+/*****************************************************querys*********************************************************/
+/*********************************************************************************************************************/
 
 @media only screen and (max-width:560px){
 
@@ -295,3 +571,28 @@ main section p span{
         height: 90%;
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
