@@ -290,19 +290,39 @@ main section p span{
 .section-proyecto{
     background-size: cover;
     background-position: 0 -300px;
-    background-image: url(assets/981.jpg);               /*medieval-vintage-background-lighting-arches-33977247.jpg);*/
-    padding: 2rem;
-    border-radius: 0 0 10px 10px;
+    background-image: url(assets/papel-antiguo.jpg);               /*medieval-vintage-background-lighting-arches-33977247.jpg);*/
+    padding: 0;
+    border-radius: 10px;
 }
 
 .section-proyecto p{
     color: rgb(22,3,0);
     font-size: 14pt;
+    background:none;
+    padding: 1rem;
+}
+.title-relative{
+    position: relative;
 }
 
-.section-proyecto h3{
-    color: rgb(22,3,0);
-    font-size: 18pt;
+.section-proyecto h2{
+    color:white;
+    font-size: 20pt;
+    position: absolute;
+    top:-30pt;
+    width: 100%;
+}
+
+.section-proyecto img{
+    width: 100%;
+    border-radius: 10px 10px 0 0;
+    object-fit: cover;
+    height: 25vh;
+    object-position: 0 -1px;
+}
+
+.section-proyecto img:hover{
+    height: 60vh;
 }
 
 /*********************************************************************************************************************/
@@ -372,9 +392,13 @@ main section p span{
 /*********************************************************************************************************************/
 
 .main-section{
-    border:2px solid rgb(213,94,2);
+    border:2px solid rgb(22,3,0);
     border-radius: 15px;
     height: 100%;
+    background-size: cover;
+    background-position: 0 -300px;
+    background-image: url(assets/papel-antiguo.jpg);
+    color: rgb(22,3,0);   
 }
 
 .main-section img{
@@ -398,11 +422,15 @@ height: 80vh;
     background: none;
     margin-bottom: 1rem;
     width: 100%;
+    color: rgb(213,94,2);
+    background-color: rgba(22, 3, 0);
+    border-radius: 10px 10px 0 0;
 }
 
 .main-section p{
     background: none;
     font-size: 14pt;
+    color: rgb(22,3,0);   
 }
 
 .main-section span{
@@ -410,6 +438,7 @@ height: 80vh;
     font-size: 16pt;
     font-weight: 800;
     text-decoration: underline;
+    color: rgb(22,3,0);   
 }
 
 .lenguaje{
