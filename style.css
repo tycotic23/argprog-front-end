@@ -378,10 +378,16 @@ main section p span{
 }
 
 .main-section img{
-    /*height: 60vh;*/
-    width: 100%;
+    height: 80vh;
+    /*width: 100%;*/
     padding: 2rem;
 }
+.trescuartos-main img{
+width: max-content;
+height: 80vh;
+
+}
+
 .div-img-index{
     display: flex;
     align-items: center;
@@ -495,12 +501,14 @@ gap:1rem;
     justify-content: center;
     gap:1rem;
     height: 100%;
+    
 }
 
 .trescuartos-main{
     flex-grow: 2;
     height: 100%;
-    align-self: stretch
+    align-self: stretch;
+    align-items: center;
 }
 
 .trescuartos-side{
