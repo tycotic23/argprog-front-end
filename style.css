@@ -40,7 +40,7 @@
 
 .bkbanner{
     background-position: 0 50px;
-    background-image: url(assets/rivets-black-leather-lookalike-background-260nw-44222344.webp);
+    background-image: url(assets/fondo-cuero.jpg); /*(assets/rivets-black-leather-lookalike-background-260nw-44222344.webp);*/
 }
 
 .bkoscuro{
@@ -49,6 +49,12 @@
 
 .none-bk{
     background: none;
+}
+
+.imgbk{
+    width: 100%;
+    /* background-color:rgb(22,3,0); */
+    background-color:rgba(22, 3, 0, 0.712);
 }
 
 /*********************************************************************************************************************/
@@ -373,9 +379,13 @@ main section p span{
 
 .main-section img{
     /*height: 60vh;*/
-    width: 80%;
-    padding: 2rem 2rem 2rem 10rem;
-    align-self: start;
+    width: 100%;
+    padding: 2rem;
+}
+.div-img-index{
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .main-section h2{
@@ -475,7 +485,7 @@ gap:1rem;
     flex-direction: row;
     width: 100%;
     justify-content: space-between;
-    align-items: flex-start;
+    align-items: stretch;
     gap: 2rem;
     height: 100%;
 }
@@ -490,6 +500,7 @@ gap:1rem;
 .trescuartos-main{
     flex-grow: 2;
     height: 100%;
+    align-self: stretch
 }
 
 .trescuartos-side{
@@ -545,7 +556,9 @@ gap:1rem;
     justify-content: space-between;
 
 }
-
+.vacio{
+    min-height: 60vh;
+}
 
 /*********************************************************************************************************************/
 /*****************************************************querys*********************************************************/
