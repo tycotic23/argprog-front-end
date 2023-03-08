@@ -30,13 +30,10 @@
 
 .bkmain{
     background-attachment: fixed;
-    background-image: url(assets/digital-art-knight-soldier-flag-wallpaper-preview.jpg);
+    /* background-image: url(assets/digital-art-knight-soldier-flag-wallpaper-preview.jpg); */
+    background-image: url(assets/background_rpg_fantasy_medieval_photorealistic.png);
 }
 
-.bkcontactos{
-    background-attachment: fixed;
-    background-image: url(assets/981.jpg);
-}
 
 .bkbanner{
     background-position: 0 50px;
@@ -121,7 +118,7 @@ header{
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    z-index: 2;
+    z-index: 12;
     flex-direction: column;
     padding: 0;
 }
@@ -167,7 +164,7 @@ nav{
     height: 10vh;
     position: sticky;
     top: 0;
-    z-index: 1;
+    z-index: 10;
     max-width: 100vw;
 }
 
@@ -181,7 +178,7 @@ nav{
 
 .nav img{
     width: 5vw;
-    z-index: 1;
+    z-index: 10;
 }
 
 
@@ -207,6 +204,7 @@ nav{
 /*********************************************************************************************************************/
 
 footer{
+    box-shadow: 0px -10px 10px -10px rgba(0, 0, 0, 0.8);
     min-height: 20vh;
     background-color: rgb(22,3,0);
     width: 100vw;
@@ -359,6 +357,7 @@ main section p span{
     background-image: url(assets/papel-antiguo.jpg);               /*medieval-vintage-background-lighting-arches-33977247.jpg);*/
     padding: 0;
     border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(255, 212, 172, 0.5);
 }
 
 .section-proyecto p{
@@ -384,12 +383,13 @@ main section p span{
     width: 100%;
     border-radius: 10px 10px 0 0;
     object-fit: cover;
-    height: 25vh;
+    height: 200px;
     object-position: 0 -1px;
 }
 
 .section-proyecto img:hover{
-    height: 60vh;
+    height: 400px;
+    width: 100%;
 }
 
 /*********************************************************************************************************************/
@@ -399,6 +399,13 @@ main section p span{
 .red-social-contactos{
     display: flex;
     font-size: 20pt;
+    align-items: center;
+    
+}
+
+.red-social-contactos p{
+    color: black;
+    font-weight: 600;
 }
 
 .contactos{
@@ -407,13 +414,16 @@ main section p span{
     align-items: flex-end;
     border-radius: 15px;
     width: 70%;
-    background-size: cover;
-    background-origin: border-box;
-    background-position:0 0;
-    background-image: url(assets/fondo-contactos.png);
     min-height: 40vh;
+    position: relative;
+    box-shadow: 0px 0px 10px rgba(255, 212, 172, 0.5);
+    
 }
-
+.bk-contactos{
+    width: 100%;
+    border-radius: 15px;
+    border: 2px solid rgb(22,3,0)
+}
 
 .contactos h2{
     align-self: flex-start;
@@ -423,15 +433,43 @@ main section p span{
 
 .content-contactos{
     display: flex;
-    justify-content: space-evenly;
-    
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    height: 100%;
+    z-index: 7;
     border-radius: 0 0 10px 10px;
-    padding: 0;
+    padding: 2rem;
     align-items: center;
     flex-wrap: wrap;
     gap: 2rem;
     width: 100%;
-    
+    position: absolute;
+}
+
+.content-contactos a{
+    display: flex;
+    flex-direction: row;
+    text-decoration: none;
+}
+
+.content-contactos img{
+    width: 80px;
+    position: absolute;
+    top: -15px;
+}
+
+.icono-contacto-bk{
+    background-size: cover;
+    background-origin: content-box;
+    background-position: 0 0;
+    background-image: url(assets/contactos-pag-iconos-05.png);
+    width: 100px;
+    height:100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
 }
 /*********************************************************************************************************************/
 /****************************************************formacion seccion************************************************/
@@ -441,9 +479,15 @@ main section p span{
 }
 
 .xp-section,.formacion-section{
-    border:2px solid rgb(213,94,2);
+    /* border:2px solid rgb(213,94,2); */
+    box-shadow: 0px 0px 10px rgba(255, 212, 172, 0.5);
     border-radius: 10px;
     width: 80vw;
+}
+
+.xp-section:hover,.formacion-section:hover{
+    /* border:2px solid rgb(213,94,2); */
+    box-shadow: 0px 0px 10px rgba(255, 123, 0, 0.8);
 }
 
 .xp-section h5{
@@ -547,6 +591,15 @@ filter: invert(0.6) sepia(1) hue-rotate(-20deg) saturate(600%);
     font-size: 14pt;
     font-weight: 400;
     color: rgb(213,94,2);
+}
+
+.index-section,.main-section{
+    box-shadow: 0px 0px 10px rgba(255, 212, 172, 0.3);
+    border-radius: 10px;
+}
+
+.index-section:hover,.main-section:hover{
+    box-shadow: 0px 0px 10px rgba(255, 123, 0, 0.5);
 }
 
 progress{
