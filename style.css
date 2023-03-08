@@ -7,6 +7,7 @@
     margin: 0;
     box-sizing: border-box;
     color: white;
+    font-family: 'Raleway', sans-serif;
     /* outline: 1px solid red; */
 }
 
@@ -30,14 +31,26 @@
 
 .bkmain{
     background-attachment: fixed;
-    /* background-image: url(assets/digital-art-knight-soldier-flag-wallpaper-preview.jpg); */
     background-image: url(assets/background_rpg_fantasy_medieval_photorealistic.png);
 }
 
 
 .bkbanner{
-    background-position: 0 50px;
-    background-image: url(assets/fondo-cuero.jpg); /*(assets/rivets-black-leather-lookalike-background-260nw-44222344.webp);*/
+    background-position: 0 -100px;
+    background-image: url(assets/fondo-cuero.jpg); 
+}
+
+.bkfooter{
+    background-position: 0 -200px;
+    background-size: cover;
+    background-origin: content-box;
+    position: absolute;
+    top: 0;
+    left: 0;
+    min-width: 100vw;
+    height: 100%;
+    z-index: -10;
+    background-image: url(assets/fondo-cuero.jpg); 
 }
 
 .bkoscuro{
@@ -50,7 +63,6 @@
 
 .imgbk{
     width: 100%;
-    /* background-color:rgb(22,3,0); */
     background-color:rgba(22, 3, 0, 0.712);
 }
 
@@ -148,6 +160,10 @@ header .argprog{
     max-width: 30vw;
 }
 
+
+header .argprog h5{
+    font-weight: 400;
+}
 /*********************************************************************************************************************/
 /*****************************************************navegacion******************************************************/
 /*********************************************************************************************************************/
@@ -179,6 +195,11 @@ nav{
 .nav img{
     width: 5vw;
     z-index: 10;
+    transition: 0.3s all;
+}
+
+.nav img:hover{
+    transform: scale(1.4) rotateY(40deg)  translateY(15%) ;
 }
 
 
@@ -206,19 +227,23 @@ nav{
 footer{
     box-shadow: 0px -10px 10px -10px rgba(0, 0, 0, 0.8);
     min-height: 20vh;
-    background-color: rgb(22,3,0);
+    
     width: 100vw;
     max-width: 100vw;
     padding: 0;
+   
+    position: relative;
+}
+
+.footer-up{
+    background-color: rgba(22, 3, 0, 0.712);
     display: flex;
     flex-direction: column;
     align-items: center;
-    position: relative;
 }
 
 .logo-footer{
     width: 50%;
-    align-self: center;
 }
 
 
@@ -245,6 +270,14 @@ footer{
     flex-grow: 1;
 }
 
+.footer-column{
+    align-items: flex-end;
+}
+
+.footer-botones-contacto{
+    align-items: flex-start;
+}
+
 .footer-redes-sociales{
     display: flex;
     flex-direction: row;
@@ -260,7 +293,13 @@ footer{
     background-color: black;
     border-radius: 10px;
     padding: 0.5rem 1rem;
+    transition: 0.3s all;
    
+}
+
+.footer-botones-contacto img:hover{
+    background-color: rgba(114,49,5,0.2);  
+    transform: rotateY(10deg);
 }
 
 .footer-redes-sociales img{
@@ -276,7 +315,7 @@ footer{
 }
 
 .sub-footer{
-    background-color: black;
+    background-color: rgba(0, 0, 0, 0.2);
     width: 100vw;
     min-height: 5vh;
 }
@@ -294,11 +333,12 @@ main section>p{
 }
 
 main h1{
-    font-size: 25pt;
+    font-size: 30pt;
     width: 100%;
     padding-left: 3rem;
     padding-bottom: 0.5rem;
     border-width: 2px !important;
+    font-family: 'Flamenco', cursive;
 }
 
 main>h2{
@@ -329,14 +369,7 @@ main section p span{
     font-size: 16pt;
 }
 
-.content-section{
-    display: flex;
-    justify-content: space-evenly;
-    background-color: rgb(22,3,0);
-    border-radius: 0 0 10px 10px;
-    padding: 1rem;
-    align-items: center;
-}
+
 
 .content-section p{
     padding: 0;
@@ -372,11 +405,14 @@ main section p span{
 
 .section-proyecto h2{
     color:white;
+    font-weight: 400;
     font-size: 20pt;
     position: absolute;
     top:-30pt;
     width: 100%;
-    background-color: rgba(22, 3, 0, .9);
+    background-color: rgba(213,94,2,.6);
+    padding-left: 1rem;
+    border-radius: 0;
 }
 
 .section-proyecto img{
@@ -476,47 +512,46 @@ main section p span{
 /*********************************************************************************************************************/
 .formacion-section h5{
     color: rgb(213,94,2);
+    background-color: rgb(22, 3, 0);
 }
 
 .xp-section,.formacion-section{
-    /* border:2px solid rgb(213,94,2); */
     box-shadow: 0px 0px 10px rgba(255, 212, 172, 0.5);
     border-radius: 10px;
     width: 80vw;
+    background-color: rgba(22, 3, 0,0.5);
 }
 
+
+
 .xp-section:hover,.formacion-section:hover{
-    /* border:2px solid rgb(213,94,2); */
     box-shadow: 0px 0px 10px rgba(255, 123, 0, 0.8);
 }
 
 .xp-section h5{
     color: white;
+    background-color: rgb(22, 3, 0);
 }
 
 .xp-section h5 span{
     color: rgb(213,94,2);
 }
 
+.content-section{
+    display: flex;
+    justify-content: space-evenly;
+    border-radius: 0 0 10px 10px;
+    padding: 1rem;
+    align-items: center;
+}
+
 /*********************************************************************************************************************/
 /********************************************************index seccion************************************************/
 /*********************************************************************************************************************/
 
-.main-section{
-    border:2px solid rgb(22,3,0);
-    border-radius: 15px;
-    height: 100%;
-    background-size: cover;
-    background-position: 0 -300px;
-    background-image: url(assets/papel-antiguo.jpg);
-    color: rgb(22,3,0);   
-}
 
-.main-section img{
-    height: 80vh;
-    /*width: 100%;*/
-    padding: 2rem;
-}
+
+
 .trescuartos-main img{
 width: max-content;
 height: 80vh;
@@ -529,19 +564,25 @@ height: 80vh;
     justify-content: center;
 }
 
+.main-section{
+    border:2px solid rgb(22,3,0);
+    border-radius: 15px;
+    height: 100%;
+}
+
 .main-section h2{
     background: none;
-    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
     width: 100%;
     color: rgb(213,94,2);
-    background-color: rgba(22, 3, 0);
+    background-color: rgb(22, 3, 0);
     border-radius: 10px 10px 0 0;
 }
 
 .main-section p{
-    background: none;
-    font-size: 14pt;
-    color: rgb(22,3,0);   
+    background-color: rgba(22, 3, 0,0.5);
+    border-radius: 0 0 10px 10px;
+    font-size: 14pt; 
 }
 
 .main-section span{
@@ -565,6 +606,11 @@ height: 80vh;
 max-width: 100%;
 min-width: 70px;
 filter: invert(0.6) sepia(1) hue-rotate(-20deg) saturate(600%);
+transition: 0.3s all;
+}
+
+.lenguaje img:hover{
+    transform: scale(1.2) rotateY(30deg);
 }
 
 
