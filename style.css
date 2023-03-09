@@ -192,13 +192,25 @@ nav{
     max-width: 60vw;
 }
 
-.nav img{
+.nav a{
+    position: relative;
+}
+
+.icono-bandera{
+    position: absolute;
+    top:20%;
+    left: 10%;
+    height: 9vh;
+
+}
+
+.bk-bandera{
     width: 5vw;
     z-index: 10;
     transition: 0.3s all;
 }
 
-.nav img:hover{
+.bk-bandera:hover{
     transform: scale(1.4) rotateY(40deg)  translateY(15%) ;
 }
 
@@ -288,7 +300,7 @@ footer{
 }
 
 .footer-botones-contacto img{
-    width: 50%;
+    width: 40%;
     border:1px solid rgb(114,49,5);
     background-color: black;
     border-radius: 10px;
@@ -333,13 +345,24 @@ main section>p{
 }
 
 main h1{
-    font-size: 30pt;
-    width: 100%;
-    padding-left: 3rem;
-    padding-bottom: 0.5rem;
-    border-width: 2px !important;
+    font-size: 40pt;
     font-family: 'Flamenco', cursive;
 }
+
+main .t1{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    gap:1rem;
+    align-items: flex-end;
+    padding-bottom: 0.5rem;
+    justify-content: center;
+}
+
+main .t1 img{
+    height: 75px;
+}
+
 
 main>h2{
     font-size: 20pt;
@@ -434,14 +457,20 @@ main section p span{
 
 .red-social-contactos{
     display: flex;
-    font-size: 20pt;
     align-items: center;
     
 }
 
 .red-social-contactos p{
-    color: black;
+    color: rgb(63, 63, 63);
     font-weight: 600;
+    font-size: 14pt;
+}
+
+.red-social-contactos p span{
+    color: black;
+    font-weight: 800;
+    font-size: 20pt;
 }
 
 .contactos{
@@ -487,6 +516,11 @@ main section p span{
     display: flex;
     flex-direction: row;
     text-decoration: none;
+    transition: 0.3s all;
+}
+
+.content-contactos a:hover{
+    transform: translateY(-5px);
 }
 
 .content-contactos img{
@@ -499,7 +533,7 @@ main section p span{
     background-size: cover;
     background-origin: content-box;
     background-position: 0 0;
-    background-image: url(assets/contactos-pag-iconos-05.png);
+    background-image: url(assets/contactos-pag-iconos-bk.png);
     width: 100px;
     height:100px;
     display: flex;
@@ -711,26 +745,20 @@ gap:1rem;
     width: 40%;
 }
 
-.circle-container {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    font-size: 12pt;
-    text-align: center;
-}
-
 .circle-title{
     position: relative;
-    width: 160px;
-    height: 160px;
+    width: 150px;
+    height: 150px;
     display: flex;
     align-items: center;
     justify-content: center;
+    border: 7px solid rgb(213,94,2);
+    border-radius: 100px;
 }
 
 .circle-title p{
     text-align: center;
+    
 }
 
 
