@@ -757,8 +757,13 @@ gap:1rem;
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 7px solid rgb(213,94,2);
-    border-radius: 100px;
+    /* border: 7px solid rgb(213,94,2);
+    border-radius: 100px; */
+    
+    background-size: cover;
+    background-origin: content-box;
+    background-position: 0 0;
+    background-image: url(assets/fondo-skills-29.png);
 }
 
 .circle-title p{
