@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-loggin',
@@ -7,4 +8,13 @@ import { Component } from '@angular/core';
 })
 export class LogginComponent {
 
+  constructor(private router:Router){ 
+  }
+  ngOnInit(){
+  }
+
+  loggearse():void{
+    
+    this.router.navigate(['/edit-index']);
+  }
 }
