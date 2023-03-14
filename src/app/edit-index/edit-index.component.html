@@ -5,26 +5,63 @@
                 <img draggable="false" src="../assets/logo-arg-prog.png" alt="logo Argentina Programa">
                 <h5>Argentina Programa #YoProgramo</h5>
             </div>
-            <div class="footer-redes-sociales">
-                <a class="" href="">Ver Página</a>
+            <div class="nav-log">
+                <a class="" href="">Ver Página </a>
                 <a class="loggin" href="">Cerrar Sesión</a>
             </div>
         </div>
     </header>
 <main class="log-main">
     <div class="bk bkdashboard"> </div>
-    <div class="index-main">
-        <h1 class="iniciar-sesion">Bienvenido al dashboard de este portfolio</h1>
-        <section class="form-loggin">
-            <h2>Iniciar Sesión</h2>
-            <form action="submit">
-                <label class="flamenco" for="usuario">Usuario:</label>
-                <input type="text" name="usuario" id="usuario">
-                <label class="flamenco" for="password">Contraseña:</label>
-                <input type="text" name="password" id="password">
-                <button type="submit">Iniciar Sesión</button>
-            </form>
-        </section>
+    <h1 class="botlineaNaranja">Principal</h1>
+    <div class="edit-main">
+        <div class="index-columna trescuartos-side">
+            <h2>Menú</h2>
+            <a routerLink="/">General</a>
+            <a routerLink="/">Home</a>
+            <a routerLink="/">Contacto</a>
+            <a routerLink="/">Proyectos</a>
+            <a routerLink="/">Educación</a>
+            <a routerLink="/">Laboral</a>
+
+        </div>
+        <div class="index-columna content-edit">
+            <!--Contenido principal de esta pagina-->
+            <div class="menu-nav">
+                <h2>Idiomas</h2>
+                <button (click)="onNewIdioma()">Nuevo</button>
+            </div>
+            <div>
+                
+                <ul *ngFor="let idioma of idiomas">
+                    <li>
+                        <label for="idiomaName">{{idioma.idioma}}</label>
+                        <input class="edit" *ngIf="idioma.idioma==editIdiomaSelected" type="text" name="idiomaName" [(ngModel)]="editIdiomaName">
+                        : <label for="idiomaNivel">{{idioma.nivel}} </label>
+                        <input class="edit" *ngIf="idioma.idioma==editIdiomaSelected" type="number" name="idiomaNivel" [(ngModel)]="editIdiomaNivel">
+                        <button *ngIf="!editIdioma" (click)="borrarIdioma(idioma.idioma)">X</button>
+                        <button *ngIf="!editIdioma" (click)="showEditarIdioma(idioma)">e</button>
+                        <button *ngIf="editIdioma && idioma.idioma==editIdiomaSelected" (click)="editarIdioma(idioma.idioma)">Aceptar</button>
+                        <button *ngIf="editIdioma && idioma.idioma==editIdiomaSelected" (click)="hiddenEditarIdioma()">Cancelar</button>
+                    </li>
+                </ul>
+                <!--mensajes relacionados con la manipulacion de idiomas-->
+                <p>{{idiomaMessage}}</p>
+            </div>
+            <!--el siguiente formulario solo se muestra si se agrega un nuevo idioma-->
+            <div id="new-idioma" *ngIf="newIdioma">
+                <p>nuevo idioma</p>
+                <form (ngSubmit)="onCreateidioma()" novalidate #f="ngForm">
+                    <label for="name">Nombre: <input type="text" name="name" id="name" [(ngModel)]="newIdiomaName" required></label>
+                    <label for="nivel">Nivel: <input type="number" min="1" max="100" name="nivel" id="nivel" [(ngModel)]="newIdiomaNivel" required></label>
+                    <button [disabled]="!f.valid">Añadir</button>
+                    <p>{{idiomaCreatedError}}</p>
+                </form>
+            </div>
+        
+        </div>
     </div>
-    <div class="vacio"></div>
+
+
+
 </main>

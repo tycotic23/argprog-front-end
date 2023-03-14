@@ -12,6 +12,7 @@ import { CarreraComponent } from './carrera/carrera.component';
 
 import {HttpClientModule} from '@angular/common/http';
 import {FormsModule} from '@angular/forms';
+import { NewIdiomaComponent } from './new-idioma/new-idioma.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import {FormsModule} from '@angular/forms';
     ContactComponent,
     CarreraComponent,
     ProyectosComponent,
+    NewIdiomaComponent,
     
   ],
   imports: [

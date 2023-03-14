@@ -752,7 +752,6 @@ gap:1rem;
 
 .trescuartos-side{
     flex-grow: 1;
-    width: 40%;
 }
 
 .circle-title{
@@ -809,14 +808,14 @@ gap:1rem;
 /*********************************************************************************************************************/
 /*******************************************************inicio de sesion**********************************************/
 /*********************************************************************************************************************/
-h1.iniciar-sesion{
+/* h1.iniciar-sesion{
     font-size: 3rem;
     font-weight: 800;
     text-align: left;
     font-family: 'Raleway', sans-serif !important;
     vertical-align: baseline;
     max-width: 60%;
-}
+} */
 
 form{
     display: flex;
@@ -853,8 +852,9 @@ min-height: 5vh;
 }
 
 main.log-main{
-    min-height: 95vh;
+    min-height: 100vh;
     height: 100%;
+    padding-top:0;
 }
 
 button[type="submit"]{
@@ -874,6 +874,74 @@ button[type="submit"]:hover{
     
     background-color: rgb(114,49,5);
 }
+
+.nav-log{
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+
+.edit-main{
+    display: flex;
+    flex-direction: row;
+    width: 95%;
+    justify-content: space-between;
+    align-items: stretch;
+    gap: 2rem;
+    height: 100%;
+    min-height: 100vh;
+}
+
+.content-edit{
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        gap:1rem;
+        flex-grow: 2;
+        height: 100%;
+        align-self: flex-start;
+        align-items: flex-start;
+        width: 40vw;
+        border-left:1px solid rgb(213,94,2);
+        min-height: 100vh;
+        padding-left: 2rem;
+}
+.log-main h1{
+    width: 95%;
+    padding-top: 2rem;
+    padding-bottom: 0;
+    margin-bottom: 0;
+    text-align: right;
+}
+
+.content-edit h2{
+    font-size: 25pt;
+}
+
+#new-idioma{
+    width: 40vw;
+}
+
+button{
+    background-color: white;
+    border-radius: 15px;
+    padding: 0.2rem 0.5rem;
+    border:2px solid rgb(114,49,5);
+    color: rgb(213,94,2);
+    font-weight: 600;
+}
+
+button:hover{
+    background-color: rgb(248, 156, 86);
+}
+
+input.edit{
+    background-color: white;
+    color: black;
+}
+
 
 /*********************************************************************************************************************/
 /*****************************************************querys*********************************************************/
