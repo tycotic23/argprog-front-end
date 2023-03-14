@@ -21,8 +21,8 @@ export class IdiomaService {
     return this.httpClient.get<Idioma>(this.idiomaURL+`traer/${idioma}`);
   }
 
-  public crear(idioma:Idioma):Observable<Idioma>{
-    return this.httpClient.post<Idioma>(this.idiomaURL+`crear`,idioma);
+  public crear(idioma:Idioma):Observable<any>{
+    return this.httpClient.post<any>(this.idiomaURL+`crear`,idioma);
   }
 
   public eliminar(idioma:string):Observable<any>{

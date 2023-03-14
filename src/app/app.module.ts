@@ -12,7 +12,23 @@ import { CarreraComponent } from './carrera/carrera.component';
 
 import {HttpClientModule} from '@angular/common/http';
 import {FormsModule} from '@angular/forms';
-import { NewIdiomaComponent } from './new-idioma/new-idioma.component';
+import { IdiomasEditComponent } from './idiomas-edit/idiomas-edit.component';
+import { BotonfooterEditComponent } from './botonfooter-edit/botonfooter-edit.component';
+import { ConocimientoEditComponent } from './conocimiento-edit/conocimiento-edit.component';
+import { ContactoEditComponent } from './contacto-edit/contacto-edit.component';
+import { EducacionEditComponent } from './educacion-edit/educacion-edit.component';
+import { ExplaboralEditComponent } from './explaboral-edit/explaboral-edit.component';
+import { ProyectoEditComponent } from './proyecto-edit/proyecto-edit.component';
+import { SubfooterdatoEditComponent } from './subfooterdato-edit/subfooterdato-edit.component';
+import { TextomainEditComponent } from './textomain-edit/textomain-edit.component';
+import { UsuarioEditComponent } from './usuario-edit/usuario-edit.component';
+import { EditGeneralComponent } from './edit-general/edit-general.component';
+import { EditContactoComponent } from './edit-contacto/edit-contacto.component';
+import { EditProyectosComponent } from './edit-proyectos/edit-proyectos.component';
+import { EditEducacionComponent } from './edit-educacion/edit-educacion.component';
+import { EditLaboralComponent } from './edit-laboral/edit-laboral.component';
+import { FooterComponent } from './footer/footer.component';
+import { HeaderComponent } from './header/header.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +39,23 @@ import { NewIdiomaComponent } from './new-idioma/new-idioma.component';
     ContactComponent,
     CarreraComponent,
     ProyectosComponent,
-    NewIdiomaComponent,
+    IdiomasEditComponent,
+    BotonfooterEditComponent,
+    ConocimientoEditComponent,
+    ContactoEditComponent,
+    EducacionEditComponent,
+    ExplaboralEditComponent,
+    ProyectoEditComponent,
+    SubfooterdatoEditComponent,
+    TextomainEditComponent,
+    UsuarioEditComponent,
+    EditGeneralComponent,
+    EditContactoComponent,
+    EditProyectosComponent,
+    EditEducacionComponent,
+    EditLaboralComponent,
+    FooterComponent,
+    HeaderComponent,
     
   ],
   imports: [

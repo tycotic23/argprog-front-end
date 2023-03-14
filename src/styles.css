@@ -839,8 +839,12 @@ form input{
 
 section.form-loggin{
     background-color:rgba(22, 3, 0, 0.712);
-    border:2px solid rgb(213,94,2);
-    width: 600px;
+    border-left:1px solid rgb(213,94,2);
+    border-right:1px solid rgb(213,94,2);
+    border-bottom:1px solid rgb(213,94,2);
+    width: 400px;
+    align-self:flex-end;
+    height: 500px;
 }
 
 .flamenco{
@@ -852,6 +856,13 @@ min-height: 5vh;
 }
 
 main.log-main{
+    min-height: 100vh;
+    height: 100%;
+    padding-top:0;
+    background:none;
+}
+
+main.log-edit{
     min-height: 100vh;
     height: 100%;
     padding-top:0;
@@ -908,7 +919,7 @@ button[type="submit"]:hover{
         min-height: 100vh;
         padding-left: 2rem;
 }
-.log-main h1{
+.log-edit h1{
     width: 95%;
     padding-top: 2rem;
     padding-bottom: 0;
@@ -941,6 +952,13 @@ input.edit{
     background-color: white;
     color: black;
 }
+
+.botones-edit{
+    display:flex;
+    flex-wrap: wrap;
+}
+
+
 
 
 /*********************************************************************************************************************/
