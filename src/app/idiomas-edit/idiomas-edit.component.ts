@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
 import { Idioma } from '../models/idioma';
 import { IdiomaService } from '../service/idioma.service';
 
@@ -21,7 +20,7 @@ export class IdiomasEditComponent {
   editIdiomaNivel:number=0;
   editIdiomaSelected:string="";
 
-  constructor(private idiomaService:IdiomaService, private router:Router){ }
+  constructor(private idiomaService:IdiomaService){ }
 
   ngOnInit(){
     this.cargarIdiomas();
@@ -45,7 +44,6 @@ export class IdiomasEditComponent {
       this.newIdiomaName="";
       this.newIdiomaNivel=0;
       this.idiomaMessage="";
-      this.idiomaMessage='';
   }
 
   //al tocar el boton crear del elemento que aparece al crear nuevo idioma
@@ -53,7 +51,6 @@ export class IdiomasEditComponent {
     const idioma:Idioma=new Idioma (this.newIdiomaName,this.newIdiomaNivel);
     this.idiomaService.crear(idioma).subscribe(
       ()=>{
-        this.router.navigate(['/edit-index']);
         this.idiomaMessage= 'Creado correctamente';
         this.cargarIdiomas();
         this.newIdioma=false;

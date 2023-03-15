@@ -29,6 +29,9 @@ import { EditEducacionComponent } from './edit-educacion/edit-educacion.componen
 import { EditLaboralComponent } from './edit-laboral/edit-laboral.component';
 import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
+import { NavComponent } from './nav/nav.component';
+import { NavEditComponent } from './nav-edit/nav-edit.component';
+import { SkillsEditComponent } from './skills-edit/skills-edit.component';
 
 @NgModule({
   declarations: [
@@ -56,6 +59,9 @@ import { HeaderComponent } from './header/header.component';
     EditLaboralComponent,
     FooterComponent,
     HeaderComponent,
+    NavComponent,
+    NavEditComponent,
+    SkillsEditComponent,
     
   ],
   imports: [

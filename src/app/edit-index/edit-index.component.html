@@ -6,8 +6,8 @@
                 <h5>Argentina Programa #YoProgramo</h5>
             </div>
             <div class="nav-log">
-                <a class="" href="">Ver Página </a>
-                <a class="loggin" href="">Cerrar Sesión</a>
+                <a class="" routerLink="/">Ver Página </a>
+                <a class="loggin" routerLink="/login">Cerrar Sesión</a>
             </div>
         </div>
     </header>
@@ -15,25 +15,13 @@
     <div class="bk bkdashboard"> </div>
     <h1 class="botlineaNaranja">Home</h1>
     <div class="edit-main">
-        <div class="index-columna trescuartos-side">
-            <h2>Menú</h2>
-            <a routerLink="/">General</a>
-            <a routerLink="/">Home</a>
-            <a routerLink="/">Contacto</a>
-            <a routerLink="/">Proyectos</a>
-            <a routerLink="/">Educación</a>
-            <a routerLink="/">Laboral</a>
-
-        </div>
+        <app-nav-edit class="trescuartos-side index-columna"></app-nav-edit>
         <div class="index-columna content-edit">
             <!--Contenido principal de esta pagina-->
-            <app-idiomas-edit></app-idiomas-edit>
-            <app-idiomas-edit></app-idiomas-edit>
+            <app-conocimiento-edit></app-conocimiento-edit>
+            <app-skills-edit></app-skills-edit>
             <app-idiomas-edit></app-idiomas-edit>
         
         </div>
     </div>
-
-
-
 </main>
