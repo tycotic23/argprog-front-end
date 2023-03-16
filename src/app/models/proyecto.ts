@@ -6,7 +6,7 @@ export class Proyecto {
     botonver:boolean;
     botonurl:string;
 
-    constructor(titulo:string,pictureurl:string,botonurl:string,botonver:boolean,descripcion:string){
+    constructor(pictureurl:string,titulo:string,descripcion:string,botonver:boolean,botonurl:string){
         this.titulo=titulo;
         this.pictureurl=pictureurl;
         this.descripcion=descripcion;

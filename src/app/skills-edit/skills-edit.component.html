@@ -22,8 +22,9 @@
 <p>{{skillMessage}}</p>
 <!--el siguiente formulario solo se muestra si se agrega un nuevo Skill-->
 <div id="new-Skill" *ngIf="newSkill">
-    <p>nuevo Skill</p>
+    
     <form (ngSubmit)="onCreateSkill()" novalidate #f="ngForm">
+        <h3>nuevo Skill</h3>
         <label for="name">Nombre: <input type="text" name="name" id="name" [(ngModel)]="newSkillName" required></label>
         
         <button [disabled]="!f.valid">Añadir</button>

@@ -1,1 +1,68 @@
-<p>proyecto-edit works!</p>
+<div class="menu-nav">
+    <h2>Proyectos:</h2>
+    <div class="botones-edit">
+        <button (click)="onNewProyecto()">Nuevo</button>
+        <button (click)="restoreProyecto()">Restaurar</button>
+    </div>
+</div>
+    <ul class="ul-column">
+        <li *ngFor="let Proyecto of Proyectos">
+            <div class="column gap-1 align-stretch">
+                <div class="row justify-end self-end align-center">
+                    <!--botones alineados a la derecha-->
+                    <button *ngIf="!editProyecto" (click)="borrarProyecto(Proyecto.id)">X</button>
+                        <button *ngIf="!editProyecto" (click)="showEditarProyecto(Proyecto)">e</button>
+                        <button *ngIf="editProyecto && Proyecto.id==editProyectoSelected" (click)="editarProyecto(Proyecto.id)">Aceptar</button>
+                        <button *ngIf="editProyecto && Proyecto.id==editProyectoSelected" (click)="hiddenEditarProyecto()">Cancelar</button>
+                </div>
+                <div class="row align-start gap-1 justify-start">
+                    <!--imagen-->
+                    <label for="editimg"> <img class="imageproyect" src={{Proyecto.pictureurl}} alt={{Proyecto.pictureurl}}> </label>
+                    <div class="column">
+                        <!--titulo con su input-->
+                        <label class="label-titulo" for="editTitulo">{{Proyecto.titulo}} </label>
+                        <input *ngIf="Proyecto.id==editProyectoSelected" class="edit"  type="text" name="editTitulo" [(ngModel)]="editProyectoTitulo">
+                        <!--booleano boton con enlace-->
+                        <div class="row gap-1">
+                            <p>¿Tiene botón con enlace?</p>
+                            <label *ngIf="(Proyecto.id!=editProyectoSelected && editProyecto) || !editProyecto" for="editverb">{{Proyecto.botonver}}</label>
+                            <select *ngIf="Proyecto.id==editProyectoSelected" name="editverb" id="editverb" [(ngModel)]="editProyectoBotonver" required>
+                                <option value=true>Sí</option>
+                                <option value=false>No</option>
+                            </select>
+                        </div>
+                        <!--enlace del boton-->
+                        <p *ngIf="Proyecto.botonurl.length!=0">Enlace del proyecto: </p>
+                        <label *ngIf="Proyecto.id!=editProyectoSelected and editProyecto" for="editurl">{{Proyecto.botonurl}}</label>
+                        <input *ngIf="Proyecto.id==editProyectoSelected" class="edit"  type="text" name="editurl" [(ngModel)]="editProyectoBotonurl">
+                       
+                    </div>
+                </div>
+                <input class="edit" *ngIf="Proyecto.id==editProyectoSelected" type="text" name="editimg" [(ngModel)]="editProyectoPictureurl">
+                <label class="text-justify" *ngIf="(Proyecto.id!=editProyectoSelected && editProyecto) || !editProyecto" for="editTexto">{{Proyecto.descripcion}}</label>
+                <textarea *ngIf="Proyecto.id==editProyectoSelected" id="editTexto" name="editTexto" rows="5" cols="33" [(ngModel)]="editProyectoDescripcion">{{Proyecto.descripcion}}</textarea>
+            </div>
+        </li>
+    </ul>
+<!--mensajes relacionados con la manipulacion de Proyectos-->
+<p>{{ProyectoMessage}}</p>
+<!--el siguiente formulario solo se muestra si se agrega un nuevo Proyecto-->
+<div id="new-Proyecto" *ngIf="newProyecto">
+    
+    <form (ngSubmit)="onCreateProyecto()" novalidate #f="ngForm">
+        <h3>nuevo Proyecto</h3>
+        <label for="new">Título: <input type="text" name="new" id="new" [(ngModel)]="newProyectoTitulo" required></label>
+        <label for="newDescr">Descripción: <input type="text" name="newDescr" id="newDescr" [(ngModel)]="newProyectoDescripcion" required></label>
+        <label for="newImagen">Imagen: <input type="text" name="newImagen" id="newImagen" [(ngModel)]="newProyectoPictureurl"></label>
+        <p>*las imagenes aceptan solo url</p>
+        <label for="newverb">¿Lleva botón con enlace?
+                            <select name="newverb" id="newverb" [(ngModel)]="newProyectoBotonver" required>
+                                <option value=true>Sí</option>
+                                <option value=false>No</option>
+                            </select></label>
+        <label *ngIf="newProyectoBotonver" for="newurl">Url: <input type="text" name="newurl" id="newurl" [(ngModel)]="newProyectoBotonurl"></label>
+        <button [disabled]="!f.valid">Añadir</button>
+        <button (click)="onNewProyecto()">Cancelar</button>
+        <p>{{ProyectoCreatedError}}</p>
+    </form>
+</div>

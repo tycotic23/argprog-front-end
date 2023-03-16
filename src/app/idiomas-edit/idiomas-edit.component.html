@@ -23,8 +23,9 @@
 <p>{{idiomaMessage}}</p>
 <!--el siguiente formulario solo se muestra si se agrega un nuevo idioma-->
 <div id="new-idioma" *ngIf="newIdioma">
-    <p>nuevo idioma</p>
+    
     <form (ngSubmit)="onCreateidioma()" novalidate #f="ngForm">
+        <h3>nuevo idioma</h3>
         <label for="name">Nombre: <input type="text" name="name" id="name" [(ngModel)]="newIdiomaName" required></label>
         <label for="nivel">Nivel: <input type="number" min="1" max="100" name="nivel" id="nivel" [(ngModel)]="newIdiomaNivel" required></label>
         <p>*Solo valores entre 1 y 100</p>

@@ -1,12 +1,15 @@
+import { Categoria } from "./categoria";
+
 export class Conocimiento {
 
+    id?:number;
     nombre:string;
-    nombreurl: string;
-    categoria: string;
+    logourl: string;
+    categoria: Categoria;
 
-    constructor(nombreurl:string,nombre:string,categoria:string){
-        this.nombreurl=nombreurl;
+    constructor(logourl:string,nombre:string,categoria:Categoria){
+        this.logourl=logourl;
         this.nombre=nombre;
-        this.categoria=nombre;
+        this.categoria=categoria;
     }
 }

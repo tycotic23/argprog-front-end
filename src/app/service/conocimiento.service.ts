@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { Categoria } from '../models/categoria';
 import { Conocimiento } from '../models/conocimiento';
 
 @Injectable({
@@ -18,20 +19,44 @@ export class ConocimientoService {
       return this.httpClient.get<Conocimiento[]>(this.conocimientoURL+'traer');
   }
 
-  public buscar(nombre:string):Observable<Conocimiento>{
-    return this.httpClient.get<Conocimiento>(this.conocimientoURL+`traer/${nombre}`);
+  public verCategorias():Observable<Categoria[]>{
+    return this.httpClient.get<Categoria[]>(this.conocimientoURL+'traercategorias');
+}
+
+  public buscar(id:number):Observable<Conocimiento>{
+    return this.httpClient.get<Conocimiento>(this.conocimientoURL+`traer/${id}`);
+  }
+
+  public buscarCategoria(id:number):Observable<Categoria>{
+    return this.httpClient.get<Categoria>(this.conocimientoURL+`traercategoria/${id}`);
+  }
+
+  public buscarCategoriaPorNombre(nombre:string):Observable<Categoria>{
+    return this.httpClient.get<Categoria>(this.conocimientoURL+`traercategoriabynombre/${nombre}`);
+  }
+
+  public crearCategoria(categoria:Categoria):Observable<Categoria>{
+    return this.httpClient.post<Categoria>(this.conocimientoURL+`crearcategoria`,categoria);
   }
 
   public crear(conocimiento:Conocimiento):Observable<Conocimiento>{
     return this.httpClient.post<Conocimiento>(this.conocimientoURL+`crear`,conocimiento);
   }
 
-  public eliminar(nombre:string):Observable<any>{
-    return this.httpClient.delete<any>(this.conocimientoURL+`eliminar/${nombre}`);
+  public eliminar(id:number):Observable<any>{
+    return this.httpClient.delete<any>(this.conocimientoURL+`eliminar/${id}`);
   }
 
-  public editar(nombre:string,conocimiento:Conocimiento):Observable<Conocimiento>{
-    return this.httpClient.put<Conocimiento>(this.conocimientoURL+`editar/${nombre}`,conocimiento);
+  public eliminarCategoria(id:number):Observable<any>{
+    return this.httpClient.delete<any>(this.conocimientoURL+`eliminarcategoria/${id}`);
+  }
+
+  public editar(id:number,conocimiento:Conocimiento):Observable<Conocimiento>{
+    return this.httpClient.put<Conocimiento>(this.conocimientoURL+`editar/${id}`,conocimiento);
+  }
+
+  public editarCategoria(id:number,categoria:Categoria):Observable<Categoria>{
+    return this.httpClient.put<Categoria>(this.conocimientoURL+`editarcategoria/${id}`,categoria);
   }
 
   public restaurar():Observable<any>{

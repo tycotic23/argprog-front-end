@@ -823,13 +823,20 @@ form{
     gap: 1rem;
     width: 100%;
     padding: 2rem;
+    max-width: 800px;
+}
+
+form h3{
+    text-transform: uppercase;
+    color: rgb(255, 131, 36);
+    font-size: 20pt;
 }
 
 form label{
     font-size: 20pt;
 }
 
-form input{
+form input, select, textarea{
     background-color: rgba(0, 0, 0, 0.8);
     border-radius: 20px;
     border:1px solid rgb(213,94,2);
@@ -958,8 +965,113 @@ input.edit{
     flex-wrap: wrap;
 }
 
+.icono{
+    width: 50px;
+}
 
+.ul-row{
+    padding: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap:1rem;
+    
+}
 
+.ul-row li{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0rem;
+}
+
+.ul-column{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 1rem;
+    width: 100%;
+    padding-top: 1rem;
+    padding-bottom: 2rem;
+}
+
+.justify-center{
+    justify-content: center;
+}
+
+.justify-end{
+    justify-content: flex-end;
+}
+
+.justify-end{
+    justify-content: flex-start;
+}
+
+.justify-between{
+    justify-content: space-between;
+}
+
+.align-center{
+    align-items: center;
+}
+
+.align-start{
+    align-items: flex-start;
+}
+
+.align-stretch{
+    align-items: stretch;
+}
+
+.align-baseline{
+    align-items: baseline;
+}
+
+.justify-self-end{
+    justify-self: flex-end;
+}
+
+.self-end{
+    align-self: flex-end;
+}
+
+.gap-1{
+    gap:1rem;
+}
+
+.label-categoria{
+    border: 1px solid rgb(213,94,2);
+    border-radius: 15px;
+    background-color: rgba(22, 3, 0,0.5);
+    padding: 0.3rem;
+    margin-bottom: 0.5rem;
+}
+
+.column{
+    display:flex;
+    flex-direction: column;
+}
+
+.row{
+    display:flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.imageproyect{
+    width: 30vw;
+}
+
+.text-justify{
+    text-align: justify;
+}
+
+.label-titulo{
+    font-size: 1.5rem;
+    font-weight: 600;
+}
 
 /*********************************************************************************************************************/
 /*****************************************************querys*********************************************************/
