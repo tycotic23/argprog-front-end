@@ -110,6 +110,19 @@ export class ConocimientoEditComponent {
     ); 
   }
 
+  onCreateCategoria():void{ 
+    this.conocimientoService.crearCategoria(new Categoria(this.newCategoriaNombre,this.newCategoriaOrden)).subscribe(
+      data=>{
+        this.ConocimientoMessage="Creado correctamente";
+        this.hiddenEditar();
+        this.cargarConocimientos();
+      },
+      err=>{
+        this.ConocimientoMessage=`No se puede crear. Error: ${err}`;
+      }
+    );
+  }
+
   borrarConocimiento(id?:number):void{
     this.conocimientoService.eliminar(Number(id)).subscribe(
       data=>{

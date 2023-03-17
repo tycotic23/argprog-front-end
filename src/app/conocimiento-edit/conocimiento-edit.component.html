@@ -77,7 +77,7 @@
 <p>{{CategoriaMessage}}</p>
 <div id="new-Conocimiento" *ngIf="newCategoria">
     
-    <form (ngSubmit)="onCreateConocimiento()" novalidate #f="ngForm">
+    <form (ngSubmit)="onCreateCategoria()" novalidate #f="ngForm">
         <h3>nueva categoría</h3>
         <label for="newCat">Categoría: <input type="text" name="newCat" id="newCat" [(ngModel)]="newCategoriaNombre" required></label>
         <label for="newCatOrder">Categoría: <input type="number" name="newCatOrder" id="newCatOrder" min=0 [(ngModel)]="newCategoriaOrden" required></label>

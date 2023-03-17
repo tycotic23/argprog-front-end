@@ -1013,6 +1013,10 @@ input.edit{
     justify-content: space-between;
 }
 
+.wrap{
+    flex-wrap: wrap;
+}
+
 .align-center{
     align-items: center;
 }
