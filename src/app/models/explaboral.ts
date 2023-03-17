@@ -8,7 +8,7 @@ export class Explaboral {
     fechaini:string;
     fechafin:string;
 
-    constructor(puesto:string,logourl:string,referencias:string,fechaini:string,fechafin:string,empresa:string,descripcion:string){
+    constructor(logourl:string,puesto:string,referencias:string,empresa:string,descripcion:string,fechaini:string,fechafin:string){
         this.puesto=puesto;
         this.logourl=logourl;
         this.referencias=referencias;

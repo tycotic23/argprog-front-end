@@ -32,7 +32,7 @@
                             </select>
                         </div>
                         <!--enlace del boton-->
-                        <p *ngIf="Proyecto.botonurl.length!=0">Enlace del proyecto: </p>
+                        <p *ngIf="Proyecto.botonurl.length!=0 || Proyecto.id==editProyectoSelected">Enlace del proyecto: </p>
                         <label *ngIf="Proyecto.id!=editProyectoSelected and editProyecto" for="editurl">{{Proyecto.botonurl}}</label>
                         <input *ngIf="Proyecto.id==editProyectoSelected" class="edit"  type="text" name="editurl" [(ngModel)]="editProyectoBotonurl">
                        
@@ -52,7 +52,7 @@
     <form (ngSubmit)="onCreateProyecto()" novalidate #f="ngForm">
         <h3>nuevo Proyecto</h3>
         <label for="new">Título: <input type="text" name="new" id="new" [(ngModel)]="newProyectoTitulo" required></label>
-        <label for="newDescr">Descripción: <input type="text" name="newDescr" id="newDescr" [(ngModel)]="newProyectoDescripcion" required></label>
+        <label for="newDescr">Descripción: <textarea id="newDescr" name="newDescr" rows="5" cols="33" [(ngModel)]="newProyectoDescripcion" required>Descripción de tu proyecto</textarea></label>
         <label for="newImagen">Imagen: <input type="text" name="newImagen" id="newImagen" [(ngModel)]="newProyectoPictureurl"></label>
         <p>*las imagenes aceptan solo url</p>
         <label for="newverb">¿Lleva botón con enlace?

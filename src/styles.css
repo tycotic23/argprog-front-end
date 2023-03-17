@@ -1041,6 +1041,10 @@ input.edit{
     gap:1rem;
 }
 
+.gap-3{
+    gap:3rem;
+}
+
 .label-categoria{
     border: 1px solid rgb(213,94,2);
     border-radius: 15px;
@@ -1071,6 +1075,10 @@ input.edit{
 .label-titulo{
     font-size: 1.5rem;
     font-weight: 600;
+}
+
+.logo-exp{
+    width: 20vw;
 }
 
 /*********************************************************************************************************************/
