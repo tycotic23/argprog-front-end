@@ -132,11 +132,6 @@ export class ExplaboralEditComponent {
       this.editExplaboralFechafin="";
   }
 
-  isExplaboraltoEdit(Explaboral:string):boolean{
-      //compara con la id
-      return Explaboral==this.editExplaboralLogourl;
-  }
-
   editarExplaboral(id?:number):void{   
     this.explaboralService.editar(Number(id),new Explaboral(this.editExplaboralLogourl,this.editExplaboralPuesto,this.editExplaboralReferencias,this.editExplaboralEmpresa,this.editExplaboralDescripcion,this.editExplaboralFechaini,this.editExplaboralFechafin)).subscribe(
       data=>{

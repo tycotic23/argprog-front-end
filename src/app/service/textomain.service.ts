@@ -17,20 +17,20 @@ export class TextomainService {
       return this.httpClient.get<Textomain[]>(this.textomainURL+'traer');
   }
 
-  public buscar(nombre:string):Observable<Textomain>{
-    return this.httpClient.get<Textomain>(this.textomainURL+`traer/${nombre}`);
+  public buscar(id:number):Observable<Textomain>{
+    return this.httpClient.get<Textomain>(this.textomainURL+`traer/${id}`);
   }
 
   public crear(textomain:Textomain):Observable<Textomain>{
     return this.httpClient.post<Textomain>(this.textomainURL+`crear`,textomain);
   }
 
-  public eliminar(nombre:string):Observable<any>{
-    return this.httpClient.delete<any>(this.textomainURL+`eliminar/${nombre}`);
+  public eliminar(id:number):Observable<any>{
+    return this.httpClient.delete<any>(this.textomainURL+`eliminar/${id}`);
   }
 
-  public editar(nombre:string,textomain:Textomain):Observable<Textomain>{
-    return this.httpClient.put<Textomain>(this.textomainURL+`editar/${nombre}`,textomain);
+  public editar(id:number,textomain:Textomain):Observable<Textomain>{
+    return this.httpClient.put<Textomain>(this.textomainURL+`editar/${id}`,textomain);
   }
 
   public restaurar():Observable<any>{

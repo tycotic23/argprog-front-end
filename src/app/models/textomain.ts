@@ -1,11 +1,14 @@
 export class Textomain {
+    id?:number;
     nombre:string;
     texto: string;
     fotourl:string;
+    ubicacion:string;
 
-    constructor(texto:string,nombre:string,fotourl:string){
+    constructor(nombre:string,texto:string,fotourl:string,ubicacion:string){
         this.texto=texto;
         this.nombre=nombre;
         this.fotourl=fotourl;
+        this.ubicacion=ubicacion;
     }
 }

@@ -123,11 +123,6 @@ export class ProyectoEditComponent {
     this.editProyectoSelected=-1;
   }
 
-  isProyectotoEdit(Proyecto:string):boolean{
-      //compara con la id
-      return Proyecto==this.editProyectoPictureurl;
-  }
-
   editarProyecto(id?:number):void{   
     this.proyectoService.editar(Number(id),new Proyecto(this.editProyectoPictureurl,this.editProyectoTitulo, this.editProyectoDescripcion,this.editProyectoBotonver,this.editProyectoBotonurl)).subscribe(
       data=>{

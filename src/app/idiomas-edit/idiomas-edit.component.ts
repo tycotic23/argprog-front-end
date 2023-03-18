@@ -52,11 +52,17 @@ export class IdiomasEditComponent {
     this.idiomaService.crear(idioma).subscribe(
       ()=>{
         this.idiomaMessage= 'Creado correctamente';
+        setTimeout(()=>{
+          this.idiomaMessage="";
+        },3000);
         this.cargarIdiomas();
         this.newIdioma=false;
       },
       err=>{
         this.idiomaCreatedError= `No se puede crear. Error: ${err}`;
+        setTimeout(()=>{
+          this.idiomaCreatedError="";
+        },3000);
       }
     );
   }
@@ -66,9 +72,15 @@ export class IdiomasEditComponent {
       data=>{
         this.cargarIdiomas();
         this.idiomaMessage="Eliminado correctamente";
+        setTimeout(()=>{
+          this.idiomaMessage="";
+        },3000);
       },
       err=>{
         this.idiomaMessage=`No se puede eliminar. Error: ${err}`;
+        setTimeout(()=>{
+          this.idiomaMessage="";
+        },3000);
       }
     );
   }
@@ -88,19 +100,21 @@ export class IdiomasEditComponent {
     this.editIdiomaSelected="";
   }
 
-  isIdiomatoEdit(idioma:string):boolean{
-      return idioma==this.editIdiomaName;
-  }
-
   editarIdioma(idioma:string):void{
     this.idiomaService.editar(idioma,new Idioma(this.editIdiomaName,this.editIdiomaNivel)).subscribe(
       data=>{
         this.idiomaMessage="Editado correctamente";
+        setTimeout(()=>{
+          this.idiomaMessage="";
+        },3000);
         this.hiddenEditarIdioma();
         this.cargarIdiomas();
       },
       err=>{
         this.idiomaMessage=`No se puede eliminar. Error: ${err}`;
+        setTimeout(()=>{
+          this.idiomaMessage="";
+        },3000);
       }
     );
   }
@@ -109,10 +123,16 @@ export class IdiomasEditComponent {
     this.idiomaService.restaurar().subscribe(
       ()=>{
         this.idiomaMessage='Restaurado correctamente';
+        setTimeout(()=>{
+          this.idiomaMessage="";
+        },3000);
         this.cargarIdiomas();
       },
       err=>{
         this.idiomaMessage=`Error al restaurar. Error: ${err}`;
+        setTimeout(()=>{
+          this.idiomaMessage="";
+        },3000);
       }
     );
   }

@@ -5,6 +5,18 @@
         <button (click)="restoreSkill()">Restaurar</button>
     </div>
 </div>
+<!--el siguiente formulario solo se muestra si se agrega un nuevo Skill-->
+<div id="new-element" *ngIf="newSkill">
+    
+    <form (ngSubmit)="onCreateSkill()" novalidate #f="ngForm">
+        <h3>nuevo Skill</h3>
+        <label for="name">Nombre: <input type="text" name="name" id="name" [(ngModel)]="newSkillName" required></label>
+        
+        <button [disabled]="!f.valid">Añadir</button>
+        <button (click)="onNewSkill()">Cancelar</button>
+        <p>{{skillCreatedError}}</p>
+    </form>
+</div>
 <div>
     <ul *ngFor="let skill of skills">
         <li>
@@ -20,14 +32,4 @@
 </div>
 <!--mensajes relacionados con la manipulacion de Skills-->
 <p>{{skillMessage}}</p>
-<!--el siguiente formulario solo se muestra si se agrega un nuevo Skill-->
-<div id="new-Skill" *ngIf="newSkill">
-    
-    <form (ngSubmit)="onCreateSkill()" novalidate #f="ngForm">
-        <h3>nuevo Skill</h3>
-        <label for="name">Nombre: <input type="text" name="name" id="name" [(ngModel)]="newSkillName" required></label>
-        
-        <button [disabled]="!f.valid">Añadir</button>
-        <p>{{skillCreatedError}}</p>
-    </form>
-</div>
+

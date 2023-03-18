@@ -1,1 +1,42 @@
-<p>botonfooter-edit works!</p>
+<div class="menu-nav">
+    <h2>Botones del footer:</h2>
+    <div class="botones-edit">
+        <button (click)="onNewBotonfooter()">Nuevo</button>
+        <button (click)="restoreBotonfooter()">Restaurar</button>
+    </div>
+</div>
+<!--el siguiente formulario solo se muestra si se agrega un nuevo Botonfooter-->
+<div id="new-element" *ngIf="newBotonfooter">
+    
+    <form (ngSubmit)="onCreateBotonfooter()" novalidate #f="ngForm">
+        <h3>nuevo botón</h3>
+        <label for="new">Enlace: <input type="text" name="new" id="new" [(ngModel)]="newBotonfooterUrl" required></label>
+        <label for="newImagen">Logo de la empresa: <input type="text" name="newImagen" id="newImagen" [(ngModel)]="newBotonfooterLogo" required></label>
+        <p>*las imagenes aceptan solo url</p>
+        <button [disabled]="!f.valid">Añadir</button>
+        <button (click)="onNewBotonfooter()">Cancelar</button>
+        <p>{{BotonfooterCreatedError}}</p>
+    </form>
+</div>
+    <ul class="ul-column gap-3">
+        <li *ngFor="let botonfooter of Botonfooters">
+            <div class="column gap-1 align-stretch">
+                <div class="row self-end align-center">
+                    <!--botones alineados a la derecha-->
+                    <button *ngIf="!editBotonfooter" (click)="borrarBotonfooter(botonfooter.id)">X</button>
+                        <button *ngIf="!editBotonfooter" (click)="showEditarBotonfooter(botonfooter)">e</button>
+                        <button *ngIf="editBotonfooter && botonfooter.id==editBotonfooterSelected" (click)="editarBotonfooter(botonfooter.id)">Aceptar</button>
+                        <button *ngIf="editBotonfooter && botonfooter.id==editBotonfooterSelected" (click)="hiddenEditarBotonfooter()">Cancelar</button>
+                </div>
+                <!--logo con su input-->
+                <label for="editimg"><img class="logo-exp" src={{botonfooter.logo}} alt="⊙﹏⊙"> </label>
+                <input class="edit" *ngIf="botonfooter.id==editBotonfooterSelected" type="text" name="editimg" [(ngModel)]="editBotonfooterLogo">
+                <!--url con su input-->
+                <label for="editurl">Enlace: {{botonfooter.url}} </label>
+                <input *ngIf="botonfooter.id==editBotonfooterSelected" class="edit"  type="text" name="editurl" [(ngModel)]="editBotonfooterUrl">
+            </div>
+        </li>
+    </ul>
+<!--mensajes relacionados con la manipulacion de Botonfooteres-->
+<p>{{BotonfooterMessage}}</p>
+

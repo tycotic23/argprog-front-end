@@ -5,6 +5,20 @@
         <button (click)="restoreSubfooterdato()">Restaurar</button>
     </div>
 </div>
+<!--el siguiente formulario solo se muestra si se agrega un nuevo Subfooterdato-->
+<div id="new-element" *ngIf="newSubfooterdato">
+    
+    <form (ngSubmit)="onCreateSubfooterdato()" novalidate #f="ngForm">
+        <h3>nuevo enlace</h3>
+        <label for="new">Texto: <input type="text" name="new" id="new" [(ngModel)]="newSubfooterdatoTexto" required></label>
+        <label for="newImagen">Icono: <input type="text" name="newImagen" id="newImagen" [(ngModel)]="newSubfooterdatoIconourl" required></label>
+        <label for="newUrl">Enlace: <input type="text" name="newUrl" id="newUrl" [(ngModel)]="newSubfooterdatoUrl"></label>
+        <p>*las imagenes aceptan solo url</p>
+        <button [disabled]="!f.valid">Añadir</button>
+        <button (click)="onNewSubfooterdato()">Cancelar</button>
+        <p>{{SubfooterdatoCreatedError}}</p>
+    </form>
+</div>
     <ul class="ul-column">
         <li *ngFor="let subfooterdato of subfooterdatos">
             <div class="column gap-1 align-stretch">
@@ -35,17 +49,4 @@
     </ul>
 <!--mensajes relacionados con la manipulacion de Subfooterdatos-->
 <p>{{SubfooterdatoMessage}}</p>
-<!--el siguiente formulario solo se muestra si se agrega un nuevo Subfooterdato-->
-<div id="new-Subfooterdato" *ngIf="newSubfooterdato">
-    
-    <form (ngSubmit)="onCreateSubfooterdato()" novalidate #f="ngForm">
-        <h3>nuevo Subfooterdato</h3>
-        <label for="new">Texto: <input type="text" name="new" id="new" [(ngModel)]="newSubfooterdatoTexto" required></label>
-        <label for="newImagen">Icono: <input type="text" name="newImagen" id="newImagen" [(ngModel)]="newSubfooterdatoIconourl" required></label>
-        <label for="newUrl">Enlace: <input type="text" name="newUrl" id="newUrl" [(ngModel)]="newSubfooterdatoUrl"></label>
-        <p>*las imagenes aceptan solo url</p>
-        <button [disabled]="!f.valid">Añadir</button>
-        <button (click)="onNewSubfooterdato()">Cancelar</button>
-        <p>{{SubfooterdatoCreatedError}}</p>
-    </form>
-</div>
+

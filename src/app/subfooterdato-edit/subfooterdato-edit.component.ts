@@ -61,11 +61,17 @@ export class SubfooterdatoEditComponent {
     this.SubfooterdatoService.crear(subfooterdato).subscribe(
       ()=>{
         this.SubfooterdatoMessage= 'Creado correctamente';
+        setTimeout(()=>{
+          this.SubfooterdatoMessage="";
+        },3000);
         this.cargarSubfooterdatos();
         this.newSubfooterdato=false;
       },
       err=>{
         this.SubfooterdatoCreatedError= `No se puede crear. Error: ${err}`;
+        setTimeout(()=>{
+          this.SubfooterdatoCreatedError="";
+        },3000);
       }
     );
   }
@@ -75,9 +81,15 @@ export class SubfooterdatoEditComponent {
       data=>{
         this.cargarSubfooterdatos();
         this.SubfooterdatoMessage="Eliminado correctamente";
+        setTimeout(()=>{
+          this.SubfooterdatoMessage="";
+        },3000);
       },
       err=>{
         this.SubfooterdatoMessage=`No se puede eliminar. Error: ${err}`;
+        setTimeout(()=>{
+          this.SubfooterdatoMessage="";
+        },3000);
       }
     );
   }
@@ -99,20 +111,21 @@ export class SubfooterdatoEditComponent {
     this.editSubfooterdatoSelected=-1;
   }
 
-  isSubfooterdatotoEdit(Subfooterdato:string):boolean{
-      //compara con la id
-      return Subfooterdato==this.editSubfooterdatoIconourl;
-  }
-
   editarSubfooterdato(id?:number):void{   
     this.SubfooterdatoService.editar(Number(id),new Subfooterdato(this.editSubfooterdatoIconourl,this.editSubfooterdatoUrl, this.editSubfooterdatoTexto)).subscribe(
       data=>{
         this.SubfooterdatoMessage="Editado correctamente";
+        setTimeout(()=>{
+          this.SubfooterdatoMessage="";
+        },3000);
         this.hiddenEditarSubfooterdato();
         this.cargarSubfooterdatos();
       },
       err=>{
         this.SubfooterdatoMessage=`No se puede editar. Error: ${err}`;
+        setTimeout(()=>{
+          this.SubfooterdatoMessage="";
+        },3000);
       }
     );
   }
@@ -121,10 +134,16 @@ export class SubfooterdatoEditComponent {
     this.SubfooterdatoService.restaurar().subscribe(
       ()=>{
         this.SubfooterdatoMessage='Restaurado correctamente';
+        setTimeout(()=>{
+          this.SubfooterdatoMessage="";
+        },3000);
         this.cargarSubfooterdatos();
       },
       err=>{
         this.SubfooterdatoMessage=`Error al restaurar. Error: ${err}`;
+        setTimeout(()=>{
+          this.SubfooterdatoMessage="";
+        },3000);
       }
     );
   }

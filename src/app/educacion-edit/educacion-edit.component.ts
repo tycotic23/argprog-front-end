@@ -122,11 +122,6 @@ export class EducacionEditComponent {
       this.editEducacionFechafin="";
   }
 
-  isEducaciontoEdit(educacion:string):boolean{
-      //compara con la id
-      return educacion==this.editEducacionLogourl;
-  }
-
   editarEducacion(id?:number):void{   
     this.educacionService.editar(Number(id),new Educacion(this.editEducacionLogourl,this.editEducacionFechaini,this.editEducacionFechafin,this.editEducacionInstitucion,this.editEducacionTitulo)).subscribe(
       data=>{

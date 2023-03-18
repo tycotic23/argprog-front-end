@@ -63,11 +63,17 @@ export class ContactoEditComponent {
     this.contactoService.crear(contacto).subscribe(
       ()=>{
         this.contactoMessage= 'Creado correctamente';
+        setTimeout(()=>{
+          this.contactoMessage="";
+        },3000);
         this.cargarContactos();
         this.newContacto=false;
       },
       err=>{
         this.contactoCreatedError= `No se puede crear. Error: ${err}`;
+        setTimeout(()=>{
+          this.contactoCreatedError="";
+        },3000);
       }
     );
   }
@@ -77,9 +83,15 @@ export class ContactoEditComponent {
       data=>{
         this.cargarContactos();
         this.contactoMessage="Eliminado correctamente";
+        setTimeout(()=>{
+          this.contactoMessage="";
+        },3000);
       },
       err=>{
         this.contactoMessage=`No se puede eliminar. Error: ${err}`;
+        setTimeout(()=>{
+          this.contactoMessage="";
+        },3000);
       }
     );
   }
@@ -103,20 +115,21 @@ export class ContactoEditComponent {
     this.editContactoSelected="";
   }
 
-  isContactotoEdit(contacto:string):boolean{
-      //compara con la id
-      return contacto==this.editContactoRedsocial;
-  }
-
   editarContacto(contacto:string):void{   
     this.contactoService.editar(contacto,new Contacto(this.editContactoUrl,this.editContactoRedsocial,this.editContactologourl, this.editContactoTexto)).subscribe(
       data=>{
         this.contactoMessage="Editado correctamente";
+        setTimeout(()=>{
+          this.contactoMessage="";
+        },3000);
         this.hiddenEditarContacto();
         this.cargarContactos();
       },
       err=>{
         this.contactoMessage=`No se puede editar. Error: ${err}`;
+        setTimeout(()=>{
+          this.contactoMessage="";
+        },3000);
       }
     );
   }
@@ -125,15 +138,17 @@ export class ContactoEditComponent {
     this.contactoService.restaurar().subscribe(
       ()=>{
         this.contactoMessage='Restaurado correctamente';
+        setTimeout(()=>{
+          this.contactoMessage="";
+        },3000);
         this.cargarContactos();
       },
       err=>{
         this.contactoMessage=`Error al restaurar. Error: ${err}`;
+        setTimeout(()=>{
+          this.contactoMessage="";
+        },3000);
       }
     );
-  }
-
-  editarImagenContacto():void{
-    this.contactoMessage=`Sin implementar`;
   }
 }

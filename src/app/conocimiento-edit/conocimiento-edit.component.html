@@ -5,6 +5,24 @@
         <button (click)="restoreConocimiento()">Restaurar</button>
     </div>
 </div>
+<!--el siguiente formulario solo se muestra si se agrega un nuevo Conocimiento-->
+<div *ngIf="newConocimiento">
+    
+    <form (ngSubmit)="onCreateConocimiento()" novalidate #f="ngForm">
+        <h3>nuevo Conocimiento</h3>
+        <label for="new">Conocimiento: <input type="text" name="new" id="new" [(ngModel)]="newConocimientoNombre" required></label>
+        <label for="newImagen">Imagen Url: <input type="text" name="newImagen" id="newImagen" [(ngModel)]="newConocimientoLogourl" required></label>
+        <label for="newcategoria.categoria"> Categoría:
+        <select name="newcategoria.categoria" id="newcategoria.categoria" [(ngModel)]="newConocimientoCategoria" required>
+            <option *ngFor="let categoria of categorias" value={{categoria.categoria}}> {{categoria.categoria}}</option>
+        </select></label>
+        <p>*las imagenes aceptan solo url</p>
+        <button [disabled]="!f.valid">Añadir</button>
+        <button (click)="onNewConocimiento()">Cancelar</button>
+        <p>{{ConocimientoCreatedError}}</p>
+    </form>
+</div>
+
 <div>
     <ul class="ul-row">
         <li class="column" *ngFor="let conocimiento of conocimientos">
@@ -34,26 +52,21 @@
 </div>
 <!--mensajes relacionados con la manipulacion de Conocimientos-->
 <p>{{ConocimientoMessage}}</p>
-<!--el siguiente formulario solo se muestra si se agrega un nuevo Conocimiento-->
-<div id="new-Conocimiento" *ngIf="newConocimiento">
-    
-    <form (ngSubmit)="onCreateConocimiento()" novalidate #f="ngForm">
-        <h3>nuevo Conocimiento</h3>
-        <label for="new">Conocimiento: <input type="text" name="new" id="new" [(ngModel)]="newConocimientoNombre" required></label>
-        <label for="newImagen">Imagen Url: <input type="text" name="newImagen" id="newImagen" [(ngModel)]="newConocimientoLogourl" required></label>
-        <label for="newcategoria.categoria"> Categoría:
-        <select name="newcategoria.categoria" id="newcategoria.categoria" [(ngModel)]="newConocimientoCategoria" required>
-            <option *ngFor="let categoria of categorias" value={{categoria.categoria}}> {{categoria.categoria}}</option>
-        </select></label>
-        <p>*las imagenes aceptan solo url</p>
-        <button [disabled]="!f.valid">Añadir</button>
-        <button (click)="onNewConocimiento()">Cancelar</button>
-        <p>{{ConocimientoCreatedError}}</p>
-    </form>
-</div>
+
 <div class="menu-nav row">
     <h3>Categorías</h3>
     <button (click)="onNewCategoria()">+</button>
+</div>
+<div id="new-element" *ngIf="newCategoria">
+    
+    <form (ngSubmit)="onCreateCategoria()" novalidate #f="ngForm">
+        <h3>nueva categoría</h3>
+        <label for="newCat">Categoría: <input type="text" name="newCat" id="newCat" [(ngModel)]="newCategoriaNombre" required></label>
+        <label for="newCatOrder">Categoría: <input type="number" name="newCatOrder" id="newCatOrder" min=0 [(ngModel)]="newCategoriaOrden" required></label>
+        <button [disabled]="!f.valid">Añadir</button>
+        <button (click)="onNewCategoria()">Cancelar</button>
+        <p>{{CategoriaCreatedError}}</p>
+    </form>
 </div>
 <ul class="ul-row align-start justify-start">
     <li class="align-start" *ngFor="let categoria of categorias">
@@ -75,15 +88,5 @@
 </ul>
 <!--mensajes relacionados con la manipulacion de Categorias-->
 <p>{{CategoriaMessage}}</p>
-<div id="new-Conocimiento" *ngIf="newCategoria">
-    
-    <form (ngSubmit)="onCreateCategoria()" novalidate #f="ngForm">
-        <h3>nueva categoría</h3>
-        <label for="newCat">Categoría: <input type="text" name="newCat" id="newCat" [(ngModel)]="newCategoriaNombre" required></label>
-        <label for="newCatOrder">Categoría: <input type="number" name="newCatOrder" id="newCatOrder" min=0 [(ngModel)]="newCategoriaOrden" required></label>
-        <button [disabled]="!f.valid">Añadir</button>
-        <button (click)="onNewCategoria()">Cancelar</button>
-        <p>{{CategoriaCreatedError}}</p>
-    </form>
-</div>
+
 

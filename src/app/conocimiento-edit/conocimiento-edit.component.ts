@@ -96,16 +96,25 @@ export class ConocimientoEditComponent {
         this.conocimientoService.crear(new Conocimiento(this.newConocimientoLogourl, this.newConocimientoNombre,category)).subscribe(
           data=>{
             this.ConocimientoMessage="Creado correctamente";
+            setTimeout(()=>{
+              this.ConocimientoMessage="";
+            },3000);
             this.hiddenEditar();
             this.cargarConocimientos();
           },
           err=>{
-            this.ConocimientoMessage=`No se puede crear. Error: ${err}`;
+            this.ConocimientoCreatedError=`No se puede crear. Error: ${err}`;
+            setTimeout(()=>{
+              this.ConocimientoCreatedError="";
+            },3000);
           }
         );
 
       },err=>{
-        this.ConocimientoMessage=`No se puede crear. Error: ${err}`;
+        this.ConocimientoCreatedError=`No se puede crear. Error: ${err}`;
+        setTimeout(()=>{
+          this.ConocimientoCreatedError="";
+        },3000);
       }
     ); 
   }
@@ -113,12 +122,18 @@ export class ConocimientoEditComponent {
   onCreateCategoria():void{ 
     this.conocimientoService.crearCategoria(new Categoria(this.newCategoriaNombre,this.newCategoriaOrden)).subscribe(
       data=>{
-        this.ConocimientoMessage="Creado correctamente";
+        this.CategoriaMessage="Creado correctamente";
+        setTimeout(()=>{
+          this.CategoriaMessage="";
+        },3000);
         this.hiddenEditar();
         this.cargarConocimientos();
       },
       err=>{
-        this.ConocimientoMessage=`No se puede crear. Error: ${err}`;
+        this.CategoriaCreatedError=`No se puede crear. Error: ${err}`;
+        setTimeout(()=>{
+          this.CategoriaCreatedError="";
+        },3000);
       }
     );
   }
@@ -128,9 +143,15 @@ export class ConocimientoEditComponent {
       data=>{
         this.cargarConocimientos();
         this.ConocimientoMessage="Eliminado correctamente";
+        setTimeout(()=>{
+          this.ConocimientoMessage="";
+        },3000);
       },
       err=>{
         this.ConocimientoMessage=`No se puede eliminar. Error: ${err}`;
+        setTimeout(()=>{
+          this.ConocimientoMessage="";
+        },3000);
       }
     );
   }
@@ -140,9 +161,15 @@ export class ConocimientoEditComponent {
       data=>{
         this.cargarConocimientos();
         this.CategoriaMessage="Eliminado correctamente";
+        setTimeout(()=>{
+          this.CategoriaMessage="";
+        },3000);
       },
       err=>{
         this.CategoriaMessage=`No se puede eliminar. Error: ${err}`;
+        setTimeout(()=>{
+          this.CategoriaMessage="";
+        },3000);
       }
     );
   }
@@ -185,16 +212,25 @@ export class ConocimientoEditComponent {
         this.conocimientoService.editar(Number(id),new Conocimiento(this.editConocimientoLogourl, this.editConocimientoNombre,category)).subscribe(
           data=>{
             this.ConocimientoMessage="Editado correctamente";
+            setTimeout(()=>{
+              this.ConocimientoMessage="";
+            },3000);
             this.hiddenEditar();
             this.cargarConocimientos();
           },
           err=>{
             this.ConocimientoMessage=`No se puede editar. Error: ${err}`;
+            setTimeout(()=>{
+              this.ConocimientoMessage="";
+            },3000);
           }
         );
 
       },err=>{
         this.ConocimientoMessage=`No se puede editar. Error: ${err}`;
+            setTimeout(()=>{
+              this.ConocimientoMessage="";
+            },3000);
       }
     ); 
   }
@@ -204,11 +240,17 @@ export class ConocimientoEditComponent {
     this.conocimientoService.editarCategoria(Number(id),new Categoria(this.editCategoriaNombre, this.editCategoriaOrden)).subscribe(
       data=>{
         this.CategoriaMessage="Editado correctamente";
+        setTimeout(()=>{
+          this.CategoriaMessage="";
+        },3000);
         this.hiddenEditar();
         this.cargarConocimientos();
       },
       err=>{
-        this.ConocimientoMessage=`No se puede editar. Error: ${err}`;
+        this.CategoriaMessage=`No se puede editar. Error: ${err}`;
+        setTimeout(()=>{
+          this.CategoriaMessage="";
+        },3000);
       }
     );
   }
@@ -217,10 +259,16 @@ export class ConocimientoEditComponent {
     this.conocimientoService.restaurar().subscribe(
       ()=>{
         this.ConocimientoMessage='Restaurado correctamente';
+        setTimeout(()=>{
+          this.ConocimientoMessage="";
+        },3000);
         this.cargarConocimientos();
       },
       err=>{
         this.ConocimientoMessage=`Error al restaurar. Error: ${err}`;
+        setTimeout(()=>{
+          this.ConocimientoMessage="";
+        },3000);
       }
     );
   }

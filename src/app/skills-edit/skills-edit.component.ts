@@ -48,11 +48,17 @@ export class SkillsEditComponent {
     this.SkillService.crear(skill).subscribe(
       ()=>{
         this.skillMessage= 'Creado correctamente';
+        setTimeout(()=>{
+          this.skillMessage="";
+        },3000);
         this.cargarskills();
         this.newSkill=false;
       },
       err=>{
         this.skillCreatedError= `No se puede crear. Error: ${err}`;
+        setTimeout(()=>{
+          this.skillCreatedError="";
+        },3000);
       }
     );
   }
@@ -62,9 +68,15 @@ export class SkillsEditComponent {
       data=>{
         this.cargarskills();
         this.skillMessage="Eliminado correctamente";
+        setTimeout(()=>{
+          this.skillMessage="";
+        },3000);
       },
       err=>{
         this.skillMessage=`No se puede eliminar. Error: ${err}`;
+        setTimeout(()=>{
+          this.skillMessage="";
+        },3000);
       }
     );
   }
@@ -82,19 +94,21 @@ export class SkillsEditComponent {
     this.editSkillSelected="";
   }
 
-  isSkilltoEdit(skill:string):boolean{
-      return skill==this.editSkillName;
-  }
-
   editarSkill(skill:string):void{
     this.SkillService.editar(skill,new Skill(this.editSkillName)).subscribe(
       data=>{
         this.skillMessage="Editado correctamente";
+        setTimeout(()=>{
+          this.skillMessage="";
+        },3000);
         this.hiddenEditarSkill();
         this.cargarskills();
       },
       err=>{
         this.skillMessage=`No se puede eliminar. Error: ${err}`;
+        setTimeout(()=>{
+          this.skillMessage="";
+        },3000);
       }
     );
   }
@@ -103,10 +117,16 @@ export class SkillsEditComponent {
     this.SkillService.restaurar().subscribe(
       ()=>{
         this.skillMessage='Restaurado correctamente';
+        setTimeout(()=>{
+          this.skillMessage="";
+        },3000);
         this.cargarskills();
       },
       err=>{
         this.skillMessage=`Error al restaurar. Error: ${err}`;
+        setTimeout(()=>{
+          this.skillMessage="";
+        },3000);
       }
     );
   }

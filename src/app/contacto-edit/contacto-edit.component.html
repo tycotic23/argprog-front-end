@@ -5,6 +5,21 @@
         <button (click)="restoreContacto()">Restaurar</button>
     </div>
 </div>
+<!--el siguiente formulario solo se muestra si se agrega un nuevo Contacto-->
+<div id="new-element" *ngIf="newContacto">
+    
+    <form (ngSubmit)="onCreateContacto()" novalidate #f="ngForm">
+        <h3>nuevo Contacto</h3>
+        <label for="new">Red Social: <input type="text" name="new" id="new" [(ngModel)]="newContactoRedsocial" required></label>
+        <label for="newImagen">Imagen Red Social: <input type="text" name="newImagen" id="newImagen" [(ngModel)]="newContactologourl" required></label>
+        <label for="newUrl">Enlace: <input type="text" name="newUrl" id="newUrl" [(ngModel)]="newContactoUrl" required></label>
+        <label for="newTexto">Texto: <input type="text" name="newTexto" id="newTexto" [(ngModel)]="newContactoTexto" required></label>
+        <p>*las imagenes aceptan solo url</p>
+        <button [disabled]="!f.valid">Añadir</button>
+        <button (click)="onNewContacto()">Cancelar</button>
+        <p>{{contactoCreatedError}}</p>
+    </form>
+</div>
     <ul class="ul-column">
         <li *ngFor="let contacto of contactos">
             <div class="column">
@@ -31,18 +46,4 @@
     </ul>
 <!--mensajes relacionados con la manipulacion de Contactos-->
 <p>{{contactoMessage}}</p>
-<!--el siguiente formulario solo se muestra si se agrega un nuevo Contacto-->
-<div id="new-Contacto" *ngIf="newContacto">
-    
-    <form (ngSubmit)="onCreateContacto()" novalidate #f="ngForm">
-        <h3>nuevo Contacto</h3>
-        <label for="new">Red Social: <input type="text" name="new" id="new" [(ngModel)]="newContactoRedsocial" required></label>
-        <label for="newImagen">Imagen Red Social: <input type="text" name="newImagen" id="newImagen" [(ngModel)]="newContactologourl" required></label>
-        <label for="newUrl">Enlace: <input type="text" name="newUrl" id="newUrl" [(ngModel)]="newContactoUrl" required></label>
-        <label for="newTexto">Texto: <input type="text" name="newTexto" id="newTexto" [(ngModel)]="newContactoTexto" required></label>
-        <p>*las imagenes aceptan solo url</p>
-        <button [disabled]="!f.valid">Añadir</button>
-        <button (click)="onNewContacto()">Cancelar</button>
-        <p>{{contactoCreatedError}}</p>
-    </form>
-</div>
+

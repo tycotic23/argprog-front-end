@@ -1,1 +1,37 @@
-<p>textomain-edit works!</p>
+
+    <ul class="ul-column">
+        <li *ngFor="let textomain of Textomains">
+            <div class="menu-nav">
+                <div class="row  align-center gap-1">
+                    <h2>Información</h2>
+                    <button *ngIf="!editTextomain" (click)="showEditarTextomain(textomain)">Editar</button>
+                    <button *ngIf="editTextomain && textomain.id==editTextomainSelected" (click)="editarTextomain(textomain.id)">Aceptar</button>
+                    <button *ngIf="editTextomain && textomain.id==editTextomainSelected" (click)="hiddenEditarTextomain()">Cancelar</button>
+                    <button (click)="restoreTextomain()">Restaurar</button>
+                </div>
+            </div>
+            <div class="column align-start gap-1">
+                <div class="row align-baseline gap-1">
+                    <h3>Nombre:</h3>
+                    <label *ngIf="(textomain.id!=editTextomainSelected && editTextomain) || !editTextomain" for='editnombre'>{{textomain.nombre}}</label>
+                    <input class="edit" *ngIf="textomain.id==editTextomainSelected" type="text" name="editnombre" [(ngModel)]="editTextomainNombre">
+                </div>
+                <div class="row">
+                    <h3>Foto:</h3>
+                    <input class="edit" *ngIf="textomain.id==editTextomainSelected" type="text" name="editUrl" [(ngModel)]="editTextomainFotourl">
+                </div>
+                <img class="imageproyect" src={{textomain.fotourl}} alt={{textomain.nombre}}>
+                <h3>Texto:</h3>
+                <label class="text-justify" *ngIf="(textomain.id!=editTextomainSelected && editTextomain) || !editTextomain" for="editTexto">{{textomain.texto}}</label>
+                <textarea *ngIf="textomain.id==editTextomainSelected" id="editTexto" name="editTexto" rows="5" cols="33" [(ngModel)]="editTextomainTexto">{{textomain.texto}}</textarea>
+                <div class="row align-baseline gap-1">
+                    <h3>Ubicación:</h3>
+                    <label *ngIf="(textomain.id!=editTextomainSelected && editTextomain) || !editTextomain" for="editubicacion">{{textomain.ubicacion}} </label>
+                    <input class="edit" *ngIf="textomain.id==editTextomainSelected" type="text" name="editubicacion" [(ngModel)]="editTextomainUbicacion">
+                </div>
+            </div>
+        </li>
+    </ul>
+<!--mensajes relacionados con la manipulacion de Textomains-->
+<p>{{TextomainMessage}}</p>
+
