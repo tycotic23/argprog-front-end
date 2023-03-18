@@ -1,0 +1,84 @@
+<div class="menu-nav">
+    <h2>Experiencia laboral:</h2>
+    <div class="botones-edit">
+        <button (click)="onNewExplaboral()">Nuevo</button>
+        <button (click)="restoreExplaboral()">Restaurar</button>
+    </div>
+</div>
+<!--el siguiente formulario solo se muestra si se agrega un nuevo Explaboral-->
+<div id="new-element" *ngIf="newExplaboral">
+    
+    <form (ngSubmit)="onCreateExplaboral()" novalidate #f="ngForm">
+        <h3>nueva Experiencia laboral</h3>
+        <label for="new">Puesto: <input type="text" name="new" id="new" [(ngModel)]="newExplaboralPuesto" required></label>
+        <label for="newDescr">Descripción: <textarea id="newDescr" name="newDescr" rows="5" cols="33" [(ngModel)]="newExplaboralDescripcion" required>Descripción del puesto</textarea></label>
+        <label for="newFechaini">¿Cuándo empezaste?: <input type="text" name="newFechaini" id="newFechaini" [(ngModel)]="newExplaboralFechaini"></label>
+        <label for="newFechafin">¿Cuándo terminaste?: <input type="text" name="newFechafin" id="newFechafin" [(ngModel)]="newExplaboralFechafin"></label>
+        <label for="newEmpresa">Empresa: <input type="text" name="newEmpresa" id="newEmpresa" [(ngModel)]="newExplaboralEmpresa"></label>
+        <label for="newImagen">Logo de la empresa: <input type="text" name="newImagen" id="newImagen" [(ngModel)]="newExplaboralLogourl"></label>
+        <p>*las imagenes aceptan solo url</p>
+        <label for="newReferencias">Referencias: <textarea id="newReferencias" name="newReferencias" rows="5" cols="33" [(ngModel)]="newExplaboralDescripcion">Por ejemplo: Pepito Gonzales, encargado. Tel.:123 45234</textarea></label>
+        <button [disabled]="!f.valid">Añadir</button>
+        <button (click)="onNewExplaboral()">Cancelar</button>
+        <p>{{explaboralCreatedError}}</p>
+    </form>
+</div>
+    <ul class="ul-column gap-3">
+        <li *ngFor="let explaboral of explaborals">
+            <div class="column gap-1 align-stretch">
+                
+                <div class="row align-baseline gap-1">
+                    <div class="column">
+                        <!--puesto con su input-->
+                        <label class="label-titulo" for="editpuesto">{{explaboral.puesto}} </label>
+                        <input *ngIf="explaboral.id==editExplaboralSelected" class="edit"  type="text" name="editpuesto" [(ngModel)]="editExplaboralPuesto">
+                    </div>
+                    <div class="column">
+                        <!--fechaini con su input-->
+                        <label for="editfechaini">{{explaboral.fechaini}} </label>
+                        <input *ngIf="explaboral.id==editExplaboralSelected" class="edit"  type="text" name="editfechaini" [(ngModel)]="editExplaboralFechaini">
+                        
+                    </div>
+                    <div class="column">
+                        <p>hasta</p>
+                        <p *ngIf="explaboral.id==editExplaboralSelected">hasta</p>
+                    </div>
+                    <div class="column">
+                        <!--fechafin con su input-->
+                        <label for="editfechafin">{{explaboral.fechafin}} </label>
+                        <input *ngIf="explaboral.id==editExplaboralSelected" class="edit"  type="text" name="editfechafin" [(ngModel)]="editExplaboralFechafin">
+                        
+                    </div>
+                </div>
+                <!--descripcion con su input-->
+                <label class="text-justify" *ngIf="(explaboral.id!=editExplaboralSelected && editExplaboral) || !editExplaboral" for="editTexto">{{explaboral.descripcion}}</label>
+                <h3 *ngIf="explaboral.id==editExplaboralSelected">Descripción del puesto: </h3>
+                <textarea *ngIf="explaboral.id==editExplaboralSelected" id="editTexto" name="editTexto" rows="5" cols="33" [(ngModel)]="editExplaboralDescripcion">{{explaboral.descripcion}}</textarea>
+                <!--datos de la empresa-->
+                <div class="row gap-1">
+                    <!--logo-->
+                    <label for="editimg"> <img class="logo-exp" src={{explaboral.logourl}} alt="⊙﹏⊙"> </label>
+                    <div class="column">
+                        <!--nombre empresa con su input-->
+                        <label class="label-titulo" for="editempresa">{{explaboral.empresa}} </label>
+                        <input *ngIf="explaboral.id==editExplaboralSelected" class="edit"  type="text" name="editempresa" [(ngModel)]="editExplaboralEmpresa">
+                        <div class="row self-end align-center">
+                            <!--botones alineados a la derecha-->
+                            <button *ngIf="!editExplaboral" (click)="borrarExplaboral(explaboral.id)">X</button>
+                                <button *ngIf="!editExplaboral" (click)="showEditarExplaboral(explaboral)">e</button>
+                                <button *ngIf="editExplaboral && explaboral.id==editExplaboralSelected" (click)="editarExplaboral(explaboral.id)">Aceptar</button>
+                                <button *ngIf="editExplaboral && explaboral.id==editExplaboralSelected" (click)="hiddenEditarExplaboral()">Cancelar</button>
+                        </div>
+                    </div>
+                </div>
+                <!--input del logo-->
+                <input class="edit" *ngIf="explaboral.id==editExplaboralSelected" type="text" name="editimg" [(ngModel)]="editExplaboralLogourl">
+                <label *ngIf="(explaboral.id!=editExplaboralSelected && editExplaboral) || !editExplaboral" for="editrefs">{{explaboral.referencias}}</label>
+                <h3 *ngIf="explaboral.id==editExplaboralSelected">Referencias: </h3>
+                <textarea *ngIf="explaboral.id==editExplaboralSelected" id="editrefs" name="editrefs" rows="5" cols="33" [(ngModel)]="editExplaboralReferencias">{{explaboral.referencias}}</textarea>
+            </div>
+        </li>
+    </ul>
+<!--mensajes relacionados con la manipulacion de Explaborals-->
+<p>{{explaboralMessage}}</p>
+

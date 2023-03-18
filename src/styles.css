@@ -35,6 +35,11 @@
     background-image: url(assets/background_rpg_fantasy_medieval_photorealistic.png);
 }
 
+.bkdashboard{
+    background-attachment: fixed;
+    background-image: url(assets/background_rpg_fantasy_medieval_photorealistic_2.png);
+}
+
 
 .bkbanner{
     background-position: 0 -100px;
@@ -747,7 +752,6 @@ gap:1rem;
 
 .trescuartos-side{
     flex-grow: 1;
-    width: 40%;
 }
 
 .circle-title{
@@ -799,6 +803,286 @@ gap:1rem;
 }
 .vacio{
     min-height: 60vh;
+}
+
+/*********************************************************************************************************************/
+/*******************************************************inicio de sesion**********************************************/
+/*********************************************************************************************************************/
+/* h1.iniciar-sesion{
+    font-size: 3rem;
+    font-weight: 800;
+    text-align: left;
+    font-family: 'Raleway', sans-serif !important;
+    vertical-align: baseline;
+    max-width: 60%;
+} */
+
+form{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 100%;
+    padding: 2rem;
+    max-width: 800px;
+}
+
+form h3{
+    text-transform: uppercase;
+    color: rgb(255, 131, 36);
+    font-size: 20pt;
+}
+
+form label{
+    font-size: 20pt;
+}
+
+form input, select, textarea{
+    background-color: rgba(0, 0, 0, 0.8);
+    border-radius: 20px;
+    border:1px solid rgb(213,94,2);
+    padding: 0.2rem 0.5rem;
+    width: 100%;
+}
+
+section.form-loggin{
+    background-color:rgba(22, 3, 0, 0.712);
+    border-left:1px solid rgb(213,94,2);
+    border-right:1px solid rgb(213,94,2);
+    border-bottom:1px solid rgb(213,94,2);
+    width: 400px;
+    align-self:flex-end;
+    height: 500px;
+}
+
+.flamenco{
+    font-family: 'Flamenco', cursive;
+}
+
+header.log-head{
+min-height: 5vh;
+}
+
+main.log-main{
+    min-height: 100vh;
+    height: 100%;
+    padding-top:0;
+    background:none;
+}
+
+main.log-edit{
+    min-height: 100vh;
+    height: 100%;
+    padding-top:0;
+}
+
+button[type="submit"]{
+    align-self: center;
+    width: 150px;
+    height: 50px;
+    background-color: rgb(22, 3, 0);
+    color: white;
+    font-size: 14pt;
+    font-weight: 600;
+    border-radius: 10px;
+    border-color: rgb(213,94,2);
+    margin-top: 1rem;
+}
+
+button[type="submit"]:hover{
+    
+    background-color: rgb(114,49,5);
+}
+
+.nav-log{
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+
+.edit-main{
+    display: flex;
+    flex-direction: row;
+    width: 95%;
+    justify-content: space-between;
+    align-items: stretch;
+    gap: 2rem;
+    height: 100%;
+    min-height: 100vh;
+}
+
+.content-edit{
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        gap:1rem;
+        flex-grow: 2;
+        height: 100%;
+        align-self: flex-start;
+        align-items: flex-start;
+        width: 40vw;
+        border-left:1px solid rgb(213,94,2);
+        min-height: 100vh;
+        padding-left: 2rem;
+}
+.log-edit h1{
+    width: 95%;
+    padding-top: 2rem;
+    padding-bottom: 0;
+    margin-bottom: 0;
+    text-align: right;
+}
+
+.content-edit h2{
+    font-size: 25pt;
+}
+
+#new-element{
+    width: 40vw;
+}
+
+button{
+    background-color: white;
+    border-radius: 15px;
+    padding: 0.2rem 0.5rem;
+    border:2px solid rgb(114,49,5);
+    color: rgb(213,94,2);
+    font-weight: 600;
+}
+
+button:hover{
+    background-color: rgb(248, 156, 86);
+}
+
+input.edit{
+    background-color: white;
+    color: black;
+}
+
+.botones-edit{
+    display:flex;
+    flex-wrap: wrap;
+}
+
+.icono{
+    width: 50px;
+}
+
+.ul-row{
+    padding: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap:1rem;
+    
+}
+
+.ul-row li{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0rem;
+}
+
+.ul-column{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 1rem;
+    width: 100%;
+    padding-top: 1rem;
+    padding-bottom: 2rem;
+}
+
+.justify-center{
+    justify-content: center;
+}
+
+.justify-end{
+    justify-content: flex-end;
+}
+
+.justify-end{
+    justify-content: flex-start;
+}
+
+.justify-between{
+    justify-content: space-between;
+}
+
+.wrap{
+    flex-wrap: wrap;
+}
+
+.align-center{
+    align-items: center;
+}
+
+.align-start{
+    align-items: flex-start;
+}
+
+.align-stretch{
+    align-items: stretch;
+}
+
+.align-baseline{
+    align-items: baseline;
+}
+
+.justify-self-end{
+    justify-self: flex-end;
+}
+
+.self-end{
+    align-self: flex-end;
+}
+
+.gap-1{
+    gap:1rem;
+}
+
+.gap-3{
+    gap:3rem;
+}
+
+.label-categoria{
+    border: 1px solid rgb(213,94,2);
+    border-radius: 15px;
+    background-color: rgba(22, 3, 0,0.5);
+    padding: 0.3rem;
+    margin-bottom: 0.5rem;
+}
+
+.column{
+    display:flex;
+    flex-direction: column;
+}
+
+.row{
+    display:flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.imageproyect{
+    width: 30vw;
+}
+
+.text-justify{
+    text-align: justify;
+}
+
+.label-titulo{
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.logo-exp{
+    width: 20vw;
 }
 
 /*********************************************************************************************************************/

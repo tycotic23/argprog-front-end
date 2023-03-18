@@ -1,0 +1,49 @@
+<div class="menu-nav">
+    <h2>Contactos</h2>
+    <div class="botones-edit">
+        <button (click)="onNewContacto()">Nuevo</button>
+        <button (click)="restoreContacto()">Restaurar</button>
+    </div>
+</div>
+<!--el siguiente formulario solo se muestra si se agrega un nuevo Contacto-->
+<div id="new-element" *ngIf="newContacto">
+    
+    <form (ngSubmit)="onCreateContacto()" novalidate #f="ngForm">
+        <h3>nuevo Contacto</h3>
+        <label for="new">Red Social: <input type="text" name="new" id="new" [(ngModel)]="newContactoRedsocial" required></label>
+        <label for="newImagen">Imagen Red Social: <input type="text" name="newImagen" id="newImagen" [(ngModel)]="newContactologourl" required></label>
+        <label for="newUrl">Enlace: <input type="text" name="newUrl" id="newUrl" [(ngModel)]="newContactoUrl" required></label>
+        <label for="newTexto">Texto: <input type="text" name="newTexto" id="newTexto" [(ngModel)]="newContactoTexto" required></label>
+        <p>*las imagenes aceptan solo url</p>
+        <button [disabled]="!f.valid">Añadir</button>
+        <button (click)="onNewContacto()">Cancelar</button>
+        <p>{{contactoCreatedError}}</p>
+    </form>
+</div>
+    <ul class="ul-column">
+        <li *ngFor="let contacto of contactos">
+            <div class="column">
+                <div class="row align-center gap-1 justify-between">
+                    <img class="icono" src={{contacto.logourl}} alt={{contacto.redsocial}}>
+                    <div class="column justify-center">
+                        <label for='editRedsocial'>{{contacto.redsocial}}
+                            <input class="edit" *ngIf="contacto.redsocial==editContactoSelected" type="text" name="editRedsocial" [(ngModel)]="editContactoRedsocial"></label>
+                        <label for="editTexto">{{contacto.texto}}
+                            <input class="edit" *ngIf="contacto.redsocial==editContactoSelected" type="text" name="editTexto" [(ngModel)]="editContactoTexto"></label>
+                    </div>
+                    <div class="column">
+                        <button *ngIf="!editContacto" (click)="borrarContacto(contacto.redsocial)">X</button>
+                        <button *ngIf="!editContacto" (click)="showEditarContacto(contacto)">e</button>
+                        <button *ngIf="editContacto && contacto.redsocial==editContactoSelected" (click)="editarContacto(contacto.redsocial)">Aceptar</button>
+                        <button *ngIf="editContacto && contacto.redsocial==editContactoSelected" (click)="hiddenEditarContacto()">Cancelar</button>
+                    </div>
+                </div>
+                <input class="edit" *ngIf="contacto.redsocial==editContactoSelected" type="text" name="editUrl" [(ngModel)]="editContactologourl">
+                <label for="editUrl">{{contacto.url}} </label>
+                <input class="edit" *ngIf="contacto.redsocial==editContactoSelected" type="text" name="editUrl" [(ngModel)]="editContactoUrl">
+            </div>
+        </li>
+    </ul>
+<!--mensajes relacionados con la manipulacion de Contactos-->
+<p>{{contactoMessage}}</p>
+

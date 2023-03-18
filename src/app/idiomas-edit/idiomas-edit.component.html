@@ -1,0 +1,37 @@
+<div class="menu-nav">
+    <h2>Idiomas</h2>
+    <div class="botones-edit">
+        <button (click)="onNewIdioma()">Nuevo</button>
+        <button (click)="restoreIdioma()">Restaurar</button>
+    </div>
+</div>
+<!--el siguiente formulario solo se muestra si se agrega un nuevo idioma-->
+<div id="new-idioma" *ngIf="newIdioma">
+    
+    <form (ngSubmit)="onCreateidioma()" novalidate #f="ngForm">
+        <h3>nuevo idioma</h3>
+        <label for="name">Nombre: <input type="text" name="name" id="name" [(ngModel)]="newIdiomaName" required></label>
+        <label for="nivel">Nivel: <input type="number" min="1" max="100" name="nivel" id="nivel" [(ngModel)]="newIdiomaNivel" required></label>
+        <p>*Solo valores entre 1 y 100</p>
+        <button [disabled]="!f.valid">Añadir</button>
+        <button (click)="onNewIdioma()">Cancelar</button>
+        <p>{{idiomaCreatedError}}</p>
+    </form>
+</div>
+<div>
+    <ul *ngFor="let idioma of idiomas">
+        <li>
+            <label for="idiomaName">{{idioma.idioma}}</label>
+            <input class="edit" *ngIf="idioma.idioma==editIdiomaSelected" type="text" name="idiomaName" [(ngModel)]="editIdiomaName">
+            : <label for="idiomaNivel">{{idioma.nivel}} </label>
+            <input class="edit" *ngIf="idioma.idioma==editIdiomaSelected" type="number" name="idiomaNivel" [(ngModel)]="editIdiomaNivel">
+            <button *ngIf="!editIdioma" (click)="borrarIdioma(idioma.idioma)">X</button>
+            <button *ngIf="!editIdioma" (click)="showEditarIdioma(idioma)">e</button>
+            <button *ngIf="editIdioma && idioma.idioma==editIdiomaSelected" (click)="editarIdioma(idioma.idioma)">Aceptar</button>
+            <button *ngIf="editIdioma && idioma.idioma==editIdiomaSelected" (click)="hiddenEditarIdioma()">Cancelar</button>
+        </li>
+    </ul>
+</div>
+<!--mensajes relacionados con la manipulacion de idiomas-->
+<p>{{idiomaMessage}}</p>
+

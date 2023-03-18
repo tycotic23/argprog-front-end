@@ -1,0 +1,52 @@
+<div class="menu-nav">
+    <h2>Enlaces debajo del footer</h2>
+    <div class="botones-edit">
+        <button (click)="onNewSubfooterdato()">Nuevo</button>
+        <button (click)="restoreSubfooterdato()">Restaurar</button>
+    </div>
+</div>
+<!--el siguiente formulario solo se muestra si se agrega un nuevo Subfooterdato-->
+<div id="new-element" *ngIf="newSubfooterdato">
+    
+    <form (ngSubmit)="onCreateSubfooterdato()" novalidate #f="ngForm">
+        <h3>nuevo enlace</h3>
+        <label for="new">Texto: <input type="text" name="new" id="new" [(ngModel)]="newSubfooterdatoTexto" required></label>
+        <label for="newImagen">Icono: <input type="text" name="newImagen" id="newImagen" [(ngModel)]="newSubfooterdatoIconourl" required></label>
+        <label for="newUrl">Enlace: <input type="text" name="newUrl" id="newUrl" [(ngModel)]="newSubfooterdatoUrl"></label>
+        <p>*las imagenes aceptan solo url</p>
+        <button [disabled]="!f.valid">Añadir</button>
+        <button (click)="onNewSubfooterdato()">Cancelar</button>
+        <p>{{SubfooterdatoCreatedError}}</p>
+    </form>
+</div>
+    <ul class="ul-column">
+        <li *ngFor="let subfooterdato of subfooterdatos">
+            <div class="column gap-1 align-stretch">
+                <div class="row justify-end self-end align-center">
+                    <!--botones alineados a la derecha-->
+                    <button *ngIf="!editSubfooterdato" (click)="borrarSubfooterdato(subfooterdato.id)">X</button>
+                        <button *ngIf="!editSubfooterdato" (click)="showEditarSubfooterdato(subfooterdato)">e</button>
+                        <button *ngIf="editSubfooterdato && subfooterdato.id==editSubfooterdatoSelected" (click)="editarSubfooterdato(subfooterdato.id)">Aceptar</button>
+                        <button *ngIf="editSubfooterdato && subfooterdato.id==editSubfooterdatoSelected" (click)="hiddenEditarSubfooterdato()">Cancelar</button>
+                </div>
+                <div class="row align-start">
+                    <!--imagen-->
+                    <label for="editimg"> <img class="icono" src={{subfooterdato.iconourl}} alt={{subfooterdato.iconourl}}> </label>
+                    <div class="column justify-start">
+                        <!--input imagen y otros datos-->
+                        <input class="edit" *ngIf="subfooterdato.id==editSubfooterdatoSelected" type="text" name="editimg" [(ngModel)]="editSubfooterdatoIconourl">
+                        <label for="editTexto">{{subfooterdato.texto}} </label>
+                        <input class="edit" *ngIf="subfooterdato.id==editSubfooterdatoSelected" type="text" name="editTexto" [(ngModel)]="editSubfooterdatoTexto">
+                    </div>
+                </div>
+                <div class="column">
+                    <!--url con su input-->
+                    <label for="editUrl">Enlace: {{subfooterdato.url}} </label>
+                    <input class="edit" *ngIf="subfooterdato.id==editSubfooterdatoSelected" type="text" name="editUrl" [(ngModel)]="editSubfooterdatoUrl">
+                </div>
+            </div>
+        </li>
+    </ul>
+<!--mensajes relacionados con la manipulacion de Subfooterdatos-->
+<p>{{SubfooterdatoMessage}}</p>
+

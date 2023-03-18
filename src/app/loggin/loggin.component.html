@@ -1,1 +1,26 @@
-<p>loggin works!</p>
+<div class="bk bkbanner"> </div>
+    <header class="log-head">
+        <div class="bannerHSeparados botlineaNaranja bkoscuro">
+            <div class="argprog">
+                <img draggable="false" src="../assets/logo-arg-prog.png" alt="logo Argentina Programa">
+                <h5>Argentina Programa #YoProgramo</h5>
+            </div>
+            <a class="loggin" href="">Volver</a>
+        </div>
+    </header>
+<main class="log-main">
+    <div class="bk bkdashboard"> </div>
+    <div class="index-main">
+        <section class="form-loggin">
+            <h2>Iniciar Sesión</h2>
+            <form (ngSubmit)="loggearse()">
+                <label class="flamenco" for="usuario">Usuario:</label>
+                <input type="text" name="usuario" id="usuario">
+                <label class="flamenco" for="password">Contraseña:</label>
+                <input type="text" name="password" id="password">
+                <button type="submit">Iniciar Sesión</button>
+            </form>
+        </section>
+    </div>
+    <div class="vacio"></div>
+</main>
