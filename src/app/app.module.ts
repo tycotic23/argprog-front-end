@@ -32,6 +32,10 @@ import { HeaderComponent } from './header/header.component';
 import { NavComponent } from './nav/nav.component';
 import { NavEditComponent } from './nav-edit/nav-edit.component';
 import { SkillsEditComponent } from './skills-edit/skills-edit.component';
+import { LoginComponent } from './auth/login.component';
+import { NavLogoutComponent } from './nav-logout/nav-logout.component';
+import { CheckloguserComponent } from './checkloguser/checkloguser.component';
+import { ChecklogadminComponent } from './checklogadmin/checklogadmin.component';
 
 @NgModule({
   declarations: [
@@ -62,6 +66,10 @@ import { SkillsEditComponent } from './skills-edit/skills-edit.component';
     NavComponent,
     NavEditComponent,
     SkillsEditComponent,
+    LoginComponent,
+    NavLogoutComponent,
+    CheckloguserComponent,
+    ChecklogadminComponent,
     
   ],
   imports: [

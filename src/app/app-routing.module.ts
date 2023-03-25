@@ -13,11 +13,11 @@ import { EditProyectosComponent } from './edit-proyectos/edit-proyectos.componen
 import { EditGeneralComponent } from './edit-general/edit-general.component';
 
 const routes: Routes = [
-  {path:'',component: HomeComponent},
+  {path:'',component: LogginComponent},
+  {path:'home',component: HomeComponent},
   {path:'contacto',component: ContactComponent},
   {path:'proyectos',component: ProyectosComponent},
   {path:'carrera',component: CarreraComponent},
-  {path:'login',component: LogginComponent},
   {path:'edit-index',component: EditIndexComponent},
   {path:'edit-contacto',component: EditContactoComponent},
   {path:'edit-educacion',component: EditEducacionComponent},

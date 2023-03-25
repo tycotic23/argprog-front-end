@@ -5,7 +5,6 @@
                 <img draggable="false" src="../assets/logo-arg-prog.png" alt="logo Argentina Programa">
                 <h5>Argentina Programa #YoProgramo</h5>
             </div>
-            <a class="loggin" href="">Volver</a>
         </div>
     </header>
 <main class="log-main">
@@ -13,14 +12,14 @@
     <div class="index-main">
         <section class="form-loggin">
             <h2>Iniciar Sesión</h2>
-            <form (ngSubmit)="loggearse()">
+            <form #f="ngForm" (ngSubmit)="onLogin()">
                 <label class="flamenco" for="usuario">Usuario:</label>
-                <input type="text" name="usuario" id="usuario">
+                <input type="text" name="usuario" id="usuario" [(ngModel)]="nombreUsuario" required>
                 <label class="flamenco" for="password">Contraseña:</label>
-                <input type="text" name="password" id="password">
-                <button type="submit">Iniciar Sesión</button>
+                <input type="text" name="password" id="password" [(ngModel)]="password" required>
+                <button type="submit" [disabled]="!f.valid">Iniciar Sesión</button>
+                <p>{{errMsj}}</p>
             </form>
         </section>
     </div>
-    <div class="vacio"></div>
 </main>

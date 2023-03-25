@@ -6,10 +6,10 @@
     </div>
 </div>
 <!--el siguiente formulario solo se muestra si se agrega un nuevo Subfooterdato-->
-<div id="new-element" *ngIf="newSubfooterdato">
+<div id="new-element" *ngIf="newSubfooterdato"> 
     
     <form (ngSubmit)="onCreateSubfooterdato()" novalidate #f="ngForm">
-        <h3>nuevo enlace</h3>
+        <h3>Nuevo enlace</h3>
         <label for="new">Texto: <input type="text" name="new" id="new" [(ngModel)]="newSubfooterdatoTexto" required></label>
         <label for="newImagen">Icono: <input type="text" name="newImagen" id="newImagen" [(ngModel)]="newSubfooterdatoIconourl" required></label>
         <label for="newUrl">Enlace: <input type="text" name="newUrl" id="newUrl" [(ngModel)]="newSubfooterdatoUrl"></label>
@@ -47,6 +47,6 @@
             </div>
         </li>
     </ul>
-<!--mensajes relacionados con la manipulacion de Subfooterdatos-->
+<!--mensajes relacionados con la manipulacion  de Subfooterdatos-->
 <p>{{SubfooterdatoMessage}}</p>
 
