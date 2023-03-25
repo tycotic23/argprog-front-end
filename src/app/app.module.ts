@@ -36,6 +36,8 @@ import { LoginComponent } from './auth/login.component';
 import { NavLogoutComponent } from './nav-logout/nav-logout.component';
 import { CheckloguserComponent } from './checkloguser/checkloguser.component';
 import { ChecklogadminComponent } from './checklogadmin/checklogadmin.component';
+import { interceptorProvider } from './interceptors/interceptor.service';
+
 
 @NgModule({
   declarations: [
@@ -78,7 +80,7 @@ import { ChecklogadminComponent } from './checklogadmin/checklogadmin.component'
     HttpClientModule,
     FormsModule
   ],
-  providers: [],
+  providers: [interceptorProvider],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

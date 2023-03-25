@@ -6,7 +6,7 @@
         </div>
         <!-- <a class="loggin" href="login">Iniciar Sesión</a> -->
         <div class="nav-log">
-            <a class="" routerLink="/edit-index">Editar</a>
+            <a class="" *ngIf="isAdmin" routerLink="/edit-index">Editar</a>
             <app-nav-logout></app-nav-logout>
         </div>
 
@@ -15,5 +15,4 @@
         <img draggable="false" class="nombre" src="../assets/bannerweb-04.png" alt="Bienvenido al portfolio de Tomas Stevan">
         <img draggable="false" class="reverse escudo" src="../assets/bannerweb-03-07.png" alt="Bienvenido al portfolio de Tomas Stevan">
     </div>
-    <app-checkloguser></app-checkloguser>
 </header>

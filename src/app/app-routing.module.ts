@@ -11,19 +11,20 @@ import { EditEducacionComponent } from './edit-educacion/edit-educacion.componen
 import { EditLaboralComponent } from './edit-laboral/edit-laboral.component';
 import { EditProyectosComponent } from './edit-proyectos/edit-proyectos.component';
 import { EditGeneralComponent } from './edit-general/edit-general.component';
+import { GuardService as guard } from './guards/guard.service';
 
 const routes: Routes = [
   {path:'',component: LogginComponent},
-  {path:'home',component: HomeComponent},
-  {path:'contacto',component: ContactComponent},
-  {path:'proyectos',component: ProyectosComponent},
-  {path:'carrera',component: CarreraComponent},
-  {path:'edit-index',component: EditIndexComponent},
-  {path:'edit-contacto',component: EditContactoComponent},
-  {path:'edit-educacion',component: EditEducacionComponent},
-  {path:'edit-laboral',component: EditLaboralComponent},
-  {path:'edit-proyectos',component: EditProyectosComponent},
-  {path:'edit-general',component: EditGeneralComponent},
+  {path:'home',component: HomeComponent,canActivate:[guard],data:{expectedRol:['admin','user']}},
+  {path:'contacto',component: ContactComponent,canActivate:[guard],data:{expectedRol:['admin','user']}},
+  {path:'proyectos',component: ProyectosComponent,canActivate:[guard],data:{expectedRol:['admin','user']}},
+  {path:'carrera',component: CarreraComponent,canActivate:[guard],data:{expectedRol:['admin','user']}},
+  {path:'edit-index',component: EditIndexComponent,canActivate:[guard],data:{expectedRol:['admin']}},
+  {path:'edit-contacto',component: EditContactoComponent,canActivate:[guard],data:{expectedRol:['admin']}},
+  {path:'edit-educacion',component: EditEducacionComponent,canActivate:[guard],data:{expectedRol:['admin']}},
+  {path:'edit-laboral',component: EditLaboralComponent,canActivate:[guard],data:{expectedRol:['admin']}},
+  {path:'edit-proyectos',component: EditProyectosComponent,canActivate:[guard],data:{expectedRol:['admin']}},
+  {path:'edit-general',component: EditGeneralComponent,canActivate:[guard],data:{expectedRol:['admin']}},
   //la ruta del error siempre tiene que ir al final
   {path:'**',redirectTo:'',pathMatch:'full'}
 ];
