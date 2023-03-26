@@ -1,9 +1,11 @@
 <div class="menu-nav">
     <h2>Contactos</h2>
     <div class="botones-edit">
-        <button (click)="onNewContacto()">Nuevo</button>
-        <button (click)="restoreContacto()">Restaurar</button>
+        <button (click)="onNewContacto()"[disabled]="enProceso">Nuevo</button>
+        <button (click)="restoreContacto()"[disabled]="enProceso">Restaurar</button>
     </div>
+    <!--mensajes relacionados con la manipulacion de Contactos-->
+<p>{{contactoMessage}}</p>
 </div>
 <!--el siguiente formulario solo se muestra si se agrega un nuevo Contacto-->
 <div id="new-element" *ngIf="newContacto">
@@ -15,7 +17,7 @@
         <label for="newUrl">Enlace: <input type="text" name="newUrl" id="newUrl" [(ngModel)]="newContactoUrl" required></label>
         <label for="newTexto">Texto: <input type="text" name="newTexto" id="newTexto" [(ngModel)]="newContactoTexto" required></label>
         <p>*las imagenes aceptan solo url</p>
-        <button [disabled]="!f.valid">Añadir</button>
+        <button [disabled]="enProceso">Añadir</button>
         <button (click)="onNewContacto()">Cancelar</button>
         <p>{{contactoCreatedError}}</p>
     </form>
@@ -32,9 +34,9 @@
                             <input class="edit" *ngIf="contacto.redsocial==editContactoSelected" type="text" name="editTexto" [(ngModel)]="editContactoTexto"></label>
                     </div>
                     <div class="column">
-                        <button *ngIf="!editContacto" (click)="borrarContacto(contacto.redsocial)">X</button>
-                        <button *ngIf="!editContacto" (click)="showEditarContacto(contacto)">e</button>
-                        <button *ngIf="editContacto && contacto.redsocial==editContactoSelected" (click)="editarContacto(contacto.redsocial)">Aceptar</button>
+                        <button *ngIf="!editContacto" (click)="borrarContacto(contacto.redsocial)"[disabled]="enProceso">X</button>
+                        <button *ngIf="!editContacto" (click)="showEditarContacto(contacto)"[disabled]="enProceso">e</button>
+                        <button *ngIf="editContacto && contacto.redsocial==editContactoSelected" (click)="editarContacto(contacto.redsocial)"[disabled]="enProceso">Aceptar</button>
                         <button *ngIf="editContacto && contacto.redsocial==editContactoSelected" (click)="hiddenEditarContacto()">Cancelar</button>
                     </div>
                 </div>
@@ -44,6 +46,5 @@
             </div>
         </li>
     </ul>
-<!--mensajes relacionados con la manipulacion de Contactos-->
-<p>{{contactoMessage}}</p>
+
 

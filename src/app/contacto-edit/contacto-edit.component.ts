@@ -10,6 +10,7 @@ import { ContactoService } from '../service/contacto.service';
 export class ContactoEditComponent {
   contactos: Contacto[]=[];
   newContacto:boolean=false;
+  enProceso:boolean=false;
   contactoCreatedError:string="";
   contactoMessage:string="";
   editContacto:boolean=false;
@@ -36,12 +37,21 @@ export class ContactoEditComponent {
   }
 
   cargarContactos():void{
+    this.contactoMessage="Espere mientras cargan los datos, puede demorar";
     this.contactoService.verTodos().subscribe(
       data=>{
         this.contactos=data;
+        this.contactoMessage= '';
+        setTimeout(()=>{
+          this.contactoMessage="";
+        },3000);
       },
       err=>{
         console.log(err);
+        this.contactoMessage= 'Error al cargar los datos, espere unos momentos y vuelva a intentarlo';
+        setTimeout(()=>{
+          this.contactoMessage="";
+        },3000);
       }
     );
   }
@@ -59,26 +69,42 @@ export class ContactoEditComponent {
 
   //al tocar el boton crear del elemento que aparece al crear nuevo Contacto
   onCreateContacto():void{  
-    const contacto:Contacto=new Contacto (this.newContactoUrl,this.newContactoRedsocial,this.newContactologourl, this.newContactoTexto);
-    this.contactoService.crear(contacto).subscribe(
-      ()=>{
-        this.contactoMessage= 'Creado correctamente';
-        setTimeout(()=>{
-          this.contactoMessage="";
-        },3000);
-        this.cargarContactos();
-        this.newContacto=false;
-      },
-      err=>{
-        this.contactoCreatedError= `No se puede crear. Error: ${err}`;
-        setTimeout(()=>{
-          this.contactoCreatedError="";
-        },3000);
-      }
-    );
+    if(this.newContactoUrl=="" || this.newContactoRedsocial=="" || this.newContactologourl=="" ||
+     this.newContactoUrl.length>100 || this.newContactoRedsocial.length>20 || this.newContactologourl.length>100 || this.newContactoTexto.length>30)
+    {
+      this.contactoCreatedError="Error en los campos";
+      setTimeout(()=>{
+        this.contactoCreatedError="";
+      },3000);
+    }
+    else{
+      this.enProceso=true;
+      this.contactoCreatedError= `Creando objeto...`;
+      const contacto:Contacto=new Contacto (this.newContactoUrl,this.newContactoRedsocial,this.newContactologourl, this.newContactoTexto);
+      this.contactoService.crear(contacto).subscribe(
+        ()=>{
+          this.contactoMessage= 'Creado correctamente';
+          setTimeout(()=>{
+            this.contactoMessage="";
+          },3000);
+          this.cargarContactos();
+          this.newContacto=false;
+          this.enProceso=false;
+        },
+        err=>{
+          this.contactoCreatedError= `No se puede crear. Error: ${err}`;
+          setTimeout(()=>{
+            this.contactoCreatedError="";
+          },3000);
+          this.enProceso=false;
+        }
+      );
+    }
   }
 
   borrarContacto(contacto:string):void{
+    this.enProceso=true;
+    this.contactoMessage="Eliminando objeto...";
     this.contactoService.eliminar(contacto).subscribe(
       data=>{
         this.cargarContactos();
@@ -86,12 +112,14 @@ export class ContactoEditComponent {
         setTimeout(()=>{
           this.contactoMessage="";
         },3000);
+        this.enProceso=false;
       },
       err=>{
         this.contactoMessage=`No se puede eliminar. Error: ${err}`;
         setTimeout(()=>{
           this.contactoMessage="";
         },3000);
+        this.enProceso=false;
       }
     );
   }
@@ -115,26 +143,42 @@ export class ContactoEditComponent {
     this.editContactoSelected="";
   }
 
-  editarContacto(contacto:string):void{   
-    this.contactoService.editar(contacto,new Contacto(this.editContactoUrl,this.editContactoRedsocial,this.editContactologourl, this.editContactoTexto)).subscribe(
-      data=>{
-        this.contactoMessage="Editado correctamente";
-        setTimeout(()=>{
-          this.contactoMessage="";
-        },3000);
-        this.hiddenEditarContacto();
-        this.cargarContactos();
-      },
-      err=>{
-        this.contactoMessage=`No se puede editar. Error: ${err}`;
-        setTimeout(()=>{
-          this.contactoMessage="";
-        },3000);
-      }
-    );
+  editarContacto(contacto:string):void{  
+    if(this.editContactoUrl=="" || this.editContactoRedsocial=="" || this.editContactologourl=="" ||
+     this.editContactoUrl.length>100 || this.editContactoRedsocial.length>20 || this.editContactologourl.length>100 || this.editContactoTexto.length>30)
+    {
+      this.contactoMessage="Error en los campos";
+      setTimeout(()=>{
+        this.contactoMessage="";
+      },3000);
+    }
+    else{ 
+      this.enProceso=true;
+      this.contactoMessage="Modificando objeto...";
+      this.contactoService.editar(contacto,new Contacto(this.editContactoUrl,this.editContactoRedsocial,this.editContactologourl, this.editContactoTexto)).subscribe(
+        data=>{
+          this.contactoMessage="Editado correctamente";
+          setTimeout(()=>{
+            this.contactoMessage="";
+          },3000);
+          this.hiddenEditarContacto();
+          this.cargarContactos();
+          this.enProceso=false;
+        },
+        err=>{
+          this.contactoMessage=`No se puede editar. Error: ${err}`;
+          setTimeout(()=>{
+            this.contactoMessage="";
+          },3000);
+          this.enProceso=false;
+        }
+      );
+    }
   }
 
   restoreContacto():void{
+    this.enProceso=true;
+    this.contactoMessage="Restaurando... Esperar mientras se completa el pedido";
     this.contactoService.restaurar().subscribe(
       ()=>{
         this.contactoMessage='Restaurado correctamente';
@@ -142,12 +186,14 @@ export class ContactoEditComponent {
           this.contactoMessage="";
         },3000);
         this.cargarContactos();
+        this.enProceso=false;
       },
       err=>{
         this.contactoMessage=`Error al restaurar. Error: ${err}`;
         setTimeout(()=>{
           this.contactoMessage="";
         },3000);
+        this.enProceso=false;
       }
     );
   }

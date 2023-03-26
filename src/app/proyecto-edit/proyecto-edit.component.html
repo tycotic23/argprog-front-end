@@ -1,9 +1,11 @@
 <div class="menu-nav">
     <h2>Proyectos:</h2>
     <div class="botones-edit">
-        <button (click)="onNewProyecto()">Nuevo</button>
-        <button (click)="restoreProyecto()">Restaurar</button>
+        <button (click)="onNewProyecto()"[disabled]="enProceso">Nuevo</button>
+        <button (click)="restoreProyecto()"[disabled]="enProceso">Restaurar</button>
     </div>
+    <!--mensajes relacionados con la manipulacion de Proyectos-->
+<p>{{ProyectoMessage}}</p>
 </div>
 <!--el siguiente formulario solo se muestra si se agrega un nuevo Proyecto-->
 <div id="new-element" *ngIf="newProyecto">
@@ -20,7 +22,7 @@
                                 <option value=false>No</option>
                             </select></label>
         <label *ngIf="newProyectoBotonver" for="newurl">Url: <input type="text" name="newurl" id="newurl" [(ngModel)]="newProyectoBotonurl"></label>
-        <button [disabled]="!f.valid">Añadir</button>
+        <button [disabled]="enProceso">Añadir</button>
         <button (click)="onNewProyecto()">Cancelar</button>
         <p>{{ProyectoCreatedError}}</p>
     </form>
@@ -30,9 +32,9 @@
             <div class="column gap-1 align-stretch">
                 <div class="row justify-end self-end align-center">
                     <!--botones alineados a la derecha-->
-                    <button *ngIf="!editProyecto" (click)="borrarProyecto(Proyecto.id)">X</button>
-                        <button *ngIf="!editProyecto" (click)="showEditarProyecto(Proyecto)">e</button>
-                        <button *ngIf="editProyecto && Proyecto.id==editProyectoSelected" (click)="editarProyecto(Proyecto.id)">Aceptar</button>
+                    <button *ngIf="!editProyecto" (click)="borrarProyecto(Proyecto.id)"[disabled]="enProceso">X</button>
+                        <button *ngIf="!editProyecto" (click)="showEditarProyecto(Proyecto)"[disabled]="enProceso">e</button>
+                        <button *ngIf="editProyecto && Proyecto.id==editProyectoSelected" (click)="editarProyecto(Proyecto.id)"[disabled]="enProceso">Aceptar</button>
                         <button *ngIf="editProyecto && Proyecto.id==editProyectoSelected" (click)="hiddenEditarProyecto()">Cancelar</button>
                 </div>
                 <div class="row align-start gap-1 justify-start">
@@ -64,6 +66,5 @@
             </div>
         </li>
     </ul>
-<!--mensajes relacionados con la manipulacion de Proyectos-->
-<p>{{ProyectoMessage}}</p>
+
 

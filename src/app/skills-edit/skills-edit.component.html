@@ -1,9 +1,11 @@
 <div class="menu-nav">
     <h2>Skills</h2>
     <div class="botones-edit">
-        <button (click)="onNewSkill()">Nuevo</button>
-        <button (click)="restoreSkill()">Restaurar</button>
+        <button (click)="onNewSkill()"[disabled]="enProceso">Nuevo</button>
+        <button (click)="restoreSkill()"[disabled]="enProceso">Restaurar</button>
     </div>
+    <!--mensajes relacionados con la manipulacion de Skills-->
+<p>{{skillMessage}}</p>
 </div>
 <!--el siguiente formulario solo se muestra si se agrega un nuevo Skill-->
 <div id="new-element" *ngIf="newSkill">
@@ -12,7 +14,7 @@
         <h3>nuevo Skill</h3>
         <label for="name">Nombre: <input type="text" name="name" id="name" [(ngModel)]="newSkillName" required></label>
         
-        <button [disabled]="!f.valid">Añadir</button>
+        <button [disabled]="enProceso">Añadir</button>
         <button (click)="onNewSkill()">Cancelar</button>
         <p>{{skillCreatedError}}</p>
     </form>
@@ -23,13 +25,12 @@
             <label for="SkillName">{{skill.skill}}</label>
             <input class="edit" *ngIf="skill.skill==editSkillSelected" type="text" name="SkillName" [(ngModel)]="editSkillName">
             
-            <button *ngIf="!editSkill" (click)="borrarSkill(skill.skill)">X</button>
-            <button *ngIf="!editSkill" (click)="showEditarSkill(skill)">e</button>
-            <button *ngIf="editSkill && skill.skill==editSkillSelected" (click)="editarSkill(skill.skill)">Aceptar</button>
+            <button *ngIf="!editSkill" (click)="borrarSkill(skill.skill)" [disabled]="enProceso">X</button>
+            <button *ngIf="!editSkill" (click)="showEditarSkill(skill)" [disabled]="enProceso">e</button>
+            <button *ngIf="editSkill && skill.skill==editSkillSelected" [disabled]="enProceso" (click)="editarSkill(skill.skill)">Aceptar</button>
             <button *ngIf="editSkill && skill.skill==editSkillSelected" (click)="hiddenEditarSkill()">Cancelar</button>
         </li>
     </ul>
 </div>
-<!--mensajes relacionados con la manipulacion de Skills-->
-<p>{{skillMessage}}</p>
+
 

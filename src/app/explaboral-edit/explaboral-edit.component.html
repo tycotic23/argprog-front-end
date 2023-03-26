@@ -1,9 +1,11 @@
 <div class="menu-nav">
     <h2>Experiencia laboral:</h2>
     <div class="botones-edit">
-        <button (click)="onNewExplaboral()">Nuevo</button>
-        <button (click)="restoreExplaboral()">Restaurar</button>
+        <button (click)="onNewExplaboral()"[disabled]="enProceso">Nuevo</button>
+        <button (click)="restoreExplaboral()"[disabled]="enProceso">Restaurar</button>
     </div>
+    <!--mensajes relacionados con la manipulacion de Explaborals-->
+<p>{{explaboralMessage}}</p>
 </div>
 <!--el siguiente formulario solo se muestra si se agrega un nuevo Explaboral-->
 <div id="new-element" *ngIf="newExplaboral">
@@ -18,7 +20,7 @@
         <label for="newImagen">Logo de la empresa: <input type="text" name="newImagen" id="newImagen" [(ngModel)]="newExplaboralLogourl"></label>
         <p>*las imagenes aceptan solo url</p>
         <label for="newReferencias">Referencias: <textarea id="newReferencias" name="newReferencias" rows="5" cols="33" [(ngModel)]="newExplaboralDescripcion">Por ejemplo: Pepito Gonzales, encargado. Tel.:123 45234</textarea></label>
-        <button [disabled]="!f.valid">Añadir</button>
+        <button [disabled]="enProceso">Añadir</button>
         <button (click)="onNewExplaboral()">Cancelar</button>
         <p>{{explaboralCreatedError}}</p>
     </form>
@@ -64,9 +66,9 @@
                         <input *ngIf="explaboral.id==editExplaboralSelected" class="edit"  type="text" name="editempresa" [(ngModel)]="editExplaboralEmpresa">
                         <div class="row self-end align-center">
                             <!--botones alineados a la derecha-->
-                            <button *ngIf="!editExplaboral" (click)="borrarExplaboral(explaboral.id)">X</button>
-                                <button *ngIf="!editExplaboral" (click)="showEditarExplaboral(explaboral)">e</button>
-                                <button *ngIf="editExplaboral && explaboral.id==editExplaboralSelected" (click)="editarExplaboral(explaboral.id)">Aceptar</button>
+                            <button *ngIf="!editExplaboral" (click)="borrarExplaboral(explaboral.id)"[disabled]="enProceso">X</button>
+                                <button *ngIf="!editExplaboral" (click)="showEditarExplaboral(explaboral)"[disabled]="enProceso">e</button>
+                                <button *ngIf="editExplaboral && explaboral.id==editExplaboralSelected" (click)="editarExplaboral(explaboral.id)"[disabled]="enProceso">Aceptar</button>
                                 <button *ngIf="editExplaboral && explaboral.id==editExplaboralSelected" (click)="hiddenEditarExplaboral()">Cancelar</button>
                         </div>
                     </div>
@@ -79,6 +81,5 @@
             </div>
         </li>
     </ul>
-<!--mensajes relacionados con la manipulacion de Explaborals-->
-<p>{{explaboralMessage}}</p>
+
 

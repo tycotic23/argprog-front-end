@@ -11,6 +11,7 @@ export class TextomainEditComponent {
   Textomains: Textomain[]=[];
   newTextomain:boolean=false;
   TextomainCreatedError:string="";
+  enProceso:boolean=false;
   TextomainMessage:string="";
   editTextomain:boolean=false;
   editTextomainSelected?:number=-1; //relacionado con el id
@@ -36,12 +37,21 @@ export class TextomainEditComponent {
   }
 
   cargarTextomains():void{
+    this.TextomainMessage="Espere mientras cargan los datos, puede demorar";
     this.textomainService.verTodos().subscribe(
       data=>{
         this.Textomains=data;
+        this.TextomainMessage= '';
+        setTimeout(()=>{
+          this.TextomainMessage="";
+        },3000);
       },
       err=>{
         console.log(err);
+        this.TextomainMessage= 'Error al cargar los datos, espere unos momentos y vuelva a intentarlo';
+        setTimeout(()=>{
+          this.TextomainMessage="";
+        },10000);
       }
     );
   }
@@ -115,26 +125,42 @@ export class TextomainEditComponent {
     this.editTextomainSelected=-1;
   }
 
-  editarTextomain(id?:number):void{   
-    this.textomainService.editar(Number(id),new Textomain(this.editTextomainNombre,this.editTextomainTexto,this.editTextomainFotourl,this.editTextomainUbicacion)).subscribe(
-      data=>{
-        this.TextomainMessage="Editado correctamente";
-        setTimeout(()=>{
-          this.TextomainMessage="";
-        },3000);
-        this.hiddenEditarTextomain();
-        this.cargarTextomains();
-      },
-      err=>{
-        this.TextomainMessage=`No se puede editar. Error: ${err}`;
-        setTimeout(()=>{
-          this.TextomainMessage="";
-        },3000);
-      }
-    );
+  editarTextomain(id?:number):void{  
+    if(this.editTextomainNombre=="" || this.editTextomainFotourl=="" || this.editTextomainUbicacion=="" ||
+     this.editTextomainNombre.length>40 || this.editTextomainTexto.length>1500 || this.editTextomainFotourl.length>100 || this.editTextomainUbicacion.length>30)
+    {
+      this.TextomainMessage="Error en los campos";
+      setTimeout(()=>{
+        this.TextomainMessage="";
+      },3000);
+    }
+    else{
+      this.enProceso=true;
+      this.TextomainMessage="Modificando objeto..."; 
+      this.textomainService.editar(Number(id),new Textomain(this.editTextomainNombre,this.editTextomainTexto,this.editTextomainFotourl,this.editTextomainUbicacion)).subscribe(
+        data=>{
+          this.TextomainMessage="Editado correctamente";
+          setTimeout(()=>{
+            this.TextomainMessage="";
+          },3000);
+          this.hiddenEditarTextomain();
+          this.cargarTextomains();
+          this.enProceso=false;
+        },
+        err=>{
+          this.TextomainMessage=`No se puede editar. Error: ${err}`;
+          setTimeout(()=>{
+            this.TextomainMessage="";
+          },3000);
+          this.enProceso=false;
+        }
+      );
+    }
   }
 
   restoreTextomain():void{
+    this.enProceso=true;
+    this.TextomainMessage="Restaurando... Esperar mientras se completa el pedido";
     this.textomainService.restaurar().subscribe(
       ()=>{
         this.TextomainMessage='Restaurado correctamente';
@@ -142,12 +168,14 @@ export class TextomainEditComponent {
           this.TextomainMessage="";
         },3000);
         this.cargarTextomains();
+        this.enProceso=false;
       },
       err=>{
         this.TextomainMessage=`Error al restaurar. Error: ${err}`;
         setTimeout(()=>{
           this.TextomainMessage="";
         },3000);
+        this.enProceso=false;
       }
     );
   }

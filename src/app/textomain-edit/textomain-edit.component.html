@@ -4,11 +4,13 @@
             <div class="menu-nav">
                 <div class="row  align-center gap-1">
                     <h2>Información</h2>
-                    <button *ngIf="!editTextomain" (click)="showEditarTextomain(textomain)">Editar</button>
-                    <button *ngIf="editTextomain && textomain.id==editTextomainSelected" (click)="editarTextomain(textomain.id)">Aceptar</button>
+                    <button *ngIf="!editTextomain" (click)="showEditarTextomain(textomain)" [disabled]="enProceso">Editar</button>
+                    <button *ngIf="editTextomain && textomain.id==editTextomainSelected" (click)="editarTextomain(textomain.id)" [disabled]="enProceso">Aceptar</button>
                     <button *ngIf="editTextomain && textomain.id==editTextomainSelected" (click)="hiddenEditarTextomain()">Cancelar</button>
-                    <button (click)="restoreTextomain()">Restaurar</button>
+                    <button (click)="restoreTextomain()" [disabled]="enProceso">Restaurar</button>
                 </div>
+                <!--mensajes relacionados con la manipulacion de Textomains-->
+                <p>{{TextomainMessage}}</p>
             </div>
             <div class="column align-start gap-1">
                 <div class="row align-baseline gap-1">
@@ -32,6 +34,5 @@
             </div>
         </li>
     </ul>
-<!--mensajes relacionados con la manipulacion de Textomains-->
-<p>{{TextomainMessage}}</p>
+
 

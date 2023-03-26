@@ -10,6 +10,7 @@ import { ExplaboralService } from '../service/explaboral.service';
 export class ExplaboralEditComponent {
   explaborals: Explaboral[]=[];
   newExplaboral:boolean=false;
+  enProceso:boolean=false;
   explaboralCreatedError:string="";
   explaboralMessage:string="";
   editExplaboral:boolean=false;
@@ -43,12 +44,21 @@ export class ExplaboralEditComponent {
   }
 
   cargarExplaborals():void{
+    this.explaboralMessage="Espere mientras cargan los datos, puede demorar";
     this.explaboralService.verTodos().subscribe(
       data=>{
         this.explaborals=data;
+        this.explaboralMessage= '';
+        setTimeout(()=>{
+          this.explaboralMessage="";
+        },3000);
       },
       err=>{
         console.log(err);
+        this.explaboralMessage= 'Error al cargar los datos, espere unos momentos y vuelva a intentarlo';
+        setTimeout(()=>{
+          this.explaboralMessage="";
+        },3000);
       }
     );
   }
@@ -68,27 +78,43 @@ export class ExplaboralEditComponent {
   }
 
   //al tocar el boton crear del elemento que aparece al crear nuevo Explaboral
-  onCreateExplaboral():void{  
-    const explaboral:Explaboral=new Explaboral(this.newExplaboralLogourl,this.newExplaboralPuesto,this.newExplaboralReferencias,this.newExplaboralEmpresa,this.newExplaboralDescripcion,this.newExplaboralFechaini,this.newExplaboralFechafin);
-    this.explaboralService.crear(explaboral).subscribe(
-      ()=>{
-        this.explaboralMessage= 'Creado correctamente';
-        setTimeout(()=>{
-          this.explaboralMessage="";
-        },3000);
-        this.cargarExplaborals();
-        this.newExplaboral=false;
-      },
-      err=>{
-        this.explaboralCreatedError= `No se puede crear. Error: ${err}`;
-        setTimeout(()=>{
-          this.explaboralCreatedError="";
-        },3000);
-      }
-    );
+  onCreateExplaboral():void{
+    if(this.newExplaboralLogourl=="" || this.newExplaboralPuesto=="" || this.newExplaboralEmpresa=="" || this.newExplaboralFechaini=="" || this.newExplaboralFechafin=="" ||
+     this.newExplaboralLogourl.length>100 || this.newExplaboralPuesto.length>50 || this.newExplaboralReferencias.length>100 || this.newExplaboralEmpresa.length>50 || this.newExplaboralDescripcion.length>500 || this.newExplaboralFechaini.length>50 || this.newExplaboralFechafin.length>50)
+    {
+      this.explaboralCreatedError="Error en los campos";
+      setTimeout(()=>{
+        this.explaboralCreatedError="";
+      },3000);
+    }
+    else{
+      this.enProceso=true;
+      this.explaboralCreatedError= `Creando objeto...`;
+      const explaboral:Explaboral=new Explaboral(this.newExplaboralLogourl,this.newExplaboralPuesto,this.newExplaboralReferencias,this.newExplaboralEmpresa,this.newExplaboralDescripcion,this.newExplaboralFechaini,this.newExplaboralFechafin);
+      this.explaboralService.crear(explaboral).subscribe(
+        ()=>{
+          this.explaboralMessage= 'Creado correctamente';
+          setTimeout(()=>{
+            this.explaboralMessage="";
+          },3000);
+          this.cargarExplaborals();
+          this.newExplaboral=false;
+          this.enProceso=false;
+        },
+        err=>{
+          this.explaboralCreatedError= `No se puede crear. Error: ${err}`;
+          setTimeout(()=>{
+            this.explaboralCreatedError="";
+          },3000);
+          this.enProceso=false;
+        }
+      );
+    }
   }
 
   borrarExplaboral(id?:number):void{
+    this.enProceso=true;
+    this.explaboralMessage="Eliminando objeto...";
     this.explaboralService.eliminar(Number(id)).subscribe(
       data=>{
         this.cargarExplaborals();
@@ -96,12 +122,14 @@ export class ExplaboralEditComponent {
         setTimeout(()=>{
           this.explaboralMessage="";
         },3000);
+        this.enProceso=false;
       },
       err=>{
         this.explaboralMessage=`No se puede eliminar. Error: ${err}`;
         setTimeout(()=>{
           this.explaboralMessage="";
         },3000);
+        this.enProceso=false;
       }
     );
   }
@@ -132,26 +160,42 @@ export class ExplaboralEditComponent {
       this.editExplaboralFechafin="";
   }
 
-  editarExplaboral(id?:number):void{   
-    this.explaboralService.editar(Number(id),new Explaboral(this.editExplaboralLogourl,this.editExplaboralPuesto,this.editExplaboralReferencias,this.editExplaboralEmpresa,this.editExplaboralDescripcion,this.editExplaboralFechaini,this.editExplaboralFechafin)).subscribe(
-      data=>{
-        this.explaboralMessage="Editado correctamente";
-        setTimeout(()=>{
-          this.explaboralMessage="";
-        },3000);
-        this.hiddenEditarExplaboral();
-        this.cargarExplaborals();
-      },
-      err=>{
-        this.explaboralMessage=`No se puede editar. Error: ${err}`;
-        setTimeout(()=>{
-          this.explaboralMessage="";
-        },3000);
-      }
-    );
+  editarExplaboral(id?:number):void{ 
+    if(this.editExplaboralLogourl=="" || this.editExplaboralPuesto=="" || this.editExplaboralEmpresa=="" || this.editExplaboralFechaini=="" || this.editExplaboralFechafin=="" ||
+     this.editExplaboralLogourl.length>100 || this.editExplaboralPuesto.length>50 || this.editExplaboralReferencias.length>100 || this.editExplaboralEmpresa.length>50 || this.editExplaboralDescripcion.length>500 || this.editExplaboralFechaini.length>50 || this.editExplaboralFechafin.length>50)
+    {
+      this.explaboralMessage="Error en los campos";
+      setTimeout(()=>{
+        this.explaboralMessage="";
+      },3000);
+    }
+    else{ 
+      this.enProceso=true;
+    this.explaboralMessage="Modificando objeto..."; 
+      this.explaboralService.editar(Number(id),new Explaboral(this.editExplaboralLogourl,this.editExplaboralPuesto,this.editExplaboralReferencias,this.editExplaboralEmpresa,this.editExplaboralDescripcion,this.editExplaboralFechaini,this.editExplaboralFechafin)).subscribe(
+        data=>{
+          this.explaboralMessage="Editado correctamente";
+          setTimeout(()=>{
+            this.explaboralMessage="";
+          },3000);
+          this.hiddenEditarExplaboral();
+          this.cargarExplaborals();
+          this.enProceso=false;
+        },
+        err=>{
+          this.explaboralMessage=`No se puede editar. Error: ${err}`;
+          setTimeout(()=>{
+            this.explaboralMessage="";
+          },3000);
+          this.enProceso=false;
+        }
+      );
+    }
   }
 
   restoreExplaboral():void{
+    this.enProceso=true;
+    this.explaboralMessage="Restaurando... Esperar mientras se completa el pedido";
     this.explaboralService.restaurar().subscribe(
       ()=>{
         this.explaboralMessage='Restaurado correctamente';
@@ -159,12 +203,14 @@ export class ExplaboralEditComponent {
         setTimeout(()=>{
           this.explaboralMessage="";
         },3000);
+        this.enProceso=false;
       },
       err=>{
         this.explaboralMessage=`Error al restaurar. Error: ${err}`;
         setTimeout(()=>{
           this.explaboralMessage="";
         },3000);
+        this.enProceso=false;
       }
     );
   }

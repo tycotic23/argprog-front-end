@@ -1,9 +1,11 @@
 <div class="menu-nav">
     <h2>Botones del footer:</h2>
     <div class="botones-edit">
-        <button (click)="onNewBotonfooter()">Nuevo</button>
-        <button (click)="restoreBotonfooter()">Restaurar</button>
+        <button (click)="onNewBotonfooter()" [disabled]="enProceso">Nuevo</button>
+        <button (click)="restoreBotonfooter()" [disabled]="enProceso">Restaurar</button>
     </div>
+    <!--mensajes relacionados con la manipulacion de Botonfooteres-->
+<p>{{BotonfooterMessage}}</p>
 </div>
 <!--el siguiente formulario solo se muestra si se agrega un nuevo Botonfooter-->
 <div id="new-element" *ngIf="newBotonfooter">
@@ -13,7 +15,7 @@
         <label for="new">Enlace: <input type="text" name="new" id="new" [(ngModel)]="newBotonfooterUrl" required></label>
         <label for="newImagen">Logo de la empresa: <input type="text" name="newImagen" id="newImagen" [(ngModel)]="newBotonfooterLogo" required></label>
         <p>*las imagenes aceptan solo url</p>
-        <button [disabled]="!f.valid">Añadir</button>
+        <button [disabled]="enProceso">Añadir</button>
         <button (click)="onNewBotonfooter()">Cancelar</button>
         <p>{{BotonfooterCreatedError}}</p>
     </form>
@@ -23,9 +25,9 @@
             <div class="column gap-1 align-stretch">
                 <div class="row self-end align-center">
                     <!--botones alineados a la derecha-->
-                    <button *ngIf="!editBotonfooter" (click)="borrarBotonfooter(botonfooter.id)">X</button>
-                        <button *ngIf="!editBotonfooter" (click)="showEditarBotonfooter(botonfooter)">e</button>
-                        <button *ngIf="editBotonfooter && botonfooter.id==editBotonfooterSelected" (click)="editarBotonfooter(botonfooter.id)">Aceptar</button>
+                    <button *ngIf="!editBotonfooter" (click)="borrarBotonfooter(botonfooter.id)" [disabled]="enProceso">X</button>
+                        <button *ngIf="!editBotonfooter" (click)="showEditarBotonfooter(botonfooter)" [disabled]="enProceso">e</button>
+                        <button *ngIf="editBotonfooter && botonfooter.id==editBotonfooterSelected" (click)="editarBotonfooter(botonfooter.id)" [disabled]="enProceso">Aceptar</button>
                         <button *ngIf="editBotonfooter && botonfooter.id==editBotonfooterSelected" (click)="hiddenEditarBotonfooter()">Cancelar</button>
                 </div>
                 <!--logo con su input-->
@@ -37,6 +39,5 @@
             </div>
         </li>
     </ul>
-<!--mensajes relacionados con la manipulacion de Botonfooteres-->
-<p>{{BotonfooterMessage}}</p>
+
 

@@ -1,9 +1,11 @@
 <div class="menu-nav">
     <h2>Enlaces debajo del footer</h2>
     <div class="botones-edit">
-        <button (click)="onNewSubfooterdato()">Nuevo</button>
-        <button (click)="restoreSubfooterdato()">Restaurar</button>
+        <button (click)="onNewSubfooterdato()"[disabled]="enProceso">Nuevo</button>
+        <button (click)="restoreSubfooterdato()"[disabled]="enProceso">Restaurar</button>
     </div>
+    <!--mensajes relacionados con la manipulacion  de Subfooterdatos-->
+    <p>{{SubfooterdatoMessage}}</p>
 </div>
 <!--el siguiente formulario solo se muestra si se agrega un nuevo Subfooterdato-->
 <div id="new-element" *ngIf="newSubfooterdato"> 
@@ -14,7 +16,7 @@
         <label for="newImagen">Icono: <input type="text" name="newImagen" id="newImagen" [(ngModel)]="newSubfooterdatoIconourl" required></label>
         <label for="newUrl">Enlace: <input type="text" name="newUrl" id="newUrl" [(ngModel)]="newSubfooterdatoUrl"></label>
         <p>*las imagenes aceptan solo url</p>
-        <button [disabled]="!f.valid">Añadir</button>
+        <button [disabled]="enProceso">Añadir</button>
         <button (click)="onNewSubfooterdato()">Cancelar</button>
         <p>{{SubfooterdatoCreatedError}}</p>
     </form>
@@ -24,9 +26,9 @@
             <div class="column gap-1 align-stretch">
                 <div class="row justify-end self-end align-center">
                     <!--botones alineados a la derecha-->
-                    <button *ngIf="!editSubfooterdato" (click)="borrarSubfooterdato(subfooterdato.id)">X</button>
-                        <button *ngIf="!editSubfooterdato" (click)="showEditarSubfooterdato(subfooterdato)">e</button>
-                        <button *ngIf="editSubfooterdato && subfooterdato.id==editSubfooterdatoSelected" (click)="editarSubfooterdato(subfooterdato.id)">Aceptar</button>
+                    <button *ngIf="!editSubfooterdato" (click)="borrarSubfooterdato(subfooterdato.id)" [disabled]="enProceso">X</button>
+                        <button *ngIf="!editSubfooterdato" (click)="showEditarSubfooterdato(subfooterdato)" [disabled]="enProceso">e</button>
+                        <button *ngIf="editSubfooterdato && subfooterdato.id==editSubfooterdatoSelected" [disabled]="enProceso" (click)="editarSubfooterdato(subfooterdato.id)">Aceptar</button>
                         <button *ngIf="editSubfooterdato && subfooterdato.id==editSubfooterdatoSelected" (click)="hiddenEditarSubfooterdato()">Cancelar</button>
                 </div>
                 <div class="row align-start">
@@ -47,6 +49,5 @@
             </div>
         </li>
     </ul>
-<!--mensajes relacionados con la manipulacion  de Subfooterdatos-->
-<p>{{SubfooterdatoMessage}}</p>
+
 

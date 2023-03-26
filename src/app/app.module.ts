@@ -21,7 +21,6 @@ import { ExplaboralEditComponent } from './explaboral-edit/explaboral-edit.compo
 import { ProyectoEditComponent } from './proyecto-edit/proyecto-edit.component';
 import { SubfooterdatoEditComponent } from './subfooterdato-edit/subfooterdato-edit.component';
 import { TextomainEditComponent } from './textomain-edit/textomain-edit.component';
-import { UsuarioEditComponent } from './usuario-edit/usuario-edit.component';
 import { EditGeneralComponent } from './edit-general/edit-general.component';
 import { EditContactoComponent } from './edit-contacto/edit-contacto.component';
 import { EditProyectosComponent } from './edit-proyectos/edit-proyectos.component';
@@ -34,8 +33,6 @@ import { NavEditComponent } from './nav-edit/nav-edit.component';
 import { SkillsEditComponent } from './skills-edit/skills-edit.component';
 import { LoginComponent } from './auth/login.component';
 import { NavLogoutComponent } from './nav-logout/nav-logout.component';
-import { CheckloguserComponent } from './checkloguser/checkloguser.component';
-import { ChecklogadminComponent } from './checklogadmin/checklogadmin.component';
 import { interceptorProvider } from './interceptors/interceptor.service';
 
 
@@ -57,7 +54,6 @@ import { interceptorProvider } from './interceptors/interceptor.service';
     ProyectoEditComponent,
     SubfooterdatoEditComponent,
     TextomainEditComponent,
-    UsuarioEditComponent,
     EditGeneralComponent,
     EditContactoComponent,
     EditProyectosComponent,
@@ -70,8 +66,6 @@ import { interceptorProvider } from './interceptors/interceptor.service';
     SkillsEditComponent,
     LoginComponent,
     NavLogoutComponent,
-    CheckloguserComponent,
-    ChecklogadminComponent,
     
   ],
   imports: [

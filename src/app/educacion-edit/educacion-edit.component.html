@@ -1,9 +1,11 @@
 <div class="menu-nav">
     <h2>Formación:</h2>
     <div class="botones-edit">
-        <button (click)="onNewEducacion()">Nuevo</button>
-        <button (click)="restoreEducacion()">Restaurar</button>
+        <button (click)="onNewEducacion()"[disabled]="enProceso">Nuevo</button>
+        <button (click)="restoreEducacion()"[disabled]="enProceso">Restaurar</button>
     </div>
+    <!--mensajes relacionados con la manipulacion de Educaciones-->
+<p>{{educacionMessage}}</p>
 </div>
 <!--el siguiente formulario solo se muestra si se agrega un nuevo Educacion-->
 <div id="new-element" *ngIf="newEducacion">
@@ -16,7 +18,7 @@
         <label for="newFechafin">¿Cuándo terminaste?: <input type="text" name="newFechafin" id="newFechafin" [(ngModel)]="newEducacionFechafin"></label>
         <label for="newImagen">Logo de la empresa: <input type="text" name="newImagen" id="newImagen" [(ngModel)]="newEducacionLogourl"></label>
         <p>*las imagenes aceptan solo url</p>
-        <button [disabled]="!f.valid">Añadir</button>
+        <button [disabled]="enProceso">Añadir</button>
         <button (click)="onNewEducacion()">Cancelar</button>
         <p>{{educacionCreatedError}}</p>
     </form>
@@ -26,9 +28,9 @@
             <div class="column gap-1 align-stretch">
                 <div class="row self-end align-center">
                     <!--botones alineados a la derecha-->
-                    <button *ngIf="!editEducacion" (click)="borrarEducacion(educacion.id)">X</button>
-                        <button *ngIf="!editEducacion" (click)="showEditarEducacion(educacion)">e</button>
-                        <button *ngIf="editEducacion && educacion.id==editEducacionSelected" (click)="editarEducacion(educacion.id)">Aceptar</button>
+                    <button *ngIf="!editEducacion" (click)="borrarEducacion(educacion.id)"[disabled]="enProceso">X</button>
+                        <button *ngIf="!editEducacion" (click)="showEditarEducacion(educacion)"[disabled]="enProceso">e</button>
+                        <button *ngIf="editEducacion && educacion.id==editEducacionSelected" (click)="editarEducacion(educacion.id)"[disabled]="enProceso">Aceptar</button>
                         <button *ngIf="editEducacion && educacion.id==editEducacionSelected" (click)="hiddenEditarEducacion()">Cancelar</button>
                 </div>
                 <!--titulo con su input-->
@@ -64,6 +66,5 @@
             </div>
         </li>
     </ul>
-<!--mensajes relacionados con la manipulacion de Educaciones-->
-<p>{{educacionMessage}}</p>
+
 

@@ -11,6 +11,7 @@ export class BotonfooterEditComponent {
   Botonfooters: Botonfooter[]=[];
   newBotonfooter:boolean=false;
   BotonfooterCreatedError:string="";
+  enProceso:boolean=false;
   BotonfooterMessage:string="";
   editBotonfooter:boolean=false;
   editBotonfooterSelected?:number=-1; //relacionado con el id
@@ -33,12 +34,21 @@ export class BotonfooterEditComponent {
   }
 
   cargarBotonfooters():void{
+    this.BotonfooterMessage="Espere mientras cargan los datos, puede demorar";
     this.botonfooterService.verTodos().subscribe(
       data=>{
         this.Botonfooters=data;
+        this.BotonfooterMessage= '';
+        setTimeout(()=>{
+          this.BotonfooterMessage="";
+        },3000);
       },
       err=>{
         console.log(err);
+        this.BotonfooterMessage= 'Error al cargar los datos, espere unos momentos y vuelva a intentarlo';
+        setTimeout(()=>{
+          this.BotonfooterMessage="";
+        },3000);
       }
     );
   }
@@ -53,27 +63,44 @@ export class BotonfooterEditComponent {
   }
 
   //al tocar el boton crear del elemento que aparece al crear nuevo Botonfooter
-  onCreateBotonfooter():void{  
-    const botonfooter:Botonfooter=new Botonfooter(this.newBotonfooterLogo,this.newBotonfooterUrl);
-    this.botonfooterService.crear(botonfooter).subscribe(
-      ()=>{
-        this.BotonfooterMessage= 'Creado correctamente';
-        setTimeout(()=>{
-          this.BotonfooterMessage="";
-        },3000);
-        this.cargarBotonfooters();
-        this.newBotonfooter=false;
-      },
-      err=>{
-        this.BotonfooterCreatedError= `No se puede crear. Error: ${err}`;
-        setTimeout(()=>{
-          this.BotonfooterCreatedError="";
-        },3000);
-      }
-    );
+  onCreateBotonfooter():void{ 
+    //validacion de datos
+    if(this.newBotonfooterLogo=="" || this.newBotonfooterUrl=="" ||
+     this.newBotonfooterLogo.length>100 || this.newBotonfooterUrl.length>100)
+    {
+      this.BotonfooterCreatedError="Error en los campos";
+      setTimeout(()=>{
+        this.BotonfooterCreatedError="";
+      },3000);
+    }
+    else{ 
+      this.enProceso=true;
+      this.BotonfooterCreatedError= `Creando objeto...`;
+      const botonfooter:Botonfooter=new Botonfooter(this.newBotonfooterLogo,this.newBotonfooterUrl);
+      this.botonfooterService.crear(botonfooter).subscribe(
+        ()=>{
+          this.BotonfooterMessage= 'Creado correctamente';
+          setTimeout(()=>{
+            this.BotonfooterMessage="";
+          },3000);
+          this.cargarBotonfooters();
+          this.newBotonfooter=false;
+          this.enProceso=false;
+        },
+        err=>{
+          this.BotonfooterCreatedError= `No se puede crear. Error: ${err}`;
+          setTimeout(()=>{
+            this.BotonfooterCreatedError="";
+          },3000);
+          this.enProceso=false;
+        }
+      );
+    }
   }
 
   borrarBotonfooter(id?:number):void{
+    this.enProceso=true;
+    this.BotonfooterMessage="Eliminando objeto...";
     this.botonfooterService.eliminar(Number(id)).subscribe(
       data=>{
         this.cargarBotonfooters();
@@ -81,12 +108,14 @@ export class BotonfooterEditComponent {
         setTimeout(()=>{
           this.BotonfooterMessage="";
         },3000);
+        this.enProceso=false;
       },
       err=>{
         this.BotonfooterMessage=`No se puede eliminar. Error: ${err}`;
         setTimeout(()=>{
           this.BotonfooterMessage="";
         },3000);
+        this.enProceso=false;
       }
     );
   }
@@ -107,26 +136,42 @@ export class BotonfooterEditComponent {
     this.editBotonfooterSelected=-1;
   }
 
-  editarBotonfooter(id?:number):void{   
-    this.botonfooterService.editar(Number(id),new Botonfooter(this.editBotonfooterLogo,this.editBotonfooterUrl)).subscribe(
-      data=>{
-        this.BotonfooterMessage="Editado correctamente";
-        setTimeout(()=>{
-          this.BotonfooterMessage="";
-        },3000);
-        this.hiddenEditarBotonfooter();
-        this.cargarBotonfooters();
-      },
-      err=>{
-        this.BotonfooterMessage=`No se puede editar. Error: ${err}`;
-        setTimeout(()=>{
-          this.BotonfooterMessage="";
-        },3000);
-      }
-    );
+  editarBotonfooter(id?:number):void{
+    if(this.editBotonfooterLogo=="" || this.editBotonfooterUrl=="" ||
+     this.editBotonfooterLogo.length>100 || this.editBotonfooterUrl.length>100)
+    {
+      this.BotonfooterMessage="Error en los campos";
+      setTimeout(()=>{
+        this.BotonfooterMessage="";
+      },3000);
+    }
+    else{ 
+      this.enProceso=true;
+    this.BotonfooterMessage="Modificando objeto...";
+      this.botonfooterService.editar(Number(id),new Botonfooter(this.editBotonfooterLogo,this.editBotonfooterUrl)).subscribe(
+        data=>{
+          this.BotonfooterMessage="Editado correctamente";
+          setTimeout(()=>{
+            this.BotonfooterMessage="";
+          },3000);
+          this.hiddenEditarBotonfooter();
+          this.cargarBotonfooters();
+          this.enProceso=false;
+        },
+        err=>{
+          this.BotonfooterMessage=`No se puede editar. Error: ${err}`;
+          setTimeout(()=>{
+            this.BotonfooterMessage="";
+          },3000);
+          this.enProceso=false;
+        }
+      );
+    }
   }
 
   restoreBotonfooter():void{
+    this.enProceso=true;
+    this.BotonfooterMessage="Restaurando... Esperar mientras se completa el pedido";
     this.botonfooterService.restaurar().subscribe(
       ()=>{
         this.BotonfooterMessage='Restaurado correctamente';
@@ -134,12 +179,14 @@ export class BotonfooterEditComponent {
         setTimeout(()=>{
           this.BotonfooterMessage="";
         },3000);
+        this.enProceso=false;
       },
       err=>{
         this.BotonfooterMessage=`Error al restaurar. Error: ${err}`;
         setTimeout(()=>{
           this.BotonfooterMessage="";
         },3000);
+        this.enProceso=false;
       }
     );
   }

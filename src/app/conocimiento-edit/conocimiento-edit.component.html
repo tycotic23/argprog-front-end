@@ -1,9 +1,11 @@
 <div class="menu-nav">
     <h2>Conocimientos</h2>
     <div class="botones-edit">
-        <button (click)="onNewConocimiento()">Nuevo</button>
-        <button (click)="restoreConocimiento()">Restaurar</button>
+        <button (click)="onNewConocimiento()" [disabled]="newConocimiento || enProceso">Nuevo</button>
+        <button (click)="restoreConocimiento()" [disabled]="enProceso">Restaurar</button>
     </div>
+    <!--mensajes relacionados con la manipulacion de Conocimientos-->
+<p>{{ConocimientoMessage}}</p>
 </div>
 <!--el siguiente formulario solo se muestra si se agrega un nuevo Conocimiento-->
 <div *ngIf="newConocimiento">
@@ -17,7 +19,7 @@
             <option *ngFor="let categoria of categorias" value={{categoria.categoria}}> {{categoria.categoria}}</option>
         </select></label>
         <p>*las imagenes aceptan solo url</p>
-        <button [disabled]="!f.valid">Añadir</button>
+        <button [disabled]="enProceso">Añadir</button>
         <button (click)="onNewConocimiento()">Cancelar</button>
         <p>{{ConocimientoCreatedError}}</p>
     </form>
@@ -41,29 +43,30 @@
                 </div>
             </div>
             <div class="row justify-end">
-                <button *ngIf="!editConocimiento" (click)="borrarConocimiento(conocimiento.id)">X</button>
-                <button *ngIf="!editConocimiento" (click)="showEditarConocimiento(conocimiento)">e</button>
-                <button *ngIf="editConocimiento && conocimiento.id==editConocimientoSelected" (click)="editarConocimiento(conocimiento.id)">Aceptar</button>
+                <button *ngIf="!editConocimiento" (click)="borrarConocimiento(conocimiento.id)" [disabled]="enProceso">X</button>
+                <button *ngIf="!editConocimiento" (click)="showEditarConocimiento(conocimiento)" [disabled]="enProceso">e</button>
+                <button *ngIf="editConocimiento && conocimiento.id==editConocimientoSelected" (click)="editarConocimiento(conocimiento.id)" [disabled]="enProceso">Aceptar</button>
                 <button *ngIf="editConocimiento && conocimiento.id==editConocimientoSelected" (click)="hiddenEditar()">Cancelar</button>
             </div>
             
         </li>
     </ul>
 </div>
-<!--mensajes relacionados con la manipulacion de Conocimientos-->
-<p>{{ConocimientoMessage}}</p>
+
 
 <div class="menu-nav row">
     <h3>Categorías</h3>
-    <button (click)="onNewCategoria()">+</button>
+    <button (click)="onNewCategoria()" [disabled]="newCategoria || enProceso">+</button>
 </div>
+<!--mensajes relacionados con la manipulacion de Categorias-->
+<p>{{CategoriaMessage}}</p>
 <div id="new-element" *ngIf="newCategoria">
     
     <form (ngSubmit)="onCreateCategoria()" novalidate #f="ngForm">
         <h3>nueva categoría</h3>
         <label for="newCat">Categoría: <input type="text" name="newCat" id="newCat" [(ngModel)]="newCategoriaNombre" required></label>
         <label for="newCatOrder">Categoría: <input type="number" name="newCatOrder" id="newCatOrder" min=0 [(ngModel)]="newCategoriaOrden" required></label>
-        <button [disabled]="!f.valid">Añadir</button>
+        <button [disabled]="enProceso">Añadir</button>
         <button (click)="onNewCategoria()">Cancelar</button>
         <p>{{CategoriaCreatedError}}</p>
     </form>
@@ -74,9 +77,9 @@
             <label for="editOrden">{{categoria.orden}}</label>
             <label class="label-categoria" for="editCategoria">{{categoria.categoria}}</label>
             <div class="row">
-                <button *ngIf="!editCategoria" (click)="borrarCategoria(categoria.id)">X</button>
-            <button *ngIf="!editCategoria" (click)="showEditarCategoria(categoria)">e</button>
-            <button *ngIf="editCategoria && categoria.categoria==editCategoriaSelected" (click)="editarCategoria(categoria.id)">Aceptar</button>
+                <button *ngIf="!editCategoria" (click)="borrarCategoria(categoria.id)" [disabled]="enProceso">X</button>
+            <button *ngIf="!editCategoria" (click)="showEditarCategoria(categoria)" [disabled]="enProceso">e</button>
+            <button *ngIf="editCategoria && categoria.categoria==editCategoriaSelected" (click)="editarCategoria(categoria.id)" [disabled]="enProceso">Aceptar</button>
             <button *ngIf="editCategoria && categoria.categoria==editCategoriaSelected" (click)="hiddenEditar()">Cancelar</button>
             </div>
         </div>
@@ -86,7 +89,6 @@
         </div>
     </li>
 </ul>
-<!--mensajes relacionados con la manipulacion de Categorias-->
-<p>{{CategoriaMessage}}</p>
+
 
 
