@@ -14,120 +14,54 @@
             <h2>¡Bienvenido!</h2>
             <p>Bienvenido a mi portfolio. Este proyecto es la entrega del trabajo final en el marco del Argentina Programa <span>#YoProgramo</span></p>
         </section>
+        <!--mensajes relacionados con la manipulacion de Textomains-->
+        <p>{{TextomainMessage}}</p>
         <div class="index-fila-main">
             <div class="index-columna trescuartos-main">
-                <img draggable="false" src="assets/foto-perfil.png" alt="mi foto">
+                <h2>{{Textomains.nombre}}</h2>
+                <img *ngIf="Textomains.fotourl!=''" draggable="false" src={{Textomains.fotourl}} alt="mi foto">
             </div>
             <div class="index-columna trescuartos-side">
-                <section class="index-section">
-                    <h2>Lenguajes</h2>
-                    <div class="index-content">
-                        <div class="lenguaje">
-                            <img draggable="false" src="assets/lenguajes-01.png" alt="c++">
-                            <h3>C/C++</h3>
-                        </div>
-                        <div class="lenguaje">
-                            <img draggable="false" src="assets/lenguajes-02.png" alt="c++">
-                            <h3>Java</h3>
-                        </div>
-                        <div class="lenguaje">
-                            <img draggable="false" src="assets/lenguajes-05.png" alt="c++">
-                            <h3>Javascript</h3>
-                        </div>
-                        <div class="lenguaje">
-                            <img draggable="false" src="assets/lenguajes-06.png" alt="c++">
-                            <h3>SQL</h3>
-                        </div>
-                    </div>
+                <section class="main-section">
+                    <h2>¿Quién soy?</h2>
+                    <p>{{Textomains.texto}}</p>
                 </section>
-                <section class="index-section">
-                    <h2>Front End</h2>
-                    <div class="index-content">
-                        <div class="lenguaje">
-                            <img draggable="false" src="assets/lenguajes-04.png" alt="c++">
-                            <h3>HTML</h3>
-                        </div>
-                        <div class="lenguaje">
-                            <img draggable="false" src="assets/lenguajes-05.png" alt="c++">
-                            <h3>Javascript</h3>
-                        </div>
-                        <div class="lenguaje">
-                            <img draggable="false" src="assets/lenguajes-07.png" alt="c++">
-                            <h3>CSS</h3>
-                        </div>
-                    </div>
-                </section>
-                <section class="index-section">
-                    <h2>Frameworks</h2>
-                    <div class="index-content">
-                        <div class="lenguaje">
-                            <img draggable="false" src="assets/lenguajes-03.png" alt="c++">
-                            <h3>Spring Boot</h3>
-                        </div>
-                        <div class="lenguaje">
-                            <img draggable="false" src="assets/lenguajes-08.png" alt="c++">
-                            <h3>Angular</h3>
-                        </div>
-                    </div>
+                <section class="main-section">
+                    <h2>Ubicación</h2>
+                    <p>{{Textomains.ubicacion}}</p>
                 </section>
             </div>
         </div>
-        <section class="main-section">
-            <h2>¿Quién soy?</h2>
-            <p>Me llamo Tomas Stevan Balanda Wagner. Freelancer desde finales de 2022. 
-                Pasé por varias carreras, siempre cercanas, de alguna manera, al desarrollo de videojuegos. Ya sea desde el área informática o artística.
-                Durante 2022 comencé a formarme en desarrollo fullstack a partir del programa "Argentina Programa" con la intención de entrar a la industria de desarrollo de software. Aunque sin perder de vista el verdadero objetivo a alcanzar algún día: los videojuegos. </p>
-        </section>
-        <section class="index-section">
-            <h2>Diseño</h2>
-            <div class="index-content">
-                <div class="lenguaje">
-                    <img draggable="false" src="assets/lenguajes-09.png" alt="c++">
-                    <h3>Photoshop</h3>
+            <!--mensajes relacionados con la manipulacion de Conocimientos-->
+            <p>{{ConocimientoMessage}}</p>
+            <section *ngFor="let categoria of categorias" class="index-section">
+                <h2>{{categoria.categoria}}</h2>
+                    <!--mensajes relacionados con la manipulacion de Conocimientos-->
+                    <p *ngIf="ConocimientoMessage!=''">{{ConocimientoMessage}}</p>
+                <div class="index-content">
+                    <div *ngFor="let conocimiento of filtrarPorCategoria(conocimientos,categoria.categoria)" class="lenguaje" >
+                            <img   draggable="false" src={{conocimiento.logourl}} alt={{conocimiento.nombre}}>
+                            <h3 >{{conocimiento.nombre}}</h3>
+                    </div>
                 </div>
-                <div class="lenguaje">
-                    <img draggable="false" src="assets/lenguajes-10.png" alt="c++">
-                    <h3>Illustrator</h3>
-                </div>
-                <div class="lenguaje">
-                    <img draggable="false" src="assets/lenguajes-11.png" alt="c++">
-                    <h3>Blender</h3>
-                </div>
-                <div class="lenguaje">
-                    <img draggable="false" src="assets/lenguajes-12.png" alt="c++">
-                    <h3>After Effects</h3>
-                </div>
-            </div>
-        </section>
+            </section>
         <section class="index-section">
             <h2>Skills</h2>
+                <!--mensajes relacionados con la manipulacion de Skills-->
+                <p *ngIf="skillMessage!=''">{{skillMessage}}</p>
             <div class="index-content">
-                <div class="circle-title">
-                    <p>Comunicación</p>
-                </div>
-                <div class="circle-title">
-                    <p>Gestión del tiempo</p>
-                </div>
-                <div class="circle-title">
-                    <p>Responsabilidad</p>
-                </div>
-                <div class="circle-title">
-                    <p>Proactividad</p>
-                </div>
-                <div class="circle-title">
-                    <p>Trabajo en equipo</p>
+                <div *ngFor="let skill of skills" class="circle-title">
+                    <p>{{skill.skill}}</p>
                 </div>
             </div>
         </section>
         <section class="index-section">
             <h2>Idiomas</h2>
+            <!--mensajes relacionados con la manipulacion de idiomas-->
+            <p *ngIf="idiomaMessage!=''">{{idiomaMessage}}</p>
             <div class="index-content">
-                <label for="file">Español (nativo):
-                <progress id="file" max="100" value="90"> 90% </progress></label>
-                <label for="file">Inglés:
-                <progress id="file" max="100" value="50"> 50% </progress></label>
-                <label for="file">Alemán:
-                <progress id="file" max="100" value="10"> 10% </progress></label>
+                <label *ngFor="let idioma of idiomas" for="file">{{idioma.idioma}}:
+                <progress id="file" max="100" value={{idioma.nivel}}> {{idioma.nivel}}% </progress></label>
             </div>
         </section>
     </div>

@@ -11,35 +11,11 @@
     <div class="contactos">
         <img draggable="false" class="bk-contactos" src="../assets/fondo-mapa-contactos.jpg" alt="">
         <div class="content-contactos">
-
-            <a href="https://www.linkedin.com/in/tom%C3%A1s-stevan-balanda-wagner-0b313125a/"><div class="red-social-contactos">
-                <div class="icono-contacto-bk"><img draggable="false" src="../assets/contactos-pag-iconos-07.png" alt="logo-linkedin"></div>
-                <p><span>Linkedin<br></span>Tomás Stevan Balanda Wagner</p>
-            </div></a>
-
-            <a href="mailto:magui.maggie@gmail.com"><div class="red-social-contactos">
-                <div class="icono-contacto-bk"><img draggable="false" src="../assets/contactos-pag-iconos-05.png" alt="logo-linkedin"></div>
-                <p><span>E-mail<br></span>magui.maggie@gmail.com</p>
-            </div></a>
-
-            <a href="https://www.behance.net/tomasstevan"><div class="red-social-contactos">
-                <div class="icono-contacto-bk"><img draggable="false" src="../assets/contactos-pag-iconos-06.png" alt="logo-linkedin"></div>
-                <p><span>Behance<br></span>Tomás Stevan Balanda Wagner</p>
-            </div></a>
-
-            <a href="https://wa.me/5493417197518"><div class="red-social-contactos">
-                <div class="icono-contacto-bk"><img draggable="false" src="../assets/contactos-pag-iconos-04.png" alt="logo-linkedin"></div>
-                <p><span>Teléfono<br></span>+54 9 341 719-7518</p>
-            </div></a>
-
-            <a href="https://tycotic.itch.io/"><div class="red-social-contactos">
-                <div class="icono-contacto-bk"><img draggable="false" src="../assets/contactos-pag-iconos-08.png" alt="logo-linkedin"></div>
-                <p><span>Itch.io<br></span>tycotic</p>
-            </div></a>
-
-            <a href="https://github.com/tycotic23"><div class="red-social-contactos">
-                <div class="icono-contacto-bk"><img draggable="false" src="../assets/contactos-pag-iconos-09.png" alt="logo-linkedin"></div>
-                <p><span>Github<br></span>tycotic23</p>
+                <!--mensajes relacionados con la manipulacion de Contactos-->
+                <p class="cargando">{{contactoMessage}}</p>
+            <a *ngFor="let contacto of contactos" href={{contacto.url}}><div class="red-social-contactos">
+                <div class="icono-contacto-bk"><img draggable="false" src={{contacto.logourl}} alt={{contacto.redsocial}}></div>
+                <p><span>{{contacto.redsocial}}<br></span>{{contacto.texto}}</p>
             </div></a>
 
         </div>

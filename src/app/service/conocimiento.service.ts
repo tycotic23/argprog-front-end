@@ -19,6 +19,10 @@ export class ConocimientoService {
       return this.httpClient.get<Conocimiento[]>(this.conocimientoURL+'traer');
   }
 
+  public porCategoria(id:number):Observable<Conocimiento[]>{
+    return this.httpClient.get<Conocimiento[]>(this.conocimientoURL+`traerconocimientosbycategoria/${id}`);
+}
+
   public verCategorias():Observable<Categoria[]>{
     return this.httpClient.get<Categoria[]>(this.conocimientoURL+'traercategorias');
 }

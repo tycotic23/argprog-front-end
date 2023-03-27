@@ -193,8 +193,4 @@ export class SubfooterdatoEditComponent {
       }
     );
   }
-
-  editarImagenSubfooterdato():void{
-    this.SubfooterdatoMessage=`Sin implementar`;
-  }
 }

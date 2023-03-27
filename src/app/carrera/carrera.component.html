@@ -9,65 +9,29 @@
     </div>
     <div class="bk bkmain"> </div>
     <h2>Experiencia Laboral</h2>
-    <section class="xp-section">
-        <h5 class="forte"><span>Noviembre 2022-Actualmente</span> | Sonidos Distantes Producciones </h5>
+    <!--mensajes relacionados con la manipulacion de Explaborals-->
+    <p>{{explaboralMessage}}</p>
+    <section *ngFor="let explaboral of explaborals" class="xp-section">
+        <h5 class="forte"><span>{{explaboral.fechaini}}-{{explaboral.fechafin}}</span> | {{explaboral.empresa}} </h5>
         <div class="content-section">
-            <img draggable="false" src="../assets/logo-SD.png" alt="Sonidos Distantes">
-            <p><span>Asistente de producción</span><br>Gestión administrativa para productora musical dedicada a eventos empresariales y particulares.</p>
+            <img draggable="false" src={{explaboral.logourl}} alt={{explaboral.empresa}}>
+            <p><span>{{explaboral.puesto}}</span><br>{{explaboral.descripcion}}</p>
+            <p *ngIf="explaboral.referencias!=''"><span>Referencias</span><br>{{explaboral.referencias}}</p>
         </div>
     </section>
-    <section class="xp-section">
-        <h5 class="forte"><span>Noviembre 2022-Actualmente</span> | Soluciones Prácticas - Estudio de Diseño </h5>
-        <div class="content-section">
-            <img draggable="false" src="../assets/logo-soluciones-practicas.png" alt="Soluciones Prácticas">
-            <p><span>Diseñador Gráfico</span><br>Diseñador gráfico freelance.</p>
-        </div>
-    </section>
-    <section class="xp-section">
-        <h5 class="forte"><span>2019-Actualmente (interrumpido durante pandemia)</span> | A.T.E. - Asociación Trabajadores del Estado</h5>
-        <div class="content-section">
-            <img draggable="false" src="../assets/logo-ate.png" alt="ATE">
-            <p><span>Profesor de taller</span><br>Profesor de taller para adultos mayores sobre uso de celulares </p>
-        </div>
-    </section>
-    <section class="xp-section">
-        <h5 class="forte"><span>2018-2020</span> | VOX Asociación Civil</h5>
-        <div class="content-section">
-            <img draggable="false" src="../assets/logo-vox.jpg" alt="VOX">
-            <p><span>Promoción de derechos</span><br>Voluntario en organización LGBT sin fines de lucro. Promotor de derechos, charlas y talleres</p>
-        </div>
-    </section>
+
     <h2>Formación Académica</h2>
-    <section class="formacion-section">
-            <h5 class="forte">de 2020 hasta Actualidad</h5>
+        <!--mensajes relacionados con la manipulacion de Educaciones-->
+        <p>{{educacionMessage}}</p>
+        
+        <section *ngFor="let educacion of educacions" class="formacion-section">
+            <h5 class="forte">de {{educacion.fechaini}} hasta {{educacion.fechafin}}</h5>
             <div class="content-section">
-                <img draggable="false" src="../assets/logo artes visuales.png" alt="Artes visuales">
-                <p><span> Escuela provincial de artes visuales. </span><br>Tecnicatura en diseño gráfico y
-                comunicación visual</p>
+                <img draggable="false" src={{educacion.logourl}} alt={{educacion.institucion}}>
+                <p><span> {{educacion.institucion}}</span><br>{{educacion.titulo}}</p>
             </div>
         </section>
 
-    <section class="formacion-section">
-        <h5 class="forte">de 2017 hasta 2019</h5>
-        <div class="content-section">
-            <img draggable="false" src="../assets/logo-fceia.png" alt="Fceia">
-            <p><span> Facultad de Ciencias Exactas de la Universidad Nacional de Rosario.</span><br>Ingeniería en sistemas. Incompleto.</p>
-        </div>
-    </section>
-    <section class="formacion-section">
-        <h5 class="forte">de 2015 hasta 2016</h5>
-        <div class="content-section">
-            <img draggable="false" src="../assets/logoutnwhite.png" alt="UTN">
-            <p><span> Universidad Tecnológica Nacional.</span><br>Licenciatura en ciencias de la computación. Incompleto.</p>
-        </div>
-    </section>
-    <section class="formacion-section">
-        <h5 class="forte">de 2010 hasta 2014</h5>
-        <div class="content-section">
-            <img draggable="false" src="../assets/ic-logo-02.png" alt="Sagrado Corazón">
-            <p><span> Colegio Sagrado Corazón.</span><br>Orientación producción de bienes y servicios. 2do mejor promedio.</p>
-        </div>
-    </section>
     <div class="vacio"></div>
 </main>
 <app-footer></app-footer>

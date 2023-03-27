@@ -7,9 +7,9 @@
                 <img draggable="false" class="logo-footer" src="../assets/logo-un-color-13.png" alt="">
             </div>
             <div class="footer-botones-contacto">
-                <a href="https://github.com/tycotic23"><img draggable="false" src="../assets/githublogo-naranja.png" alt=""></a>
-                <a href="https://www.behance.net/tomasstevan"><img draggable="false" src="../assets/behance-logo.png" alt=""></a>
-                <a href="https://tycotic.itch.io/"><img draggable="false" src="../assets/itchio-logo.png" alt=""></a>
+                <!--mensajes relacionados con la manipulacion de Botonfooteres-->
+                <p class="cargando">{{BotonfooterMessage}}</p>
+                <a *ngFor="let botonfooter of Botonfooters" href={{botonfooter.url}}><img draggable="false" src={{botonfooter.logo}} alt=""></a>
             </div>
             
         </div>
@@ -17,8 +17,9 @@
     </div>
    <div class="sub-footer">
     <div class="footer-redes-sociales">
-        <a href="mailto:magui.maggie@gmail.com"><img draggable="false" class="icono" src="../assets/contactos-orejas-28.png" alt="email">magui.maggie@gmail.com</a>
-        <a href="https://wa.me/5493417197518"><img draggable="false" class="icono" src="../assets/contactos-orejas-27.png" alt="telefono">+54 9 341 719-7518</a>
+        <!--mensajes relacionados con la manipulacion  de Subfooterdatos-->
+        <p class="cargando">{{SubfooterdatoMessage}}</p>
+        <a *ngFor="let subfooterdato of subfooterdatos" href={{subfooterdato.url}}><img draggable="false" class="icono" src={{subfooterdato.iconourl}} alt="contacot">{{subfooterdato.texto}}</a>
     </div>
    </div>
 </footer>

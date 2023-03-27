@@ -31,12 +31,8 @@ export class LogginComponent{
     }
   }
 
-/*   loggearse():void{
-    
-    this.router.navigate(['/edit-index']);
-  } */
-
   onLogin():void{
+    this.errMsj=`Autenticando...Puede tardar la primera vez`;
     this.loginUsuario=new LoginUsuario(this.nombreUsuario,this.password);
     this.authService.login(this.loginUsuario).subscribe(
       data=>{

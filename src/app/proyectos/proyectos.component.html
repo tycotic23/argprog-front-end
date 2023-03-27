@@ -9,16 +9,18 @@
     </div>
     <div class="bk bkmain"> </div>
     <div class="index-main">
-    <section class="section-proyecto">
-        <img draggable="false" src="../assets/captura-proyecto-1.png" alt="captura-proyecto-1">
-        <div class="title-relative">
-            <h2>Proyecto 1: Mi Portfolio Web</h2>
-            <p>Proyecto presentado como trabajo final para curso de programación full Stack en el marco del programa "Argentina Programa" de la Nación. <br>
-            Este proyecto tiene como consigna ser un portfolio web con la posibilidad de iniciar sesión y modificar elementos dentro del mismo a través de una interfaz simple. Permite modificar, crear y eliminar experiencias laborales, estudios y proyectos. <br>
-            No admite eliminar ciertos elementos que ya van a existir por defecto (este proyecto, algunas experiencias laborales y educativas. <br>
-            Sí permite agregar y luego eliminar o modificar esos nuevos elementos</p>
-        </div>
-    </section>
+        <!--mensajes relacionados con la manipulacion de Proyectos-->
+        <p>{{ProyectoMessage}}</p>
+
+        <section *ngFor="let Proyecto of Proyectos" class="section-proyecto">
+            <img draggable="false" src={{Proyecto.pictureurl}} alt={{Proyecto.titulo}}>
+            <div class="title-relative">
+                <h2>Proyecto: {{Proyecto.titulo}}</h2>
+                <p>{{Proyecto.descripcion}}</p>
+            </div>
+            <button *ngIf="Proyecto.botonver" routerLink={{Proyecto.botonurl}}>Ver más</button>
+        </section>
+
     </div>
     <div class="vacio"></div>
 </main>
