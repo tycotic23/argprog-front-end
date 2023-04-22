@@ -32,8 +32,8 @@
             <div class="column gap-1 align-stretch">
                 <div class="row justify-end self-end align-center">
                     <!--botones alineados a la derecha-->
-                    <button *ngIf="!editProyecto" (click)="borrarProyecto(Proyecto.id)"[disabled]="enProceso">X</button>
-                        <button *ngIf="!editProyecto" (click)="showEditarProyecto(Proyecto)"[disabled]="enProceso">e</button>
+                    <button class="edit-button" *ngIf="!editProyecto" (click)="borrarProyecto(Proyecto.id)"[disabled]="enProceso"><img draggable="false" class="edit-icon" src="../../assets/boton-edit-32.png" alt="eliminar"></button>
+                        <button class="edit-button" *ngIf="!editProyecto" (click)="showEditarProyecto(Proyecto)"[disabled]="enProceso"><img draggable="false" class="edit-icon" src="../../assets/boton-edit-31.png" alt="editar"></button>
                         <button *ngIf="editProyecto && Proyecto.id==editProyectoSelected" (click)="editarProyecto(Proyecto.id)"[disabled]="enProceso">Aceptar</button>
                         <button *ngIf="editProyecto && Proyecto.id==editProyectoSelected" (click)="hiddenEditarProyecto()">Cancelar</button>
                 </div>
@@ -47,7 +47,8 @@
                         <!--booleano boton con enlace-->
                         <div class="row gap-1">
                             <p>¿Tiene botón con enlace?</p>
-                            <label *ngIf="(Proyecto.id!=editProyectoSelected && editProyecto) || !editProyecto" for="editverb">{{Proyecto.botonver}}</label>
+                            <label *ngIf="(Proyecto.id!=editProyectoSelected && editProyecto) || !editProyecto" for="editverb"><p *ngIf="Proyecto.botonver; else notick" class="tick">☑</p></label>
+                            <ng-template #notick><p class="tick">☒</p></ng-template>
                             <select *ngIf="Proyecto.id==editProyectoSelected" name="editverb" id="editverb" [(ngModel)]="editProyectoBotonver" required>
                                 <option value=true>Sí</option>
                                 <option value=false>No</option>
@@ -55,7 +56,7 @@
                         </div>
                         <!--enlace del boton-->
                         <p *ngIf="Proyecto.botonurl.length!=0 || Proyecto.id==editProyectoSelected">Enlace del proyecto: </p>
-                        <label *ngIf="Proyecto.id!=editProyectoSelected and editProyecto" for="editurl">{{Proyecto.botonurl}}</label>
+                        <label *ngIf="Proyecto.id!=editProyectoSelected && editProyecto" for="editurl">{{Proyecto.botonurl}}</label>
                         <input *ngIf="Proyecto.id==editProyectoSelected" class="edit"  type="text" name="editurl" [(ngModel)]="editProyectoBotonurl">
                        
                     </div>

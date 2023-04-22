@@ -43,8 +43,8 @@
                 </div>
             </div>
             <div class="row justify-end">
-                <button *ngIf="!editConocimiento" (click)="borrarConocimiento(conocimiento.id)" [disabled]="enProceso">X</button>
-                <button *ngIf="!editConocimiento" (click)="showEditarConocimiento(conocimiento)" [disabled]="enProceso">e</button>
+                <button class="edit-button" *ngIf="!editConocimiento" (click)="borrarConocimiento(conocimiento.id)" [disabled]="enProceso"><img draggable="false" class="edit-icon" src="../../assets/boton-edit-32.png" alt="eliminar"></button>
+                <button class="edit-button" *ngIf="!editConocimiento" (click)="showEditarConocimiento(conocimiento)" [disabled]="enProceso"><img draggable="false" class="edit-icon" src="../../assets/boton-edit-31.png" alt="eliminar"></button>
                 <button *ngIf="editConocimiento && conocimiento.id==editConocimientoSelected" (click)="editarConocimiento(conocimiento.id)" [disabled]="enProceso">Aceptar</button>
                 <button *ngIf="editConocimiento && conocimiento.id==editConocimientoSelected" (click)="hiddenEditar()">Cancelar</button>
             </div>
@@ -72,13 +72,13 @@
     </form>
 </div>
 <ul class="ul-row align-start justify-start">
-    <li class="align-start" *ngFor="let categoria of categorias">
-        <div class="row gap-1 align-start">
+    <li class="flex align-center" *ngFor="let categoria of categorias">
+        <div class="row gap-1 align-center">
             <label for="editOrden">{{categoria.orden}}</label>
             <label class="label-categoria" for="editCategoria">{{categoria.categoria}}</label>
             <div class="row">
-                <button *ngIf="!editCategoria" (click)="borrarCategoria(categoria.id)" [disabled]="enProceso">X</button>
-            <button *ngIf="!editCategoria" (click)="showEditarCategoria(categoria)" [disabled]="enProceso">e</button>
+                <button class="edit-button" *ngIf="!editCategoria" (click)="borrarCategoria(categoria.id)" [disabled]="enProceso"><img draggable="false" class="edit-icon" src="../../assets/boton-edit-32.png" alt="eliminar"></button>
+            <button class="edit-button" *ngIf="!editCategoria" (click)="showEditarCategoria(categoria)" [disabled]="enProceso"><img draggable="false" class="edit-icon" src="../../assets/boton-edit-31.png" alt="editar"></button>
             <button *ngIf="editCategoria && categoria.categoria==editCategoriaSelected" (click)="editarCategoria(categoria.id)" [disabled]="enProceso">Aceptar</button>
             <button *ngIf="editCategoria && categoria.categoria==editCategoriaSelected" (click)="hiddenEditar()">Cancelar</button>
             </div>

@@ -34,8 +34,8 @@
                             <input class="edit" *ngIf="contacto.redsocial==editContactoSelected" type="text" name="editTexto" [(ngModel)]="editContactoTexto"></label>
                     </div>
                     <div class="column">
-                        <button *ngIf="!editContacto" (click)="borrarContacto(contacto.redsocial)"[disabled]="enProceso">X</button>
-                        <button *ngIf="!editContacto" (click)="showEditarContacto(contacto)"[disabled]="enProceso">e</button>
+                        <button class="edit-button" *ngIf="!editContacto" (click)="borrarContacto(contacto.redsocial)"[disabled]="enProceso"><img draggable="false" class="edit-icon" src="../../assets/boton-edit-32.png" alt="eliminar"></button>
+                        <button class="edit-button" *ngIf="!editContacto" (click)="showEditarContacto(contacto)"[disabled]="enProceso"><img draggable="false" class="edit-icon" src="../../assets/boton-edit-31.png" alt="editar"></button>
                         <button *ngIf="editContacto && contacto.redsocial==editContactoSelected" (click)="editarContacto(contacto.redsocial)"[disabled]="enProceso">Aceptar</button>
                         <button *ngIf="editContacto && contacto.redsocial==editContactoSelected" (click)="hiddenEditarContacto()">Cancelar</button>
                     </div>

@@ -8,7 +8,8 @@ import { Botonfooter } from '../models/botonfooter';
 })
 export class BotonfooterService {
 
-  botonfooterURL="http://localhost:8080/botonesfooter/";
+  botonfooterURL="https://probando2backend3.onrender.com";
+  //botonfooterURL="http://localhost:8080/botonesfooter/";
   constructor(private httpClient:HttpClient) {  }
 
   //los service son el "enchufe" con la API que van a consumir

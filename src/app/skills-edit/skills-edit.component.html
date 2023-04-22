@@ -20,13 +20,13 @@
     </form>
 </div>
 <div>
-    <ul *ngFor="let skill of skills">
+    <ul class="separated" *ngFor="let skill of skills">
         <li>
             <label for="SkillName">{{skill.skill}}</label>
             <input class="edit" *ngIf="skill.skill==editSkillSelected" type="text" name="SkillName" [(ngModel)]="editSkillName">
             
-            <button *ngIf="!editSkill" (click)="borrarSkill(skill.skill)" [disabled]="enProceso">X</button>
-            <button *ngIf="!editSkill" (click)="showEditarSkill(skill)" [disabled]="enProceso">e</button>
+            <button class="edit-button" *ngIf="!editSkill" (click)="borrarSkill(skill.skill)" [disabled]="enProceso"><img draggable="false" class="edit-icon" src="../../assets/boton-edit-32.png" alt="eliminar"></button>
+            <button class="edit-button" *ngIf="!editSkill" (click)="showEditarSkill(skill)" [disabled]="enProceso"><img draggable="false" class="edit-icon" src="../../assets/boton-edit-31.png" alt="editar"></button>
             <button *ngIf="editSkill && skill.skill==editSkillSelected" [disabled]="enProceso" (click)="editarSkill(skill.skill)">Aceptar</button>
             <button *ngIf="editSkill && skill.skill==editSkillSelected" (click)="hiddenEditarSkill()">Cancelar</button>
         </li>

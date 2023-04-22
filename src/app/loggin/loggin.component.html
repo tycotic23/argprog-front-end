@@ -17,7 +17,7 @@
                 <input type="text" name="usuario" id="usuario" [(ngModel)]="nombreUsuario" required>
                 <label class="flamenco" for="password">Contraseña:</label>
                 <input type="text" name="password" id="password" [(ngModel)]="password" required>
-                <button type="submit" [disabled]="!f.valid">Iniciar Sesión</button>
+                <button type="submit" [disabled]="!f.valid || isLogging">Iniciar Sesión</button>
                 <p>{{errMsj}}</p>
             </form>
         </section>

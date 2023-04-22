@@ -7,7 +7,8 @@ import { Contacto } from '../models/contacto';
   providedIn: 'root'
 })
 export class ContactoService {
-  contactoURL="http://localhost:8080/contactos/";
+  contactoURL="https://probando2backend3.onrender.com";
+  //contactoURL="http://localhost:8080/contactos/";
   constructor(private httpClient:HttpClient) {  }
 
   //los service son el "enchufe" con la API que van a consumir

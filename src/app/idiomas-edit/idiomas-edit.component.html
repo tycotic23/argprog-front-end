@@ -21,14 +21,14 @@
     </form>
 </div>
 <div>
-    <ul *ngFor="let idioma of idiomas">
+    <ul class="separated" *ngFor="let idioma of idiomas">
         <li>
             <label for="idiomaName">{{idioma.idioma}}</label>
             <input class="edit" *ngIf="idioma.idioma==editIdiomaSelected" type="text" name="idiomaName" [(ngModel)]="editIdiomaName">
-            : <label for="idiomaNivel">{{idioma.nivel}} </label>
+            : <label for="idiomaNivel"> %{{idioma.nivel}} </label>
             <input class="edit" *ngIf="idioma.idioma==editIdiomaSelected" type="number" name="idiomaNivel" [(ngModel)]="editIdiomaNivel">
-            <button *ngIf="!editIdioma" (click)="borrarIdioma(idioma.idioma)"[disabled]="enProceso">X</button>
-            <button *ngIf="!editIdioma" (click)="showEditarIdioma(idioma)"[disabled]="enProceso">e</button>
+            <button class="edit-button" *ngIf="!editIdioma" (click)="borrarIdioma(idioma.idioma)"[disabled]="enProceso"><img draggable="false" class="edit-icon" src="../../assets/boton-edit-32.png" alt="eliminar"></button>
+            <button class="edit-button" *ngIf="!editIdioma" (click)="showEditarIdioma(idioma)"[disabled]="enProceso"><img draggable="false" class="edit-icon" src="../../assets/boton-edit-31.png" alt="editar"></button>
             <button *ngIf="editIdioma && idioma.idioma==editIdiomaSelected" (click)="editarIdioma(idioma.idioma)"[disabled]="enProceso">Aceptar</button>
             <button *ngIf="editIdioma && idioma.idioma==editIdiomaSelected" (click)="hiddenEditarIdioma()">Cancelar</button>
         </li>

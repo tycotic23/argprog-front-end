@@ -9,7 +9,8 @@ import { Conocimiento } from '../models/conocimiento';
 })
 export class ConocimientoService {
 
-  conocimientoURL="http://localhost:8080/conocimientos/";
+  conocimientoURL="https://probando2backend3.onrender.com";
+  //conocimientoURL="http://localhost:8080/conocimientos/";
   constructor(private httpClient:HttpClient) {  }
 
   //los service son el "enchufe" con la API que van a consumir

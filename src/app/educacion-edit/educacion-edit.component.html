@@ -28,8 +28,8 @@
             <div class="column gap-1 align-stretch">
                 <div class="row self-end align-center">
                     <!--botones alineados a la derecha-->
-                    <button *ngIf="!editEducacion" (click)="borrarEducacion(educacion.id)"[disabled]="enProceso">X</button>
-                        <button *ngIf="!editEducacion" (click)="showEditarEducacion(educacion)"[disabled]="enProceso">e</button>
+                    <button class="edit-button" *ngIf="!editEducacion" (click)="borrarEducacion(educacion.id)"[disabled]="enProceso"><img draggable="false" class="edit-icon" src="../../assets/boton-edit-32.png" alt="eliminar"></button>
+                        <button class="edit-button" *ngIf="!editEducacion" (click)="showEditarEducacion(educacion)"[disabled]="enProceso"><img draggable="false" class="edit-icon" src="../../assets/boton-edit-31.png" alt="editar"></button>
                         <button *ngIf="editEducacion && educacion.id==editEducacionSelected" (click)="editarEducacion(educacion.id)"[disabled]="enProceso">Aceptar</button>
                         <button *ngIf="editEducacion && educacion.id==editEducacionSelected" (click)="hiddenEditarEducacion()">Cancelar</button>
                 </div>

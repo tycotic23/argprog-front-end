@@ -7,7 +7,8 @@ import { Idioma } from '../models/idioma';
   providedIn: 'root'
 })
 export class IdiomaService {
-  idiomaURL="http://localhost:8080/idiomas/";
+  idiomaURL="https://probando2backend3.onrender.com";
+  //idiomaURL="http://localhost:8080/idiomas/";
   constructor(private httpClient:HttpClient) {  }
 
   //los service son el "enchufe" con la API que van a consumir

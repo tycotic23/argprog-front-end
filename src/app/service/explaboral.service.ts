@@ -7,7 +7,8 @@ import { Explaboral } from '../models/explaboral';
   providedIn: 'root'
 })
 export class ExplaboralService {
-  explaboralURL="http://localhost:8080/explaborales/";
+  explaboralURL="https://probando2backend3.onrender.com";
+  //explaboralURL="http://localhost:8080/explaborales/";
   constructor(private httpClient:HttpClient) {  }
 
   //los service son el "enchufe" con la API que van a consumir

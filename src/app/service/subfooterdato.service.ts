@@ -7,7 +7,8 @@ import { Subfooterdato } from '../models/subfooterdato';
   providedIn: 'root'
 })
 export class SubfooterdatoService {
-  subfooterdatoURL="http://localhost:8080/subfooterdatos/";
+  subfooterdatoURL="https://probando2backend3.onrender.com";
+  //subfooterdatoURL="http://localhost:8080/subfooterdatos/";
   constructor(private httpClient:HttpClient) {  }
 
   //los service son el "enchufe" con la API que van a consumir

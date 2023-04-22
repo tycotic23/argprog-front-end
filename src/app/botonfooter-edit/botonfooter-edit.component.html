@@ -25,8 +25,8 @@
             <div class="column gap-1 align-stretch">
                 <div class="row self-end align-center">
                     <!--botones alineados a la derecha-->
-                    <button *ngIf="!editBotonfooter" (click)="borrarBotonfooter(botonfooter.id)" [disabled]="enProceso">X</button>
-                        <button *ngIf="!editBotonfooter" (click)="showEditarBotonfooter(botonfooter)" [disabled]="enProceso">e</button>
+                    <button class="edit-button" *ngIf="!editBotonfooter" (click)="borrarBotonfooter(botonfooter.id)" [disabled]="enProceso"><img draggable="false" class="edit-icon" src="../../assets/boton-edit-32.png" alt="eliminar"></button>
+                        <button class="edit-button" *ngIf="!editBotonfooter" (click)="showEditarBotonfooter(botonfooter)" [disabled]="enProceso"><img draggable="false" class="edit-icon" src="../../assets/boton-edit-31.png" alt="eliminar"></button>
                         <button *ngIf="editBotonfooter && botonfooter.id==editBotonfooterSelected" (click)="editarBotonfooter(botonfooter.id)" [disabled]="enProceso">Aceptar</button>
                         <button *ngIf="editBotonfooter && botonfooter.id==editBotonfooterSelected" (click)="hiddenEditarBotonfooter()">Cancelar</button>
                 </div>

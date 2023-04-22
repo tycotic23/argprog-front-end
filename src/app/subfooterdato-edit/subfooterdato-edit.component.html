@@ -26,8 +26,8 @@
             <div class="column gap-1 align-stretch">
                 <div class="row justify-end self-end align-center">
                     <!--botones alineados a la derecha-->
-                    <button *ngIf="!editSubfooterdato" (click)="borrarSubfooterdato(subfooterdato.id)" [disabled]="enProceso">X</button>
-                        <button *ngIf="!editSubfooterdato" (click)="showEditarSubfooterdato(subfooterdato)" [disabled]="enProceso">e</button>
+                    <button class="edit-button" *ngIf="!editSubfooterdato" (click)="borrarSubfooterdato(subfooterdato.id)" [disabled]="enProceso"><img draggable="false" class="edit-icon" src="../../assets/boton-edit-32.png" alt="eliminar"></button>
+                        <button class="edit-button" *ngIf="!editSubfooterdato" (click)="showEditarSubfooterdato(subfooterdato)" [disabled]="enProceso"><img draggable="false" class="edit-icon" src="../../assets/boton-edit-31.png" alt="editar"></button>
                         <button *ngIf="editSubfooterdato && subfooterdato.id==editSubfooterdatoSelected" [disabled]="enProceso" (click)="editarSubfooterdato(subfooterdato.id)">Aceptar</button>
                         <button *ngIf="editSubfooterdato && subfooterdato.id==editSubfooterdatoSelected" (click)="hiddenEditarSubfooterdato()">Cancelar</button>
                 </div>

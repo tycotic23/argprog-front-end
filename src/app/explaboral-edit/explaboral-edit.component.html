@@ -66,8 +66,8 @@
                         <input *ngIf="explaboral.id==editExplaboralSelected" class="edit"  type="text" name="editempresa" [(ngModel)]="editExplaboralEmpresa">
                         <div class="row self-end align-center">
                             <!--botones alineados a la derecha-->
-                            <button *ngIf="!editExplaboral" (click)="borrarExplaboral(explaboral.id)"[disabled]="enProceso">X</button>
-                                <button *ngIf="!editExplaboral" (click)="showEditarExplaboral(explaboral)"[disabled]="enProceso">e</button>
+                            <button class="edit-button" *ngIf="!editExplaboral" (click)="borrarExplaboral(explaboral.id)"[disabled]="enProceso"><img draggable="false" class="edit-icon" src="../../assets/boton-edit-32.png" alt="eliminar"></button>
+                                <button class="edit-button" *ngIf="!editExplaboral" (click)="showEditarExplaboral(explaboral)"[disabled]="enProceso"><img draggable="false" class="edit-icon" src="../../assets/boton-edit-31.png" alt="editar"></button>
                                 <button *ngIf="editExplaboral && explaboral.id==editExplaboralSelected" (click)="editarExplaboral(explaboral.id)"[disabled]="enProceso">Aceptar</button>
                                 <button *ngIf="editExplaboral && explaboral.id==editExplaboralSelected" (click)="hiddenEditarExplaboral()">Cancelar</button>
                         </div>

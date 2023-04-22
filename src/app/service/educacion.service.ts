@@ -7,7 +7,8 @@ import { Educacion } from '../models/educacion';
   providedIn: 'root'
 })
 export class EducacionService {
-  educacionURL="http://localhost:8080/educacion/";
+  educacionURL="https://probando2backend3.onrender.com";
+  //educacionURL="http://localhost:8080/educacion/";
   constructor(private httpClient:HttpClient) {  }
 
   //los service son el "enchufe" con la API que van a consumir

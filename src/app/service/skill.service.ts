@@ -7,7 +7,8 @@ import { Skill } from '../models/skill';
   providedIn: 'root'
 })
 export class SkillService {
-  skillURL="http://localhost:8080/skills/";
+  skillURL="https://probando2backend3.onrender.com";
+  //skillURL="http://localhost:8080/skills/";
   constructor(private httpClient:HttpClient) {  }
 
   //los service son el "enchufe" con la API que van a consumir

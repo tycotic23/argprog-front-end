@@ -7,7 +7,8 @@ import { Textomain } from '../models/textomain';
   providedIn: 'root'
 })
 export class TextomainService {
-  textomainURL="http://localhost:8080/textosmain/";
+  textomainURL="https://probando2backend3.onrender.com";
+  //textomainURL="http://localhost:8080/textosmain/";
   constructor(private httpClient:HttpClient) {  }
 
   //los service son el "enchufe" con la API que van a consumir

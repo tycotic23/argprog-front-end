@@ -18,6 +18,7 @@ export class LogginComponent{
   password:string="";
   roles:string[]=[];
   errMsj:string="";
+  isLogging:boolean=false;
 
   constructor(private router:Router, private tokenService:TokenService, private authService:AuthService){ 
   }
@@ -33,6 +34,7 @@ export class LogginComponent{
 
   onLogin():void{
     this.errMsj=`Autenticando...Puede tardar la primera vez`;
+    this.isLogging=true;
     this.loginUsuario=new LoginUsuario(this.nombreUsuario,this.password);
     this.authService.login(this.loginUsuario).subscribe(
       data=>{
@@ -45,6 +47,7 @@ export class LogginComponent{
         this.roles=data.authorities;
 
         this.errMsj=`Redirigiendo a la página principal`;
+        this.isLogging=false;
         setTimeout(()=>{
           this.errMsj="";
         },10000);
@@ -54,6 +57,7 @@ export class LogginComponent{
         this.isLogged=false;
         this.isLoginFail=true;
         this.errMsj=`Usuario o contraseña incorrectos`;
+        this.isLogging=false;
         setTimeout(()=>{
           this.errMsj="";
         },10000);
