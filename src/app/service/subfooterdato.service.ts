@@ -7,7 +7,7 @@ import { Subfooterdato } from '../models/subfooterdato';
   providedIn: 'root'
 })
 export class SubfooterdatoService {
-  subfooterdatoURL="https://probando2backend3.onrender.com";
+  subfooterdatoURL="https://probando2backend3.onrender.com/subfooterdatos/";
   //subfooterdatoURL="http://localhost:8080/subfooterdatos/";
   constructor(private httpClient:HttpClient) {  }
 

@@ -7,7 +7,7 @@ import { Textomain } from '../models/textomain';
   providedIn: 'root'
 })
 export class TextomainService {
-  textomainURL="https://probando2backend3.onrender.com";
+  textomainURL="https://probando2backend3.onrender.com/textosmain/";
   //textomainURL="http://localhost:8080/textosmain/";
   constructor(private httpClient:HttpClient) {  }
 

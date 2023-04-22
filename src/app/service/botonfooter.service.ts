@@ -8,7 +8,7 @@ import { Botonfooter } from '../models/botonfooter';
 })
 export class BotonfooterService {
 
-  botonfooterURL="https://probando2backend3.onrender.com";
+  botonfooterURL="https://probando2backend3.onrender.com/botonesfooter/";
   //botonfooterURL="http://localhost:8080/botonesfooter/";
   constructor(private httpClient:HttpClient) {  }
 

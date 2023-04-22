@@ -7,7 +7,7 @@ import { Contacto } from '../models/contacto';
   providedIn: 'root'
 })
 export class ContactoService {
-  contactoURL="https://probando2backend3.onrender.com";
+  contactoURL="https://probando2backend3.onrender.com/contactos/";
   //contactoURL="http://localhost:8080/contactos/";
   constructor(private httpClient:HttpClient) {  }
 

@@ -7,7 +7,7 @@ import { Idioma } from '../models/idioma';
   providedIn: 'root'
 })
 export class IdiomaService {
-  idiomaURL="https://probando2backend3.onrender.com";
+  idiomaURL="https://probando2backend3.onrender.com/idiomas/";
   //idiomaURL="http://localhost:8080/idiomas/";
   constructor(private httpClient:HttpClient) {  }
 
