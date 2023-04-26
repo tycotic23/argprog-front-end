@@ -9,7 +9,7 @@ import { Conocimiento } from '../models/conocimiento';
 })
 export class ConocimientoService {
 
-  conocimientoURL="https://probando2backend3.onrender.com/conocimientos/";
+  conocimientoURL="https://backendnew-ox1g.onrender.com/conocimientos/";
   //conocimientoURL="http://localhost:8080/conocimientos/";
   constructor(private httpClient:HttpClient) {  }
 

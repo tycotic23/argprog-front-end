@@ -8,7 +8,7 @@ import { LoginUsuario } from '../models/login-usuario';
   providedIn: 'root'
 })
 export class AuthService {
-  authURL="https://probando2backend3.onrender.com/auth/";
+  authURL="https://backendnew-ox1g.onrender.com/auth/";
   //authURL="http://localhost:8080/auth/";
 
   constructor(private httpClient:HttpClient) { }

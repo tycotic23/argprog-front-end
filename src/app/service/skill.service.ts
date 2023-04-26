@@ -7,7 +7,7 @@ import { Skill } from '../models/skill';
   providedIn: 'root'
 })
 export class SkillService {
-  skillURL="https://probando2backend3.onrender.com/skills/";
+  skillURL="https://backendnew-ox1g.onrender.com/skills/";
   //skillURL="http://localhost:8080/skills/";
   constructor(private httpClient:HttpClient) {  }
 

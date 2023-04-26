@@ -7,7 +7,7 @@ import { Explaboral } from '../models/explaboral';
   providedIn: 'root'
 })
 export class ExplaboralService {
-  explaboralURL="https://probando2backend3.onrender.com/explaborales/";
+  explaboralURL="https://backendnew-ox1g.onrender.com/explaborales/";
   //explaboralURL="http://localhost:8080/explaborales/";
   constructor(private httpClient:HttpClient) {  }
 
